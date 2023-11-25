@@ -19,8 +19,8 @@ const Navbar = () => {
   return (
     <div>
       
-      <div className="fixed   z-10 mt-0  ">
-        <div data-aos="fade-down" className="bg-blue-500 md:mr-[185px]  navbar">
+      <div className="fixed text-white  z-10 mt-0  ">
+        <div data-aos="fade-down" className="bg-[#64CCC5] md:mr-[185px]  navbar">
         <div className="">
         <div className="dropdown">
       <label tabIndex={0} className="btn btn-ghost lg:hidden">
