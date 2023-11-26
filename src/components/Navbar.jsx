@@ -1,20 +1,30 @@
 import { Link, NavLink } from "react-router-dom";
 import { CiBellOn } from "react-icons/ci";
+import useAuth from "../hooks/useAuth";
 
 const Pages = () => {
+  const {logOut, user} = useAuth()
+  const handleLogOut = () => {
+    logOut()
+    .then(() => {
+    })
+    .catch(error => console.error(error))
+  }
   return (
     <div className="flex items-center gap-6">
     <NavLink>Home</NavLink>
     <NavLink>Meals</NavLink>
     <NavLink>UpComing</NavLink>
     <NavLink><CiBellOn /></NavLink>
+    {
+      user ? <Link onClick={handleLogOut}>LogOut</Link> :
     <NavLink to="login">Join Us</NavLink>
+    }
     </div>
   )
 }
 
 const Navbar = ({children}) => {
-  
 
   return (
     <div>

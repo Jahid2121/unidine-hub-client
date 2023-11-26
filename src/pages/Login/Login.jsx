@@ -2,11 +2,31 @@ import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../components/providers/AuthProvider";
 import { Link } from "react-router-dom";
+import { FaGoogle } from "react-icons/fa";
+import useAuth from "../../hooks/useAuth";
+import Swal from "sweetalert2";
 
 
 
 const Login = () => {
-    const {logIn} = useContext(AuthContext)
+    const {logIn, googleLogin} = useAuth()
+
+    const handleGoogleLogin = () => {
+        googleLogin()
+        .then(result => {
+            console.log(result.user);
+            Swal.fire({
+                position: "top-center",
+                icon: "success",
+                title: "Your logged in successfully",
+                showConfirmButton: false,
+                timer: 1500
+              });
+        })
+        .catch(error => {
+            console.log(error);
+        })
+    }
 
     const {
         register,
@@ -19,6 +39,13 @@ const Login = () => {
         logIn(data.email, data.password)
         .then(data => {
             console.log(data.user);
+            Swal.fire({
+                position: "top-center",
+                icon: "success",
+                title: "Your logged in successfully",
+                showConfirmButton: false,
+                timer: 1500
+              });
         })
         .catch(err => {
             console.error(err);
@@ -66,6 +93,9 @@ const Login = () => {
             <p className="text-red-800">Password is required</p>
           )}
          
+        </div>
+        <div onClick={handleGoogleLogin}>
+        <FaGoogle />
         </div>
         <div className="form-control mt-6">
           <input
