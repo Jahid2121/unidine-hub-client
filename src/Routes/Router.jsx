@@ -3,6 +3,7 @@ import MainLayout from "../Layout/MainLayout";
 import Home from "../assets/Pages/Home/Home";
 import Register from "../pages/Register/Register";
 import Login from "../pages/Login/Login";
+import Meals from "../pages/Meals/Meals";
 
 
 
@@ -22,6 +23,10 @@ export const router = createBrowserRouter([
         {
           path: '/register',
           element: <Register />
+        },
+        {
+          path: '/meals',
+          element: <Meals />
         },
       ]
     },

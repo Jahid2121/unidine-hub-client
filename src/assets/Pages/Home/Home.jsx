@@ -1,4 +1,5 @@
 import Banner from "../../../components/Banner/Banner";
+import Testimonials from "../Testimonials/Testimonials";
 import MealTabs from "./MealTabs/MealTabs";
 
 const Home = () => {
@@ -7,6 +8,7 @@ const Home = () => {
       <Banner />
       
       <MealTabs />
+      <Testimonials />
     </div>
   );
 };

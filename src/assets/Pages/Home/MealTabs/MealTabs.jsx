@@ -4,6 +4,7 @@ import 'react-tabs/style/react-tabs.css';
 import SectionTitle from '../../../../components/SectionTitle/SectionTitle';
 import useMeal from '../../../../hooks/useMeal';
 import MealTab from '../../../../components/MealTab/MealTab';
+import { Link } from 'react-router-dom';
 
 
 const MealTabs = () => {
@@ -39,6 +40,7 @@ const MealTabs = () => {
       <MealTab items={dinner} />
     </TabPanel>
   </Tabs>
+  <Link to="/meals" className='btn bg-customSalmon text-white flex mx-auto my-8'>See All</Link>
     </>
   );
 };
