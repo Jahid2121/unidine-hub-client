@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 const useMeal = () => {
     const [meal, setMeal] = useState([]);
     useEffect(() => {
-        fetch('meal.json')
+        fetch('http://localhost:5000/meal')
         .then(res => res.json())
         .then(data => setMeal(data))
     }, [])
