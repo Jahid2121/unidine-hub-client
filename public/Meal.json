@@ -2,7 +2,7 @@
     {
       "id": 1,
       "title": "Scrambled Eggs",
-      "category": "Breakfast",
+      "category": "breakfast",
       "image": "scrambled_eggs.jpg",
       "ingredients": ["Eggs", "Milk", "Salt", "Pepper"],
       "description": "Fluffy and delicious scrambled eggs for a perfect breakfast.",
@@ -17,7 +17,7 @@
     {
       "id": 2,
       "title": "Grilled Chicken Salad",
-      "category": "Lunch",
+      "category": "lunch",
       "image": "chicken_salad.jpg",
       "ingredients": ["Chicken Breast", "Lettuce", "Tomatoes", "Cucumbers", "Balsamic Vinaigrette"],
       "description": "A healthy grilled chicken salad for a fulfilling lunch.",
@@ -32,7 +32,7 @@
     {
       "id": 3,
       "title": "Spaghetti Carbonara",
-      "category": "Dinner",
+      "category": "dinner",
       "image": "spaghetti_carbonara.jpg",
       "ingredients": ["Spaghetti", "Eggs", "Parmesan Cheese", "Bacon", "Black Pepper"],
       "description": "Classic Italian spaghetti carbonara with a creamy egg and cheese sauce.",
