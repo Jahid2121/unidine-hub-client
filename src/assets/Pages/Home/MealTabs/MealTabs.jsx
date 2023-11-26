@@ -16,8 +16,8 @@ const MealTabs = () => {
   return (
         <>
         <SectionTitle heading="Meals" subHeading="Meals category" />
-    <div>
        <Tabs defaultIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
+    <div className='flex justify-center'>
     <TabList>
       <Tab>All</Tab>
       <Tab>Breakfast</Tab>
@@ -25,6 +25,7 @@ const MealTabs = () => {
       <Tab>Dinner</Tab>
     </TabList>
 
+    </div>
     <TabPanel>
       <h2>Any content 1</h2>
     </TabPanel>
@@ -38,7 +39,6 @@ const MealTabs = () => {
       <MealTab items={dinner} />
     </TabPanel>
   </Tabs>
-    </div>
     </>
   );
 };

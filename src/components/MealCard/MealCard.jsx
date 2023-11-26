@@ -1,20 +1,26 @@
-
+import { Rating } from "@smastrom/react-rating";
+import '@smastrom/react-rating/style.css'
 const MealCard = ({item}) => {
     const {title, category, image, ingredients, description, price, rating, likes, reviews, adminName, adminEmail} = item;
   return (
-    <div className="card w-96 bg-base-100 shadow-xl">
+    <div style={{borderRadius: '100px 0 100px 0'}} className="card  bg-base-100 shadow-xl">
       <figure>
-        <img
+        <img 
+        style={{borderRadius: '100px 0 100px 0'}}
+        className="h-64 w-96"
           src={image}
           alt="Shoes"
         />
       </figure>
       <div className="card-body">
-        <h2 className="card-title">{title}</h2>
-        <p>{price}</p>
-        <p>{category}</p>
-        <div className="card-actions justify-end">
-          <button className="btn btn-primary">View Details</button>
+        <div className="flex text-customSalmon gap-4">
+        <Rating  style={{ maxWidth: 100 }} value={rating} readOnly></Rating>
+        <p>{rating}</p>
+        </div>
+        <h2 className="card-title font-bold text-3xl">{title}</h2>
+        <div className="flex gap-20 mt-3">
+          <button className="btn bg-customSalmon text-white">View Details</button>
+        <p className="text-2xl font-bold text-customSalmon">{price}</p>
         </div>
       </div>
     </div>
