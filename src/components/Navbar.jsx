@@ -8,7 +8,7 @@ const Pages = () => {
     <NavLink>Meals</NavLink>
     <NavLink>UpComing</NavLink>
     <NavLink><CiBellOn /></NavLink>
-    <NavLink>Join Us</NavLink>
+    <NavLink to="login">Join Us</NavLink>
     </div>
   )
 }
@@ -74,7 +74,7 @@ const Navbar = ({children}) => {
           ></label>
           <ul className="menu p-4 w-80 min-h-full bg-base-200">
             {/* Sidebar content here */}
-            <div className=" gap-5 mr-3 items-center">
+            <div className=" gap-5  mr-3 items-center">
 
            <Pages />
             </div>
