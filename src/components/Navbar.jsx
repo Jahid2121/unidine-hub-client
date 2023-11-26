@@ -3,62 +3,89 @@ import { CiBellOn } from "react-icons/ci";
 
 const Pages = () => {
   return (
-    <div className="flex gap-6">
+    <div className="flex items-center gap-6">
     <NavLink>Home</NavLink>
     <NavLink>Meals</NavLink>
     <NavLink>UpComing</NavLink>
-    <NavLink></NavLink>
+    <NavLink><CiBellOn /></NavLink>
     <NavLink>Join Us</NavLink>
     </div>
   )
 }
 
-const Navbar = () => {
+const Navbar = ({children}) => {
   
 
   return (
     <div>
       
-      <div className="fixed text-white  z-10 mt-0  ">
-        <div data-aos="fade-down" className="bg-[#64CCC5] md:mr-[185px]  navbar">
-        <div className="">
-        <div className="dropdown">
-      <label tabIndex={0} className="btn btn-ghost lg:hidden">
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
-      </label>
-      <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-        <Pages />
-      {/* {
-        user ? <li className="bg-custom-Pink-light text-white text-base font-medium  items-center  rounded-sm" onClick={handleLogOut}><button className="p-3 bg-blue-500">Logout</button></li> : <Link to="/login"><button className="bg-blue-500  p-2 rounded-xl text-white">Login</button></Link>
-      } */}
-         <Link className="btn" to='/productsCart'>My Cart</Link>
-      </ul>
-    </div>
-          
-          <div className="flex">
-        <img className="md:w-10 w-8 text-white" src={'https://i.ibb.co/wJ6HszD/icons8-twitter-250.png'} alt="" />
-        <h3 className="md:text-2xl text-xl text-white font-bold md:mr-16">Uni Dine</h3>
-      </div>
+  
+    
+    
+    {/* Drawer */}
+
+    <>
+      <div className="drawer min-h-screen font-poppins">
+        <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
+        <div className="drawer-content flex flex-col">
+          {/* Navbar */}
+          <div className="w-full max-w-5xl mx-auto fixed navbar text-white bg-opacity-40 bg-[#5EAE53]">
+            <div className="flex-none justify-end lg:hidden">
+              <label
+                htmlFor="my-drawer-3"
+                aria-label="open sidebar"
+                className="btn btn-square btn-ghost"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  className="inline-block w-6 h-6 stroke-current"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M4 6h16M4 12h16M4 18h16"
+                  ></path>
+                </svg>
+              </label>
+            </div>
+            
+            <div className="flex-none gap-9 hidden lg:block">
+              <ul className="menu   menu-horizontal">
+                {/* Navbar menu content here */}
+                <div className="flex gap-5 mr-3 items-center">
+                 <Pages />
+                </div>
+                {/*  */}
+              </ul>
+            </div>
+          </div>
+
+          {/* Page content here */}
+          {children}
         </div>
-        <div className="navbar-center hidden md:mr-36 lg:flex">
-          <ul className="menu   menu-horizontal px-1">
-            <Pages />
+        <div className="drawer-side ">
+          <label
+            htmlFor="my-drawer-3"
+            aria-label="close sidebar"
+            className="drawer-overlay"
+          ></label>
+          <ul className="menu p-4 w-80 min-h-full bg-base-200">
+            {/* Sidebar content here */}
+            <div className=" gap-5 mr-3 items-center">
+
+           <Pages />
+            </div>
           </ul>
         </div>
-        <div className=" md:ml-32">
-        <Link to='/productsCart'><div className="dropdown dropdown-end">
-      <label tabIndex={0} className="btn btn-ghost btn-circle">
-        <div className="indicator text-2xl">
-          <CiBellOn />
-        </div>
-      </label>
-      </div></Link>
-        
-          
-        
-        </div>
-        </div>
       </div>
+
+      {/* footer section */}
+      {/* <Footer /> */}
+    </>
+    
     </div>
   );
 };

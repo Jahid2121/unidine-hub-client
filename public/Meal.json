@@ -1,0 +1,48 @@
+[
+    {
+      "id": 1,
+      "title": "Scrambled Eggs",
+      "category": "Breakfast",
+      "image": "scrambled_eggs.jpg",
+      "ingredients": ["Eggs", "Milk", "Salt", "Pepper"],
+      "description": "Fluffy and delicious scrambled eggs for a perfect breakfast.",
+      "price": 7.99,
+      "rating": 0,
+      "postTime": "2023-11-24T08:00:00",
+      "likes": 0,
+      "reviews": 0,
+      "adminName": "Chef Maria",
+      "adminEmail": "maria@example.com"
+    },
+    {
+      "id": 2,
+      "title": "Grilled Chicken Salad",
+      "category": "Lunch",
+      "image": "chicken_salad.jpg",
+      "ingredients": ["Chicken Breast", "Lettuce", "Tomatoes", "Cucumbers", "Balsamic Vinaigrette"],
+      "description": "A healthy grilled chicken salad for a fulfilling lunch.",
+      "price": 10.99,
+      "rating": 0,
+      "postTime": "2023-11-24T12:30:00",
+      "likes": 0,
+      "reviews": 0,
+      "adminName": "Chef James",
+      "adminEmail": "james@example.com"
+    },
+    {
+      "id": 3,
+      "title": "Spaghetti Carbonara",
+      "category": "Dinner",
+      "image": "spaghetti_carbonara.jpg",
+      "ingredients": ["Spaghetti", "Eggs", "Parmesan Cheese", "Bacon", "Black Pepper"],
+      "description": "Classic Italian spaghetti carbonara with a creamy egg and cheese sauce.",
+      "price": 12.99,
+      "rating": 0,
+      "postTime": "2023-11-24T18:00:00",
+      "likes": 0,
+      "reviews": 0,
+      "adminName": "Chef Roberto",
+      "adminEmail": "roberto@example.com"
+    }
+  ]
+  
