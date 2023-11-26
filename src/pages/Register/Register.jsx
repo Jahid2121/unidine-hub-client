@@ -9,10 +9,11 @@ const Register = () => {
 
   const onSubmit = (data) => {
     console.log(data);
+    
   };
 
   return (
-    <div>
+    <div className="mt-16">
       <form onSubmit={handleSubmit(onSubmit)} className="card-body">
         <div className="form-control">
           <label className="label">
@@ -65,7 +66,7 @@ const Register = () => {
           )}
         </div>
         <div className="form-control mt-6">
-          <button className="btn btn-primary">Register</button>
+          <input value="Register" className="btn btn-primary" type="submit" name="" id="" />
         </div>
       </form>
     </div>
