@@ -27,7 +27,7 @@ const MealTabs = () => {
 
     </div>
     <TabPanel>
-      <h2>Any content 1</h2>
+    <MealTab items={meal} />
     </TabPanel>
     <TabPanel>
       <MealTab items={breakfast} />

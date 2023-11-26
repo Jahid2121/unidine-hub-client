@@ -3,25 +3,31 @@ import { useForm } from "react-hook-form";
 import { AuthContext } from "../../components/providers/AuthProvider";
 import { Link } from "react-router-dom";
 
-const Register = () => {
-  const {createUser} = useContext(AuthContext)
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data);
-    createUser(data.email, data.password)
-    .then(data => {
-      console.log(data.user);
-    })
-    .catch(error => {
-      console.log(error);
-    })
 
-  };
+const Login = () => {
+    const {logIn} = useContext(AuthContext)
+
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+      } = useForm();
+
+      const onSubmit = (data) => {
+        console.log(data);
+        logIn(data.email, data.password)
+        .then(data => {
+            console.log(data.user);
+        })
+        .catch(err => {
+            console.error(err);
+        })
+       
+    
+      };
+    
+
 
   return (
     <div className="mt-16">
@@ -51,9 +57,7 @@ const Register = () => {
             name="password"
             {...register("password", {
               required: true,
-              minLength: 6,
-              maxLength: 20,
-              pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/,
+
             })}
             placeholder="password"
             className="input input-bordered"
@@ -61,28 +65,21 @@ const Register = () => {
           {errors.password?.type === "required" && (
             <p className="text-red-800">Password is required</p>
           )}
-          {errors.password?.type === "minLength" && (
-            <p className="text-red-800">
-              Password must be 6 or more characters
-            </p>
-          )}
-          {errors.password?.type === "maxLength" && (
-            <p className="text-red-800">Maximum password length exceeded</p>
-          )}
-          {errors.password?.type === "pattern" && (
-            <p className="text-red-800">
-              Password must be  include at least one uppercase letter, one lowercase letter, one special character, and one number.
-
-            </p>
-          )}
+         
         </div>
         <div className="form-control mt-6">
-          <input value="Register" className="btn btn-primary" type="submit" name="" id="" />
+          <input
+            value="Register"
+            className="btn btn-primary"
+            type="submit"
+            name=""
+            id=""
+          />
         </div>
-        <p className="font-medium text-center">New User? Join us Now <Link className="text-customSalmon font-medium" to="/login">Login</Link></p>
+        <p className="font-medium text-center">New User? Join us Now <Link className="text-customSalmon font-medium" to="/register">Register</Link></p>
       </form>
     </div>
   );
 };
 
-export default Register;
+export default Login;
