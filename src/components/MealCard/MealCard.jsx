@@ -1,5 +1,6 @@
 import { Rating } from "@smastrom/react-rating";
 import '@smastrom/react-rating/style.css'
+import Btn from "../Btn";
 const MealCard = ({item}) => {
     const {title, category, image, ingredients, description, price, rating, likes, reviews, adminName, adminEmail} = item;
   return (
@@ -19,8 +20,8 @@ const MealCard = ({item}) => {
         </div>
         <h2 className="card-title font-bold text-3xl">{title}</h2>
         <div className="flex gap-20 mt-3">
-          <button className="btn bg-customSalmon text-white">View Details</button>
-        <p className="text-2xl font-bold text-customSalmon">{price}</p>
+          <Btn title="View Details"></Btn>
+        <p className="text-2xl  font-bold text-customSalmon">{price}</p>
         </div>
       </div>
     </div>

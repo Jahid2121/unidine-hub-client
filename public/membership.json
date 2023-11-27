@@ -1,0 +1,21 @@
+[
+    {
+      "id": 1,
+      "name": "Silver",
+      "price": 19.99,
+      "benefits": "Basic meal requests, access to upcoming meals"
+    },
+    {
+      "id": 2,
+      "name": "Gold",
+      "price": 39.99,
+      "benefits": "Advanced meal requests, priority access to upcoming meals"
+    },
+    {
+      "id": 3,
+      "name": "Platinum",
+      "price": 59.99,
+      "benefits": "Premium meal requests, exclusive access to upcoming meals, personalized meal suggestions"
+    }
+  ]
+  
