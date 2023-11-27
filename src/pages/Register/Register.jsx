@@ -1,12 +1,12 @@
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../components/providers/AuthProvider";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const Register = () => {
   const { createUser, updateUserProfile } = useContext(AuthContext);
-  const navigate = 
+  const navigate = useNavigate()
   const {
     register,
     handleSubmit,
@@ -30,6 +30,7 @@ const Register = () => {
             showConfirmButton: false,
             timer: 1500
           });
+          navigate('/')
         })
         .catch(error => {
           console.error(error);
