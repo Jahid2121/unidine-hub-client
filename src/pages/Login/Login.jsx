@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../components/providers/AuthProvider";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaGoogle } from "react-icons/fa";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
@@ -10,6 +10,11 @@ import Swal from "sweetalert2";
 
 const Login = () => {
     const {logIn, googleLogin} = useAuth()
+    const navigate = useNavigate();
+    const location = useLocation()
+
+    const from = location.state?.from?.pathname || '/'
+
 
     const handleGoogleLogin = () => {
         googleLogin()
@@ -22,6 +27,7 @@ const Login = () => {
                 showConfirmButton: false,
                 timer: 1500
               });
+              navigate(from, {replace: true})
         })
         .catch(error => {
             console.log(error);
@@ -46,6 +52,7 @@ const Login = () => {
                 showConfirmButton: false,
                 timer: 1500
               });
+              navigate(from, {replace: true})
         })
         .catch(err => {
             console.error(err);
