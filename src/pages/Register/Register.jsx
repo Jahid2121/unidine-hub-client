@@ -2,20 +2,38 @@ import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../components/providers/AuthProvider";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Register = () => {
-  const { createUser } = useContext(AuthContext);
+  const { createUser, updateUserProfile } = useContext(AuthContext);
+  const navigate = 
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
 
   const onSubmit = (data) => {
     console.log(data);
     createUser(data.email, data.password)
-      .then((data) => {
-        console.log(data.user);
+      .then((result) => {
+        console.log(result.user);
+        updateUserProfile(data.name, data.photoURL)
+        .then(() => {
+          console.log('user profile info updated')
+          reset()
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "User created successfully",
+            showConfirmButton: false,
+            timer: 1500
+          });
+        })
+        .catch(error => {
+          console.error(error);
+        })
       })
       .catch((error) => {
         console.log(error);
@@ -51,23 +69,24 @@ const Register = () => {
           <input
             type="text"
             placeholder="photo url"
-            name="photo"
-            {...register("photo", { required: true })}
+            name="photoURL"
+            {...register("photoURL", { required: true })}
             className="input input-bordered"
           />
-          {errors.photo && (
-            <span className="text-red-800">photo is required</span>
+          {errors.photoURL && (
+            <span className="text-red-800">photoURL is required</span>
           )}
         </div>
         {/* photo URL */}
         <div className="form-control hidden">
-          
+{/*           
           <input
             type="text"
             name="badge"
             {...register("badge")}
             className="input input-bordered"
-          />
+            defaultValue={"https://i.ibb.co/T2pZhJ0/medal-1.png"}
+          /> */}
 
         </div>
 
