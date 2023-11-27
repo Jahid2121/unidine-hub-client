@@ -11,10 +11,10 @@ const Pages = () => {
   };
   return (
     <div className="flex items-center gap-6">
-      <NavLink>Home</NavLink>
-      <NavLink>Meals</NavLink>
-      <NavLink>UpComing</NavLink>
-      <NavLink>DashBoard</NavLink>
+      <NavLink to="/">Home</NavLink>
+      <NavLink to="/meals">Meals</NavLink>
+      <NavLink to="/upcomingMeals">UpComing</NavLink>
+      <NavLink to="/dashboard">DashBoard</NavLink>
       <NavLink>
         <CiBellOn />
       </NavLink>
@@ -69,13 +69,18 @@ const Navbar = ({ children }) => {
               <div className="flex-none gap-9 hidden lg:block">
                 <ul className="menu   menu-horizontal">
                   {/* Navbar menu content here */}
-                  <div className="flex gap-5 mr-3 items-center">
+                  <div className="flex gap-48 mr-3 items-center">
+                    <div className="flex items-center">
                     <img
-                      className="w-20"
+                      className="w-12"
                       src={"https://i.ibb.co/0Ktf9xC/chef.png"}
                       alt=""
                     />
+                    <p className="text-2xl font-bold">UniDine Hub</p>
+                    </div>
+                    <div>
                     <Pages />
+                    </div>
                   </div>
                   {/*  */}
                 </ul>
@@ -94,10 +99,10 @@ const Navbar = ({ children }) => {
             ></label>
             <ul className="menu gap-5 font-medium p-4 w-80 min-h-full bg-base-200 text-base-content">
               {/* Sidebar content here */}
-              <NavLink>Home</NavLink>
-              <NavLink>Meals</NavLink>
-              <NavLink>UpComing</NavLink>
-              <NavLink>DashBoard</NavLink>
+              <NavLink to="/">Home</NavLink>
+              <NavLink to="/meals">Meals</NavLink>
+              <NavLink to="/upcomingMeals">UpComing</NavLink>
+              <NavLink to="/dashboard">DashBoard</NavLink>
               <NavLink>
                 <CiBellOn />
               </NavLink>
@@ -109,17 +114,7 @@ const Navbar = ({ children }) => {
             </ul>
           </div>
 
-          {/* <div className="drawer-side">
-        <label
-          htmlFor=""
-          aria-label="close sidebar"
-          className="drawer-overlay"
-        ></label>
-        <ul className="menu p-4 w-80 min-h-full bg-base-200 flex flex-col"> */}
-          {/* Sidebar content here */}
-          {/* <Pages />
-        </ul>
-      </div> */}
+       
         </div>
 
         {/* footer section */}
