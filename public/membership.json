@@ -1,21 +1,23 @@
 [
-    {
-      "id": 1,
-      "name": "Silver",
-      "price": 19.99,
-      "benefits": "Basic meal requests, access to upcoming meals"
-    },
-    {
-      "id": 2,
-      "name": "Gold",
-      "price": 39.99,
-      "benefits": "Advanced meal requests, priority access to upcoming meals"
-    },
-    {
-      "id": 3,
-      "name": "Platinum",
-      "price": 59.99,
-      "benefits": "Premium meal requests, exclusive access to upcoming meals, personalized meal suggestions"
-    }
-  ]
-  
+  {
+    "id": 2,
+    "name": "Platinum",
+    "price": 59.99,
+    "benefits": "Premium meal requests, exclusive access to upcoming meals, personalized meal suggestions",
+    "image": "https://i.ibb.co/0QRwBPc/badge.png"
+  },
+  {
+    "id": 1,
+    "name": "Silver",
+    "price": 19.99,
+    "benefits": "Basic meal requests, access to upcoming meals",
+    "image": "https://i.ibb.co/5KgP7Fk/medal.png"
+  },
+  {
+    "id": 3,
+    "name": "Gold",
+    "price": 39.99,
+    "benefits": "Advanced meal requests, priority access to upcoming meals",
+    "image": "https://i.ibb.co/ynyN8Hg/first-prize.png"
+  }
+]
