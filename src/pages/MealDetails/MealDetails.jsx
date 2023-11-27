@@ -1,6 +1,8 @@
 import { Rating } from "@smastrom/react-rating";
 import { useLoaderData } from "react-router-dom";
 import SectionTitle from "../../components/SectionTitle/SectionTitle";
+import Btn from "../../components/Btn";
+import { AiOutlineLike } from "react-icons/ai";
 
 const MealDetails = () => {
     const meal = useLoaderData()
@@ -22,6 +24,13 @@ const MealDetails = () => {
         <p className="mt-5">Post Time: {postTime}</p>
         <p className="mt-3 font-medium">Posted by: {adminName}</p>
         <p className="mt-5 font-bold text-2xl">${price}</p>
+        <div className="flex items-center gap-10 ">
+        <Btn title="Request Meal" />
+        <span className="text-2xl border  border-black p-2  rounded-full">
+        <AiOutlineLike color="green" />
+        </span>
+        </div>
+
         <h3>Ingredients</h3>
         <p>{ingredients}</p>
       </div>
