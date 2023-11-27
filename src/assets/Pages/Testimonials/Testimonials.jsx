@@ -12,7 +12,7 @@ import 'swiper/css/navigation';
 // import './styles.css';
 
 // import required modules
-import { Navigation } from 'swiper/modules';
+import { Pagination } from 'swiper/modules';
 import useReviews from "../../../hooks/useReviews";
 import { Rating } from "@smastrom/react-rating";
 
@@ -29,7 +29,7 @@ const Testimonials = () => {
         
       
           <div className="bg-white  w-[500px] h-[400px]   p-6 rounded-lg shadow">
-          <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
+          <Swiper pagination={true} modules={[Pagination]} className="mySwiper">
         {
 
         }
@@ -40,8 +40,9 @@ const Testimonials = () => {
                         <img className="w-20 flex mx-auto" src={QuoteImg} alt="" />
                         <h2 className="text-2xl  font-bold">{review.quote}</h2>
                         <p className="text-xl mt-9">{review.author}</p>
-                        <Rating  style={{ maxWidth: 100 }} value={4} readOnly></Rating>
+                        <Rating className="flex mx-auto"  style={{ maxWidth: 100 }} value={4} readOnly></Rating>
                     </div>
+                    <p>...</p>
                 </SwiperSlide>
                 )
             }
