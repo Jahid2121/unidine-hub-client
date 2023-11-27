@@ -5,6 +5,7 @@ import Register from "../pages/Register/Register";
 import Login from "../pages/Login/Login";
 import Meals from "../pages/Meals/Meals";
 import MealDetails from "../pages/MealDetails/MealDetails";
+import PrivateRoute from "./PrivateRoute";
 
 
 
@@ -31,7 +32,7 @@ export const router = createBrowserRouter([
         },
         {
           path: '/meal/:id',
-          element: <MealDetails />,
+          element: <PrivateRoute><MealDetails /></PrivateRoute>,
           loader: ({params}) => fetch(`http://localhost:5000/meal/${params.id}`)
         },
       ]
