@@ -1,6 +1,4 @@
-import { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { AuthContext } from "../../components/providers/AuthProvider";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaGoogle } from "react-icons/fa";
 import useAuth from "../../hooks/useAuth";
@@ -23,7 +21,7 @@ const Login = () => {
             Swal.fire({
                 position: "top-center",
                 icon: "success",
-                title: "Your logged in successfully",
+                title: "User logged in successfully",
                 showConfirmButton: false,
                 timer: 1500
               });
@@ -48,7 +46,7 @@ const Login = () => {
             Swal.fire({
                 position: "top-center",
                 icon: "success",
-                title: "Your logged in successfully",
+                title: "User logged in successfully",
                 showConfirmButton: false,
                 timer: 1500
               });
