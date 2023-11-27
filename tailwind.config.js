@@ -8,6 +8,7 @@ export default {
     extend: {
       colors: {
         customSalmon: '#EB8E78',
+        'customGreen': '#5EAE53'
       },
     },
   },

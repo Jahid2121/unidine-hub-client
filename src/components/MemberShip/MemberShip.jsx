@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import useMembership from "../../hooks/useMembership/useMembership";
 import Btn from "../Btn";
 import SectionTitle from "../SectionTitle/SectionTitle";
@@ -23,10 +24,10 @@ const MemberShip = () => {
             return (
               <div key={pack.id} className="bg-white p-6 rounded-lg shadow">
                 <img src={pack.image} className="w-44 flex mx-auto mb-3" alt={pack.name} />
-                <h3 className="text-xl font-semibold mb-4">{pack.name}</h3>
-                <p className="text-gray-700">Price: ${pack.price}</p>
+                <h3 className="text-xl font-bold mb-4">{pack.name}</h3>
+                <p className="text-">Price: ${pack.price}</p>
                 <p className="text-gray-700">Benefits: {pack.benefits}</p>
-                <Btn title="Upgrade Now"></Btn>
+                <Link to={`/checkout/${pack.name}`}><Btn title="Upgrade Now"></Btn></Link>
               </div>
             );
           })}

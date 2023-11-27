@@ -1,7 +1,7 @@
 import bannerImg from "../../assets/food1.png"
 const Banner = () => {
   return (
-    <div className="bg-[#5EAE53]">
+    <div className="bg-customGreen">
       <div  className=" flex gap-28">
 
         {/* banner content */}

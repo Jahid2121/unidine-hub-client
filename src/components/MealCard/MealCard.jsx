@@ -1,8 +1,9 @@
 import { Rating } from "@smastrom/react-rating";
 import '@smastrom/react-rating/style.css'
 import Btn from "../Btn";
+import { Link } from "react-router-dom";
 const MealCard = ({item}) => {
-    const {title, category, image, ingredients, description, price, rating, likes, reviews, adminName, adminEmail} = item;
+    const {_id, title, category, image, ingredients, description, price, rating, likes, reviews, adminName, adminEmail} = item;
   return (
     <div style={{borderRadius: '100px 0 100px 0'}} className="card  bg-base-100 shadow-xl">
       <figure>
@@ -20,7 +21,7 @@ const MealCard = ({item}) => {
         </div>
         <h2 className="card-title font-bold text-3xl">{title}</h2>
         <div className="flex gap-20 mt-3">
-          <Btn title="View Details"></Btn>
+          <Link to={`/meal/${_id}`}><Btn title="View Details"></Btn></Link>
         <p className="text-2xl  font-bold text-customSalmon">{price}</p>
         </div>
       </div>
