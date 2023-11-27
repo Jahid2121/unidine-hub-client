@@ -14,7 +14,6 @@ const Pages = () => {
       <NavLink to="/">Home</NavLink>
       <NavLink to="/meals">Meals</NavLink>
       <NavLink to="/upcomingMeals">UpComing</NavLink>
-      <NavLink to="/dashboard">DashBoard</NavLink>
       <NavLink>
         <CiBellOn />
       </NavLink>
@@ -23,6 +22,7 @@ const Pages = () => {
       ) : (
         <NavLink to="login">Join Us</NavLink>
       )}
+      <NavLink to="/dashboard">DashBoard</NavLink>
     </div>
   );
 };

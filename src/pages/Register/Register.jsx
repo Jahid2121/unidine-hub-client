@@ -4,7 +4,7 @@ import { AuthContext } from "../../components/providers/AuthProvider";
 import { Link } from "react-router-dom";
 
 const Register = () => {
-  const {createUser} = useContext(AuthContext)
+  const { createUser } = useContext(AuthContext);
   const {
     register,
     handleSubmit,
@@ -14,18 +14,64 @@ const Register = () => {
   const onSubmit = (data) => {
     console.log(data);
     createUser(data.email, data.password)
-    .then(data => {
-      console.log(data.user);
-    })
-    .catch(error => {
-      console.log(error);
-    })
-
+      .then((data) => {
+        console.log(data.user);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
     <div className="mt-16">
       <form onSubmit={handleSubmit(onSubmit)} className="card-body">
+
+        {/* name */}
+        <div className="form-control">
+          <label className="label">
+            <span className="label-text">Name</span>
+          </label>
+          <input
+            type="text"
+            placeholder="name"
+            name="name"
+            {...register("name", { required: true })}
+            className="input input-bordered"
+          />
+          {errors.name && (
+            <span className="text-red-800">name is required</span>
+          )}
+        </div>
+
+        {/* photo URL */}
+        <div className="form-control">
+          <label className="label">
+            <span className="label-text">Photo URL</span>
+          </label>
+          <input
+            type="text"
+            placeholder="photo url"
+            name="photo"
+            {...register("photo", { required: true })}
+            className="input input-bordered"
+          />
+          {errors.photo && (
+            <span className="text-red-800">photo is required</span>
+          )}
+        </div>
+        {/* photo URL */}
+        <div className="form-control hidden">
+          
+          <input
+            type="text"
+            name="badge"
+            {...register("badge")}
+            className="input input-bordered"
+          />
+
+        </div>
+
+        {/* email */}
         <div className="form-control">
           <label className="label">
             <span className="label-text">Email</span>
@@ -41,6 +87,8 @@ const Register = () => {
             <span className="text-red-800">Email is required</span>
           )}
         </div>
+
+        {/* password */}
         <div className="form-control">
           <label className="label">
             <span className="label-text">Password</span>
@@ -71,15 +119,26 @@ const Register = () => {
           )}
           {errors.password?.type === "pattern" && (
             <p className="text-red-800">
-              Password must be  include at least one uppercase letter, one lowercase letter, one special character, and one number.
-
+              Password must be include at least one uppercase letter, one
+              lowercase letter, one special character, and one number.
             </p>
           )}
         </div>
         <div className="form-control mt-6">
-          <input value="Register" className="btn btn-primary" type="submit" name="" id="" />
+          <input
+            value="Register"
+            className="btn btn-primary"
+            type="submit"
+            name=""
+            id=""
+          />
         </div>
-        <p className="font-medium text-center">New User? Join us Now <Link className="text-customSalmon font-medium" to="/login">Login</Link></p>
+        <p className="font-medium text-center">
+          New User? Join us Now{" "}
+          <Link className="text-customSalmon font-medium" to="/login">
+            Login
+          </Link>
+        </p>
       </form>
     </div>
   );

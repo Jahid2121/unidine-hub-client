@@ -7,6 +7,7 @@ import Meals from "../pages/Meals/Meals";
 import MealDetails from "../pages/MealDetails/MealDetails";
 import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../Layout/Dashboard/Dashboard";
+import Profile from "../pages/Profile/Profile";
 
 
 
@@ -42,7 +43,10 @@ export const router = createBrowserRouter([
       path: '/dashboard',
       element: <Dashboard />,
       children: [
-
+        {
+          path: '/dashboard',
+          element: <Profile />
+        },
       ]
     },
   ]);
