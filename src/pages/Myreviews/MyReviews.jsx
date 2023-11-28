@@ -12,7 +12,7 @@ const MyReviews = () => {
             <tr>
               <th></th>
               <th>Name</th>
-              <th>Job</th>
+              <th>count</th>
               <th></th>
               <th></th>
             </tr>

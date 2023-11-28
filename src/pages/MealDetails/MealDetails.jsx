@@ -117,6 +117,17 @@ const MealDetails = () => {
       });
     }
   };
+
+
+  const handleIncrement = () => {
+    axiosSecure.patch(`/meal/${_id}`)
+    .then(res => {
+      console.log(res.data);
+    })
+
+  }
+
+
   return (
     <>
       <div className="flex gap-4">
@@ -143,8 +154,8 @@ const MealDetails = () => {
             <button onClick={() => handleReqMeal(meal)}>
               <Btn title="Request Meal" />
             </button>
-            <span className="text-2xl border  border-black p-2  rounded-full">
-              <AiOutlineLike color="green" />
+            <span onClick={handleIncrement} className="text-2xl border  border-black p-2  rounded-full">
+              <AiOutlineLike color="salmon" />
             </span>
           </div>
 

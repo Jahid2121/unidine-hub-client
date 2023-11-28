@@ -3,17 +3,7 @@ import useReqMeal from "../../hooks/useReqMeal";
 const ReqMeals = () => {
   const [requestedMeals] = useReqMeal();
   console.log(requestedMeals);
-  const {
-    _id,
-    title,
-    category,
-    image,
-    price,
-    likes,
-    reviews,
-    adminName,
-    adminEmail,
-  } = requestedMeals;
+
   return (
     <div>
       <div className="overflow-x-auto">
