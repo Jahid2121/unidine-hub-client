@@ -7,6 +7,7 @@ import Meals from "../pages/Meals/Meals";
 import MealDetails from "../pages/MealDetails/MealDetails";
   import Dashboard from "../Layout/Dashboard/Dashboard";
 import Profile from "../pages/Profile/Profile";
+import ReqMeals from "../pages/ReqMeals/ReqMeals";
 
 
 
@@ -40,11 +41,15 @@ export const router = createBrowserRouter([
     },
     {
       path: '/dashboard',
-      element: <Dashboard />,
+      element: <privateRoute><Dashboard /></privateRoute>,
       children: [
         {
           path: '/dashboard',
           element: <Profile />
+        },
+        {
+          path: 'requestedMeals',
+          element: <ReqMeals />
         },
       ]
     },

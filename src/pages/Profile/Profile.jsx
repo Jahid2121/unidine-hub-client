@@ -3,11 +3,11 @@ import useAuth from "../../hooks/useAuth";
 const Profile = () => {
   const { user } = useAuth();
   return (
-    <div className="text-center mt-20">
+    <div className="">
       <img
         className="rounded-full w-20 mb-4 flex mx-auto"
         src={user?.photoURL}
-        alt=""
+        alt={user?.displayName}
       />
       <p>{user?.email}</p>
       <h2>

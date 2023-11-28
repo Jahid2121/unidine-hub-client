@@ -4,6 +4,7 @@ import useAuth from "../hooks/useAuth";
 
 const Pages = () => {
   const { logOut, user } = useAuth();
+  
   const handleLogOut = () => {
     logOut()
       .then(() => {})

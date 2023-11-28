@@ -6,12 +6,17 @@ import { AiOutlineLike } from "react-icons/ai";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 import axios from "axios";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import useReqMeal from "../../hooks/useReqMeal";
 
 const MealDetails = () => {
+
   const meal = useLoaderData();
   const navigate = useNavigate();
   const location = useLocation();
+  const axiosSecure = useAxiosSecure()
   const { user } = useAuth();
+  const [, refetch] = useReqMeal()
   const {
     _id,
     title,
@@ -29,7 +34,7 @@ const MealDetails = () => {
   } = meal;
 
   const handleReqMeal = (meal) => {
-    if (user) {
+    if (user && user.email) {
       console.log(Object.keys(meal).join(","));
       const reqMeal = {
         title,
@@ -37,12 +42,23 @@ const MealDetails = () => {
         category,
         likes,
         reviews,
-        adminName,
-        adminEmail,
+        name: user.name,
+        email: user.email,
       };
-      axios.post('http://localhost:5000/requestedMeals', reqMeal)
+      axiosSecure.post('/requestedMeals', reqMeal)
       .then(res => {
         console.log(res.data);
+        if(res.data.insertedId){
+            Swal.fire({
+                position: "top-center",
+                icon: "success",
+                title: `Request sent for ${title}`,
+                showConfirmButton: false,
+                timer: 1500
+              });
+              refetch()
+
+        }
       })
     } else {
       Swal.fire({
