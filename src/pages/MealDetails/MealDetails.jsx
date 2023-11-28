@@ -40,9 +40,10 @@ const MealDetails = () => {
         title,
         image,
         category,
+        price,
         likes,
         reviews,
-        name: user.name,
+        name: user.displayName,
         email: user.email,
       };
       axiosSecure.post('/requestedMeals', reqMeal)
