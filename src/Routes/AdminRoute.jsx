@@ -1,7 +1,6 @@
 import Lottie from "lottie-react";
 import useAdmin from "../hooks/useAdmin";
 import useAuth from "../hooks/useAuth";
-import loadingAnimation from "../../public/membership.json"
 import { Navigate, useLocation } from "react-router-dom";
 const AdminRoute = ({children}) => {
   const { user, loading } = useAuth();
@@ -9,7 +8,8 @@ const AdminRoute = ({children}) => {
   const location = useLocation()
 
   if (loading || isPending) {
-    return <Lottie animationData={loadingAnimation} />;
+    return <span className="loading loading-spinner loading-lg text-customSalmon"></span>
+    ;
   } else if (!user || !isAdmin) {
     return <Navigate to="/login" state={{ from: location }} replace />;
   }

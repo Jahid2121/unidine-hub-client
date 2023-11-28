@@ -13,7 +13,7 @@ import Users from "../pages/Users/Users";
 import AdminRoute from "./AdminRoute";
 import PrivateRoute from "./PrivateRoute";
 import AllReviews from "../pages/AllReviews/AllReviews";
-import AddItems from "../pages/AddItems/AddItems";
+import AddMeals from "../pages/AddMeals/AddMeals";
 
 export const router = createBrowserRouter([
   {
@@ -70,11 +70,11 @@ export const router = createBrowserRouter([
       },
       {
         path: 'allReviews',
-        element: <AllReviews />
+        element: <AdminRoute><AllReviews /></AdminRoute>
       },
       {
-        path: 'addItems',
-        element: <AdminRoute><AddItems /></AdminRoute>
+        path: 'addMeal',
+        element: <AdminRoute><AddMeals /></AdminRoute>
       }
     ],
   },
