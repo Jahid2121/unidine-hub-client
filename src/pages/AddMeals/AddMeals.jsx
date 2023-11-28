@@ -10,7 +10,8 @@ const AddMeals = () => {
   const { register, handleSubmit, reset } = useForm();
   const axiosSecure = useAxiosSecure();
   const [formattedDate, setFormattedDate] = useState(null);
-  const {user} = useAuth()
+  const { user } = useAuth();
+
 
   useEffect(() => {
     const currentDate = new Date();
@@ -24,41 +25,65 @@ const AddMeals = () => {
     const year = date.getFullYear();
     return `${day}/${month}/${year}`;
   }
-  const onSubmit = async (data) => {
+
+const onSubmit = async (data) => {
     console.log(data);
 
-   
+    const mealData = {
+        title: data.title,
+        category: data.category,
+        image: data.image,
+        description: data.description,
+        price: parseFloat(data.price),
+        rating: parseInt(data.rating),
+        postTime: data.postTime,
+        likes: parseInt(data.likes),
+        reviews: parseInt(data.reviews),
+        name: data.name,
+        email: data.email,
+      };
+      console.log(mealData);
+  
+      const mealRes = await axiosSecure.post("/meal", mealData)
+
+      console.log(mealRes.data);
+      if (mealRes.data.insertedId) {
+        reset();
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: `${data.title} is added to the meal.`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
   };
 
   return (
-    <div>
-      <SectionTitle
-        heading="add an item"
-        subHeading="What's new?"
-      ></SectionTitle>
-      <div className="text-black">
-        <form onSubmit={handleSubmit(onSubmit)}>
-          {/* recipe name */}
-          <div className="form-control w-full my-6">
-            <label className="label">
-              <span className="label-text">Recipe Name*</span>
-            </label>
-            <input
-              type="text"
-              placeholder="Meal Title"
-              {...register("title", { required: true })}
-              required
-              className="input input-bordered w-full"
-            />
-          </div>
-          <div className="flex gap-6">
+    <form className="text-black" onSubmit={handleSubmit(onSubmit)}>
+
+      {/* recipe name */}
+      <div className="form-control w-full my-6">
+        <label className="label">
+          <span className="label-text">Recipe Name*</span>
+        </label>
+        <input
+          type="text"
+          placeholder="Meal Title"
+          {...register("title", { required: true })}
+          required
+          className="input input-bordered w-full"
+        />
+      </div>
+
+      <div className="flex gap-6">
             {/* category */}
             <div className="form-control text-black w-full my-6">
               <label className="label">
                 <span className="label-text">Category*</span>
               </label>
               <select
-                defaultValue="default"
+                defaultValue="breakfast"
                 {...register("category", { required: true })}
                 className="select select-bordered w-full"
               >
@@ -86,6 +111,7 @@ const AddMeals = () => {
             </div>
           </div>
 
+
           {/* ingredients */}
           <div className="form-control">
             <label className="label">
@@ -110,19 +136,18 @@ const AddMeals = () => {
             ></textarea>
           </div>
 
+
           <div className="flex gap-6">
             {/* recipe name */}
             <div className="form-control w-full my-6">
-              <label className="label">
-                <span className="label-text">rating</span>
-              </label>
+
               <input
                 type="number"
-                placeholder="0"
-                defaultValue={0}
+                
+                defaultValue="0"
                 {...register("rating", { required: true })}
                 required
-                disabled
+                hidden
                 className="input input-bordered w-full"
               />
             </div>
@@ -143,6 +168,7 @@ const AddMeals = () => {
           </div>
 
 
+
           <div className="flex gap-6">
             {/* recipe name */}
             <div className="form-control w-full my-6">
@@ -153,9 +179,10 @@ const AddMeals = () => {
                 type="text"
                 placeholder=""
                 defaultValue={formattedDate}
-                {...register("rating", { required: true })}
+                {...register("postTime", { required: true })}
                 required
-                disabled
+
+                readOnly
                 className="input input-bordered w-full"
               />
             </div>
@@ -168,10 +195,10 @@ const AddMeals = () => {
               <input
                 type="number"
                 placeholder="0"
-                defaultValue={0}
+                defaultValue='0'
                 {...register("likes", { required: true })}
                 required
-                disabled
+                readOnly
                 className="input input-bordered w-full"
               />
             </div>
@@ -186,30 +213,13 @@ const AddMeals = () => {
               <input
                 type="number"
                 placeholder="0"
-                defaultValue={0}
+                defaultValue='0'
                 {...register("reviews", { required: true })}
                 required
-                disabled
+                readOnly
                 className="input input-bordered w-full"
               />
             </div>
-
-            {/* recipe name */}
-            <div className="form-control w-full my-6">
-              <label className="label">
-                <span className="label-text">Post date</span>
-              </label>
-              <input
-                type="text"
-                placeholder=""
-                defaultValue={formattedDate}
-                {...register("rating", { required: true })}
-                required
-                disabled
-                className="input input-bordered w-full"
-              />
-            </div>
-
            
           </div>
 
@@ -224,11 +234,10 @@ const AddMeals = () => {
               </label>
               <input
                 type="text"
-                placeholder={`${user?.displayName}`}
                 defaultValue={`${user?.displayName}`}
                 {...register("name", { required: true })}
                 required
-                disabled
+                readOnly
                 className="input input-bordered w-full"
               />
             </div>
@@ -240,11 +249,10 @@ const AddMeals = () => {
               </label>
               <input
                 type="text"
-                placeholder={`${user?.email}`}
                 defaultValue={`${user?.email}`}
                 {...register("email", { required: true })}
                 required
-                disabled
+                readOnly
                 className="input input-bordered w-full"
               />
             </div>
@@ -252,12 +260,13 @@ const AddMeals = () => {
            
           </div>
 
-          <button className="btn">
-            Add Item <FaUtensilSpoon className="ml-4"></FaUtensilSpoon>
-          </button>
-        </form>
-      </div>
-    </div>
+
+
+
+      <button type="submit" className="btn">
+        Add Item <FaUtensilSpoon className="ml-4"></FaUtensilSpoon>
+      </button>
+    </form>
   );
 };
 
