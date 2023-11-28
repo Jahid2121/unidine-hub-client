@@ -1,8 +1,40 @@
+import Swal from "sweetalert2";
 import useReview from "../../hooks/useReview";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const MyReviews = () => {
-  const [reviews] = useReview();
+  const [reviews, refetch] = useReview();
+  const axiosSecure = useAxiosSecure()
   console.log(reviews);
+
+  const handleDelete = id => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axiosSecure.delete(`/reviews/${id}`)
+        .then(res => {
+          if(res.data.deletedCount){
+            refetch()
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your file has been deleted.",
+              icon: "success"
+            });
+
+          }
+        })
+
+      }
+    });
+  }
+
   return (
     <div>
       <div className="overflow-x-auto">
@@ -41,7 +73,7 @@ const MyReviews = () => {
                 <td className="">view Meal</td>
                 <th className="flex flex-col">
                   <button className="btn btn-ghost btn-xs">edit</button>
-                  <button className="btn btn-ghost btn-xs">delete</button>
+                  <button onClick={() =>handleDelete(item._id)} className="btn btn-ghost btn-xs">delete</button>
                 </th>
               </tr>
             ))}

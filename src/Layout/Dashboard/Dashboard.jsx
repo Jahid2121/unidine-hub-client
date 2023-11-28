@@ -10,6 +10,7 @@ const Dashboard = () => {
           <div className="grid grid-cols-12 min-h-screen">
             <div className="col-span-3 flex flex-col gap-5 items-center pt-12 bg-customGreen">
               <NavLink to="/dashboard">Admin Profile</NavLink>
+              <div className="divider"></div>
               <NavLink to="/dashboard/requestedMeals">Requested Meals</NavLink>
               <NavLink to="/dashboard/reviews">My Reviews</NavLink>
 
