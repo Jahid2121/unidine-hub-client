@@ -11,6 +11,7 @@ const Dashboard = () => {
             <div className="col-span-3 flex flex-col gap-5 items-center pt-12 bg-customGreen">
               <NavLink to="/dashboard">Admin Profile</NavLink>
               <NavLink to="/dashboard/requestedMeals">Requested Meals</NavLink>
+              <NavLink to="/dashboard/reviews">My Reviews</NavLink>
 
               {/* admin */}
               {/* <NavLink to="/dashboard/manageUser">Manage User</NavLink>
@@ -18,8 +19,6 @@ const Dashboard = () => {
               <NavLink to="/dashboard/meals">All Meals</NavLink>
               <NavLink to="/dashboard/reviews">All Reviews</NavLink>
               <NavLink to="/dashboard/serveMeal">Server Meal</NavLink> */}
-
-
             </div>
             <div className="col-span-9 text-center pt-20 bg-customSalmon">
               <Outlet />

@@ -9,10 +9,10 @@ import { Link } from 'react-router-dom';
 
 const MealTabs = () => {
     const [tabIndex, setTabIndex] = useState(0)
-    const [meal] = useMeal()
-    const breakfast = meal.filter(item => item.category === 'breakfast')
-    const lunch = meal.filter(item => item.category === 'lunch')
-    const dinner = meal.filter(item => item.category === 'dinner')
+    const [meals] = useMeal()
+    const breakfast = meals.filter(item => item.category === 'breakfast')
+    const lunch = meals.filter(item => item.category === 'lunch')
+    const dinner = meals.filter(item => item.category === 'dinner')
     
   return (
         <>
@@ -28,7 +28,7 @@ const MealTabs = () => {
 
     </div>
     <TabPanel>
-    <MealTab items={meal} />
+    <MealTab items={meals} />
     </TabPanel>
     <TabPanel>
       <MealTab items={breakfast} />

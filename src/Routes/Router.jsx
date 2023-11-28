@@ -8,6 +8,7 @@ import MealDetails from "../pages/MealDetails/MealDetails";
   import Dashboard from "../Layout/Dashboard/Dashboard";
 import Profile from "../pages/Profile/Profile";
 import ReqMeals from "../pages/ReqMeals/ReqMeals";
+import MyReviews from "../pages/Myreviews/MyReviews";
 
 
 
@@ -50,6 +51,10 @@ export const router = createBrowserRouter([
         {
           path: 'requestedMeals',
           element: <ReqMeals />
+        },
+        {
+          path: 'reviews',
+          element: <MyReviews />
         },
       ]
     },
