@@ -42,7 +42,7 @@ const Dashboard = () => {
                   </NavLink>
                   <NavLink
                     className="flex items-center gap-3"
-                    to="/dashboard/reviews"
+                    to="/dashboard/allReviews"
                   >
                     All Reviews
                   </NavLink>
@@ -55,13 +55,13 @@ const Dashboard = () => {
                 </>
               ) : (
                 <>
-                  <NavLink to="/dashboard">Admin Profile</NavLink>
+                  <NavLink className="flex items-center gap-3" to="/dashboard">User Profile</NavLink>
 
                   <div className="divider"></div>
-                  <NavLink to="/dashboard/requestedMeals">
+                  <NavLink className="flex items-center gap-3" to="/dashboard/requestedMeals">
                     Requested Meals
                   </NavLink>
-                  <NavLink to="/dashboard/reviews">My Reviews</NavLink>
+                  <NavLink className="flex items-center gap-3" to="/dashboard/reviews">My Reviews</NavLink>
                 </>
               )}
             </div>

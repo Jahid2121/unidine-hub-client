@@ -35,7 +35,7 @@ const Testimonials = () => {
         }
        
             {
-                reviews?.map(review =>  <SwiperSlide key={review}>
+                reviews?.map((review,idx) =>  <SwiperSlide key={idx}>
                     <div>
                         <img className="w-20 flex mx-auto" src={QuoteImg} alt="" />
                         <h2 className="text-2xl  font-bold">{review.quote}</h2>

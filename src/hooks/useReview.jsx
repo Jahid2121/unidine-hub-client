@@ -9,7 +9,7 @@ const useReview = () => {
     queryKey: ["reviews", user?.email],
     queryFn: async () => {
       const res = await axiosSecure.get(
-        `/reviews?adminEmail=${user.email}`
+        `/reviews?email=${user.email}`
       );
       return res.data;
     },

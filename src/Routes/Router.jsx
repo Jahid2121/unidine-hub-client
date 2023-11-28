@@ -12,6 +12,7 @@ import MyReviews from "../pages/Myreviews/MyReviews";
 import Users from "../pages/Users/Users";
 import AdminRoute from "./AdminRoute";
 import PrivateRoute from "./PrivateRoute";
+import AllReviews from "../pages/AllReviews/AllReviews";
 
 export const router = createBrowserRouter([
   {
@@ -45,11 +46,9 @@ export const router = createBrowserRouter([
   {
     path: "/dashboard",
     element: (
-      <AdminRoute>
         <PrivateRoute>
           <Dashboard />
         </PrivateRoute>
-      </AdminRoute>
     ),
     children: [
       {
@@ -68,6 +67,10 @@ export const router = createBrowserRouter([
         path: "users",
         element: <Users />,
       },
+      {
+        path: 'allReviews',
+        element: <AllReviews />
+      }
     ],
   },
 ]);

@@ -10,11 +10,12 @@ const AdminRoute = ({children}) => {
 
   if (loading || isPending) {
     return <Lottie animationData={loadingAnimation} />;
-  } else if (!user && !isAdmin) {
+  } else if (!user || !isAdmin) {
     return <Navigate to="/login" state={{ from: location }} replace />;
   }
 
   return children;
+
 };
 
 export default AdminRoute;

@@ -8,7 +8,7 @@ const useReqMeal = () => {
   const { refetch, data: requestedMeals = [] } = useQuery({
     queryKey: ["requestedMeals", user?.email],
     queryFn: async () => {
-      const res = await axiosPublic.get(`/requestedMeals?adminEmail=${user.email}`);
+      const res = await axiosPublic.get(`/requestedMeals?email=${user.email}`);
       return res.data;
     },
   });

@@ -30,7 +30,6 @@ const Register = () => {
           axiosPublic.post('/users', userData)
           .then(res => {
             if(res.data.insertedId){
-            console.log('user added to the db');
               reset()
               Swal.fire({
                 position: "top-center",
@@ -93,17 +92,7 @@ const Register = () => {
           )}
         </div>
         {/* photo URL */}
-        <div className="form-control hidden">
-{/*           
-          <input
-            type="text"
-            name="badge"
-            {...register("badge")}
-            className="input input-bordered"
-            defaultValue={"https://i.ibb.co/T2pZhJ0/medal-1.png"}
-          /> */}
 
-        </div>
 
         {/* email */}
         <div className="form-control">
