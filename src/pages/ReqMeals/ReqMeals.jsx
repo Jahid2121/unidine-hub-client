@@ -31,7 +31,7 @@ const ReqMeals = () => {
                       </div>
                     </div>
                     <div>
-                      <div className="font-bold">{meal.name}</div>
+                      <div className="font-bold">{meal.title}</div>
                       <div className="text-sm opacity-50">{meal.email}</div>
                     </div>
                   </div>

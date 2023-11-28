@@ -28,7 +28,7 @@ const Login = () => {
             }
             axiosPublic.post('/users', userData)
             .then(res => {
-              if(res.data.insertedId){
+              if(res.data){
   
                 Swal.fire({
                     position: "top-center",
