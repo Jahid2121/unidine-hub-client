@@ -5,18 +5,18 @@ import Btn from "../../components/Btn";
 import { AiOutlineLike } from "react-icons/ai";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
-import axios from "axios";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useReqMeal from "../../hooks/useReqMeal";
+import { useRef } from "react";
 
 const MealDetails = () => {
-
+  const reviewRef = useRef()
   const meal = useLoaderData();
   const navigate = useNavigate();
   const location = useLocation();
-  const axiosSecure = useAxiosSecure()
+  const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
-  const [, refetch] = useReqMeal()
+  const [, refetch] = useReqMeal();
   const {
     _id,
     title,
@@ -32,10 +32,51 @@ const MealDetails = () => {
     adminName,
     adminEmail,
   } = meal;
+  
+  const handleReview = (meal) => {
+    if (user && user.email) {
+      const review = {
+        title,
+        likes,
+        reviews,
+        name: user.displayName,
+        email: user.email,
+        review: reviewRef.current.value
+      };
+      axiosSecure.post("/reviews", review).then((res) => {
+        console.log(res.data);
+        if (res.data.insertedId) {
+          Swal.fire({
+            position: "top-center",
+            icon: "success",
+            title: `Review success`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          refetch();
+        }
+      });
+      
+    }
+    else {
+      Swal.fire({
+        title: "Please login for review",
+        text: "",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Login!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          navigate("/login", { state: { from: location } });
+        }
+      });
+    }
+}
 
   const handleReqMeal = (meal) => {
     if (user && user.email) {
-      console.log(Object.keys(meal).join(","));
       const reqMeal = {
         title,
         image,
@@ -45,22 +86,21 @@ const MealDetails = () => {
         reviews,
         name: user.displayName,
         email: user.email,
+        
       };
-      axiosSecure.post('/requestedMeals', reqMeal)
-      .then(res => {
+      axiosSecure.post("/requestedMeals", reqMeal).then((res) => {
         console.log(res.data);
-        if(res.data.insertedId){
-            Swal.fire({
-                position: "top-center",
-                icon: "success",
-                title: `Request sent for ${title}`,
-                showConfirmButton: false,
-                timer: 1500
-              });
-              refetch()
-
+        if (res.data.insertedId) {
+          Swal.fire({
+            position: "top-center",
+            icon: "success",
+            title: `Request sent for ${title}`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          refetch();
         }
-      })
+      });
     } else {
       Swal.fire({
         title: "Please login for making meal request",
@@ -114,10 +154,20 @@ const MealDetails = () => {
       </div>
       {/* reviews */}
       <div>
-        <SectionTitle
-          heading="reviews"
-          subHeading="From Our member about this meal"
-        />
+        <SectionTitle heading="review" subHeading="write your review" />
+        <div className="flex flex-col w-11/12  mx-auto">
+          <textarea
+            ref={reviewRef}
+            placeholder="Review here....."
+            name="review"
+            id=""
+            cols="90"
+            rows="7"
+          ></textarea>
+          <button  onClick={() => handleReview(meal)} className="absolute bottom-0 right-0">
+          <Btn title="Post Review" />
+          </button>
+        </div>
       </div>
     </>
   );
