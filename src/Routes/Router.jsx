@@ -9,6 +9,7 @@ import MealDetails from "../pages/MealDetails/MealDetails";
 import Profile from "../pages/Profile/Profile";
 import ReqMeals from "../pages/ReqMeals/ReqMeals";
 import MyReviews from "../pages/Myreviews/MyReviews";
+import Users from "../pages/Users/Users";
 
 
 
@@ -55,6 +56,10 @@ export const router = createBrowserRouter([
         {
           path: 'reviews',
           element: <MyReviews />
+        },
+        {
+          path: 'users',
+          element: <Users />
         },
       ]
     },
