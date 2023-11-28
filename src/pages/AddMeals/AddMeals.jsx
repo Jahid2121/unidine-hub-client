@@ -138,16 +138,18 @@ const onSubmit = async (data) => {
 
 
           <div className="flex gap-6">
-            {/* recipe name */}
+            {/* rating */}
             <div className="form-control w-full my-6">
-
+            <label className="label">
+              <span className="label-text">rating</span>
+            </label>
               <input
                 type="number"
                 
                 defaultValue="0"
                 {...register("rating", { required: true })}
                 required
-                hidden
+                readOnly
                 className="input input-bordered w-full"
               />
             </div>

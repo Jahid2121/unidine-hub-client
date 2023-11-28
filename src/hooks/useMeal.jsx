@@ -7,7 +7,7 @@ const useMeal = () => {
     queryKey: ["meal"],
     queryFn: async () => {
       const res = await axiosPublic.get(
-        `/meal`
+        '/meal'
       );
       return res.data;
     },
