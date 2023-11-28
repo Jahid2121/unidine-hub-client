@@ -48,9 +48,9 @@ const Dashboard = () => {
                   </NavLink>
                   <NavLink
                     className="flex items-center gap-3"
-                    to="/dashboard/serveMeal"
+                    to="/dashboard/allReqMeals"
                   >
-                    Server Meal
+                    Serve Meal
                   </NavLink>
                 </>
               ) : (
