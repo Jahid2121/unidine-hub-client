@@ -1,4 +1,3 @@
-import { FaUserCircle } from "react-icons/fa";
 import useUsers from "../../hooks/useUsers";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";

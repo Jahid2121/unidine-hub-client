@@ -115,7 +115,7 @@ const Login = () => {
           )}
          
         </div>
-        <div onClick={handleGoogleLogin}>
+        <div className="text-3xl  border-black rounded-full" onClick={handleGoogleLogin}>
         <FaGoogle />
         </div>
         <div className="form-control mt-6">
