@@ -1,9 +1,35 @@
 import { FaUserCircle } from "react-icons/fa";
 import useUsers from "../../hooks/useUsers";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
 const Users = () => {
-  const [users] = useUsers();
-  console.log(users);
+  const [users, refetch] = useUsers();
+  const axiosSecure = useAxiosSecure();
+  const handleMakeAdmin = (user) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, make Admin!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axiosSecure.patch(`/users/admin/${user._id}`).then((res) => {
+          if (res.data.modifiedCount) {
+            refetch()
+            Swal.fire({
+              title: "Updated!",
+              text: `${user.name} is Admin Now.`,
+              icon: "success",
+            });
+          }
+        });
+      }
+    });
+  };
   return (
     <div>
       <div className="overflow-x-auto">
@@ -12,31 +38,32 @@ const Users = () => {
           <thead>
             <tr>
               <th></th>
-              <th>User</th>
-              <th>Action</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Role</th>
               <th>Subscription</th>
               <th></th>
             </tr>
           </thead>
           <tbody>
             {/* row 1 */}
-            {users.map((item, idx) => (
-              <tr key={item._id}>
+            {users.map((user, idx) => (
+              <tr key={user._id}>
                 <th>{idx + 1}</th>
                 <td>
                   <div className="flex items-center gap-3">
-
                     <div>
-                      <div className="font-bold">{item.name}</div>
-                      <div className="text-sm opacity-50">{item.email}</div>
+                      <div className="font-bold">{user.name}</div>
                     </div>
                   </div>
                 </td>
+                <td>{user.email}</td>
                 <td>
-                    <button className="btn">Make Admin</button>
+                   { user.role === 'admin' ? 'admin' : <button onClick={() => handleMakeAdmin(user)} className="btn">
+                    Make Admin
+                    </button>}
                 </td>
                 <td>Subscribed</td>
-
               </tr>
             ))}
           </tbody>
