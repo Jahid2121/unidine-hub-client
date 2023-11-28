@@ -21,9 +21,7 @@ const ReqMeals = () => {
           {/* head */}
           <thead>
             <tr>
-              <th>
-               
-              </th>
+              <th></th>
               <th>Name</th>
               <th>Job</th>
               <th>status</th>
@@ -32,19 +30,14 @@ const ReqMeals = () => {
           </thead>
           <tbody>
             {/* row 1 */}
-            {requestedMeals.map((meal,idx) => (
+            {requestedMeals.map((meal, idx) => (
               <tr key={meal._id}>
-                <th>
-                  {idx+1}
-                </th>
+                <th>{idx + 1}</th>
                 <td>
                   <div className="flex items-center gap-3">
                     <div className="avatar">
                       <div className="mask mask-squircle w-12 h-12">
-                        <img
-                          src={meal.image}
-                          alt={meal.title}
-                        />
+                        <img src={meal.image} alt={meal.title} />
                       </div>
                     </div>
                     <div>
