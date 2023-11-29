@@ -2,21 +2,27 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useEffect, useState } from "react";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useAuth from "../../hooks/useAuth";
+import Swal from "sweetalert2";
+import { useLocation, useNavigate } from "react-router-dom";
 
-const CheckOutForm = ({price}) => {
+const CheckOutForm = ({price,image, name}) => {
     const stripe = useStripe()
     const elements = useElements()
     const [error, setError] = useState('')
+    const [transactionId, setTransactionId] = useState('')
     const [clientSecret, setClientSecret] = useState('')
     const axiosSecure = useAxiosSecure()
     const {user} = useAuth()
-
+    const location = useLocation();
+    const navigate = useNavigate()
     useEffect( () => {
-       axiosSecure.post('/create-payment-intent', {price: price})
+       if(price){
+        axiosSecure.post('/create-payment-intent', {price: price})
        .then(res => {
         console.log(res.data.clientSecret);
         setClientSecret(res.data.clientSecret)
        })
+       }
     }, [axiosSecure, price])
 
 
@@ -62,7 +68,29 @@ const CheckOutForm = ({price}) => {
             console.log('[confirm error]', confirmError);
           } else {
             console.log('[Payment Intent]', paymentIntent);
-            
+            if(paymentIntent.status === "succeeded"){
+                console.log('transaction Id', paymentIntent.id);
+                setTransactionId(paymentIntent.id)
+
+
+                const payment = {
+                    email: user?.email,
+                    transactionId: paymentIntent.id,
+                    image: image,
+
+                }
+              const res = await axiosSecure.post('/payments', payment)
+              if(res.data.insertedId){
+                Swal.fire({
+                    position: "top-center",
+                    icon: "success",
+                    title: `Successfully upgraded to ${name}`,
+                    showConfirmButton: false,
+                    timer: 1500,
+                  });
+                  navigate("/login", { state: { from: location } });
+              }
+            }
           }
     }
 
@@ -84,10 +112,11 @@ const CheckOutForm = ({price}) => {
           },
         }}
       />
-      <button className="bg-customSalmon p-1 rounded-md text-white my-3" type="submit" disabled={!stripe || !clientSecret}>
+      <button  className="bg-customSalmon p-1 rounded-md text-white my-3" type="submit" disabled={!stripe || !clientSecret}>
         Pay
       </button>
-      <p className="text-2xl text-red-700">{error}</p>
+      <p className="text-xl text-red-700">{error}</p>
+      { transactionId && <p className="text-xl text-green-700">Your Transaction Id: {transactionId}</p>}
     </form>
   );
 };
