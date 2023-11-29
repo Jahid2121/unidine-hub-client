@@ -15,10 +15,10 @@ const EditProfile = () => {
     updateUserProfile(data.name, data.photoURL)
     .then(() => {
         console.log('user updated');
-      const userData = {
-        name: data.name,
-        email: data.email
-      }
+    //   const userData = {
+    //     name: data.name,
+    //     email: data.email
+    //   }
 
     //   axiosSecure.post('/users', userData)
     //   .then(res => {
