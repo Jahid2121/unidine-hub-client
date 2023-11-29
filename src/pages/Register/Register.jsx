@@ -32,7 +32,7 @@ const Register = () => {
             if(res.data.insertedId){
               reset()
               Swal.fire({
-                position: "top-center",
+                position: "center",
                 icon: "success",
                 title: "User created successfully",
                 showConfirmButton: false,
