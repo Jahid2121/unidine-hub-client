@@ -1,7 +1,7 @@
 import { useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import useMemberShip from "../../hooks/useMemberShip";
-import CustomModal from "../MealDetails/CustomModal";
+import CustomModal from "../../components/CostomModal";
 
 const Profile = () => {
   const { user } = useAuth();
