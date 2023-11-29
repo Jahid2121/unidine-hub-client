@@ -2,6 +2,8 @@ import { useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import useMemberShip from "../../hooks/useMemberShip";
 import CustomModal from "../../components/CostomModal";
+import { CiEdit } from "react-icons/ci";
+import EditProfile from "./EditProfile";
 
 const Profile = () => {
   const { user } = useAuth();
@@ -13,18 +15,18 @@ const Profile = () => {
 
   return (
    <div className="text-center">
-    <button onClick={openModal}>Open Modal</button>
 
 <CustomModal
   isOpen={isModalOpen}
   onClose={closeModal}
-  content={<p>Modal Content Goes Here</p>}
+  content={<EditProfile />}
 />
       <img
         className="rounded-full w-20 mb-4 mx-auto"
         src={user?.photoURL}
         alt={user?.displayName}
       />
+    <button className="p-1 bg-white text-black rounded-md" onClick={openModal}><CiEdit /></button>
       <p className="text-gray-600">{user?.email}</p>
       <h2 className="text-lg font-semibold">
         Welcome <span>{user?.displayName}</span>

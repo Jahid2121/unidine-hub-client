@@ -1,4 +1,6 @@
 import Modal from 'react-modal';
+import { IoIosCloseCircle } from "react-icons/io";
+
 const customStyles = {
     content: {
       top: '50%',
@@ -18,7 +20,7 @@ const CustomModal = ({ isOpen, onClose, content }) => {
       contentLabel="Example Modal"
       style={customStyles}
     >
-      <button onClick={onClose}>Close Modal</button>
+      <button className='flex justify-end ml-48 text-xl' onClick={onClose}><IoIosCloseCircle /></button>
       {content}
     </Modal>
       );
