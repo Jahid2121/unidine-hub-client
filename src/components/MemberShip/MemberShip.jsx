@@ -22,7 +22,7 @@ const MemberShip = () => {
           {memberShipData.map((pack) => {
             
             return (
-              <div key={pack.id} className="bg-white p-6 rounded-lg shadow">
+              <div key={pack._id} className="bg-white p-6 rounded-lg shadow">
                 <img src={pack.image} className="w-44 flex mx-auto mb-3" alt={pack.name} />
                 <h3 className="text-xl font-bold mb-4">{pack.name}</h3>
                 <p className="text-">Price: ${pack.price}</p>

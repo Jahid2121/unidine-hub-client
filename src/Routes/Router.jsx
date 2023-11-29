@@ -34,7 +34,7 @@ export const router = createBrowserRouter([
       {
         path: "/checkout/:name",
         element: <CheckOut />,
-        loader: ({params}) => fetch(`http://localhost:5000/memberships?name=${params.name}`) 
+        loader: ({params}) => fetch(`https://uni-dine-hub-server.vercel.app/memberships?name=${params.name}`) 
       },
       {
         path: "/register",
@@ -48,7 +48,7 @@ export const router = createBrowserRouter([
         path: "/meal/:id",
         element: <MealDetails />,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/meal/${params.id}`),
+          fetch(`https://uni-dine-hub-server.vercel.app/meal/${params.id}`),
       },
     ],
   },
