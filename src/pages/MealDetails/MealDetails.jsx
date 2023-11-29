@@ -8,6 +8,7 @@ import Swal from "sweetalert2";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useReqMeal from "../../hooks/useReqMeal";
 import { useRef } from "react";
+import useMemberShip from "../../hooks/useMemberShip";
 
 const MealDetails = () => {
   const reviewRef = useRef()
@@ -17,6 +18,7 @@ const MealDetails = () => {
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
   const [, refetch] = useReqMeal();
+  const [[member]] = useMemberShip()
   const {
     _id,
     title,
@@ -32,6 +34,10 @@ const MealDetails = () => {
     adminName,
     adminEmail,
   } = meal;
+
+  const handleShowWarning =() => {
+    console.log('no access');
+  }
   
   const handleReview = (meal) => {
     if (user && user.email) {
@@ -47,7 +53,7 @@ const MealDetails = () => {
         console.log(res.data);
         if (res.data.insertedId) {
           Swal.fire({
-            position: "top-center",
+            position: "center",
             icon: "success",
             title: `Review success`,
             showConfirmButton: false,
@@ -151,9 +157,13 @@ const MealDetails = () => {
           <p className="mt-3 font-medium">Posted by: {adminName}</p>
           <p className="mt-5 font-bold text-2xl">${price}</p>
           <div className="flex items-center gap-10 ">
-            <button onClick={() => handleReqMeal(meal)}>
+
+            {/* handling button request meal */}
+            {member ?  <button onClick={() => handleReqMeal(meal)}>
+              <Btn title="Request Meal" /> 
+            </button> :  <button  onClick={handleShowWarning}>
               <Btn title="Request Meal" />
-            </button>
+            </button>}
             <span onClick={handleIncrement} className="text-2xl border  border-black p-2  rounded-full">
               <AiOutlineLike color="salmon" />
             </span>
