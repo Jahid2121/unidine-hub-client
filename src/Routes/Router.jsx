@@ -16,6 +16,7 @@ import AllReviews from "../pages/AllReviews/AllReviews";
 import AddMeals from "../pages/AddMeals/AddMeals";
 import AllMeals from "../pages/AllMeals/AllMeals";
 import AllReqMeals from "../pages/AllReqMeals/AllReqMeals";
+import CheckOut from "../pages/CheckOut/CheckOut";
 
 export const router = createBrowserRouter([
   {
@@ -29,6 +30,11 @@ export const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login />,
+      },
+      {
+        path: "/checkout/:name",
+        element: <CheckOut />,
+        loader: ({params}) => fetch(`http://localhost:5000/memberships?name=${params.name}`) 
       },
       {
         path: "/register",
