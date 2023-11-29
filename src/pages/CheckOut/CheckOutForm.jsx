@@ -75,6 +75,7 @@ const CheckOutForm = ({price,image, name}) => {
 
                 const payment = {
                     email: user?.email,
+                    name: name,
                     transactionId: paymentIntent.id,
                     image: image,
 
@@ -82,13 +83,13 @@ const CheckOutForm = ({price,image, name}) => {
               const res = await axiosSecure.post('/payments', payment)
               if(res.data.insertedId){
                 Swal.fire({
-                    position: "top-center",
+                    position: "center",
                     icon: "success",
                     title: `Successfully upgraded to ${name}`,
                     showConfirmButton: false,
                     timer: 1500,
                   });
-                  navigate("/login", { state: { from: location } });
+                  navigate("/", { state: { from: location } });
               }
             }
           }
