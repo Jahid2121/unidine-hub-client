@@ -1,5 +1,5 @@
 import { Rating } from "@smastrom/react-rating";
-import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
+import { useLoaderData, useLocation, useNavigate, useParams } from "react-router-dom";
 import SectionTitle from "../../components/SectionTitle/SectionTitle";
 import Btn from "../../components/Btn";
 import { AiOutlineLike } from "react-icons/ai";
@@ -10,10 +10,11 @@ import useReqMeal from "../../hooks/useReqMeal";
 import { useRef, useState } from "react";
 import useMemberShip from "../../hooks/useMemberShip";
 import { MdFavorite } from "react-icons/md";
+import { useQuery } from "@tanstack/react-query";
 
 const MealDetails = () => {
   const reviewRef = useRef()
-  const meal = useLoaderData();
+  // const meal = useLoaderData();
   const navigate = useNavigate();
   const location = useLocation();
   const axiosSecure = useAxiosSecure();
@@ -21,6 +22,17 @@ const MealDetails = () => {
   const [, refetch] = useReqMeal();
   const [[member]] = useMemberShip()
   const [showLove, setShowLove] = useState(false)
+  const {id} = useParams()
+
+  const { data: meal = [] } = useQuery({
+    queryKey: ["meal", id],
+    queryFn: async () => {
+      const res = await axiosSecure.get(`/meal/${id}`);
+      return res.data;
+    },
+  });
+
+
   const {
     _id,
     title,

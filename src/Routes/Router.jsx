@@ -49,13 +49,12 @@ export const router = createBrowserRouter([
       {
         path: "/meal/:id",
         element: <MealDetails />,
-        loader: ({ params }) =>
-          fetch(`https://uni-dine-hub-server.vercel.app/meal/${params.id}`),
+ 
       },
       {
         path: "/updateMeal/:id",
         element: <UpdateMeal />,
-        loader: ({ params }) => fetch(`http://localhost:5000/meal/${params.id}`),
+
       },
     ],
   },
