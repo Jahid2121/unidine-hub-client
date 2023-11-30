@@ -1,6 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 import { CiBellOn } from "react-icons/ci";
 import useAuth from "../hooks/useAuth";
+import CustomNavLink from "./CustomNavLink";
 
 const Pages = () => {
   const { logOut, user } = useAuth();
@@ -12,18 +13,22 @@ const Pages = () => {
   };
   return (
     <div className="flex  items-center gap-6">
-      <NavLink to="/">Home</NavLink>
-      <NavLink to="/meals">Meals</NavLink>
-      <NavLink to="/upcomingMeals">UpComing</NavLink>
-      <NavLink>
+      <CustomNavLink  to="/"
+      style={isActive => ({
+        color: isActive ? "blue" : "green"
+      })}
+      >Home</CustomNavLink>
+      <CustomNavLink to="/meals">Meals</CustomNavLink>
+      <CustomNavLink to="/upcomingMeals">UpComing</CustomNavLink>
+      <CustomNavLink>
         <CiBellOn />
-      </NavLink>
+      </CustomNavLink>
       {user ? (
-        <Link onClick={handleLogOut}>LogOut</Link>
+        <CustomNavLink onClick={handleLogOut}>LogOut</CustomNavLink>
       ) : (
-        <NavLink to="login">Join Us</NavLink>
+        <CustomNavLink to="login">Join Us</CustomNavLink>
       )}
-      <NavLink to="/dashboard">DashBoard</NavLink>
+      <CustomNavLink to="/dashboard">DashBoard</CustomNavLink>
     </div>
   );
 };

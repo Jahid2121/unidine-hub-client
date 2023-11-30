@@ -26,7 +26,7 @@ const MemberShip = () => {
                 <img src={pack.image} className="w-44 flex mx-auto mb-3" alt={pack.name} />
                 <h3 className="text-xl font-bold mb-4">{pack.name}</h3>
                 <p className="text-">Price: ${pack.price}</p>
-                <p className="text-gray-700">Benefits: {pack.benefits}</p>
+                <p className="text-gray-700 mb-12">Benefits: {pack.benefits}</p>
                 <Link to={`/checkout/${pack.name}`}><Btn title="Upgrade Now"></Btn></Link>
               </div>
             );

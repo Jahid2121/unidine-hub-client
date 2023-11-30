@@ -1,8 +1,10 @@
-import { NavLink, Outlet } from "react-router-dom";
+import {  Outlet } from "react-router-dom";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer/Footer";
 import { FaHome, FaUsers, FaUtensilSpoon, FaUtensils } from "react-icons/fa";
 import useAdmin from "../../hooks/useAdmin";
+import CustomNavLink from "../../components/CustomNavLink";
+
 
 const Dashboard = () => {
   const [isAdmin] = useAdmin();
@@ -15,53 +17,53 @@ const Dashboard = () => {
               {isAdmin ? (
                 <>
                   {/* admin */}
-                  <NavLink className="flex items-center gap-3" to="/dashboard">
+                  <CustomNavLink className="flex items-center gap-3" to="/dashboard">
                       <FaHome />
                     Admin Profile
-                  </NavLink>
-                  <NavLink
+                  </CustomNavLink>
+                  <CustomNavLink
                     className="flex items-center gap-3"
                     to="/dashboard/users"
                   > 
                   <FaUsers />
                     Manage User
-                  </NavLink>
-                  <NavLink
+                  </CustomNavLink>
+                  <CustomNavLink
                     className="flex items-center gap-3"
                     to="/dashboard/addMeal"
                   >
                     <FaUtensilSpoon />
                     Add Meal
-                  </NavLink>
-                  <NavLink
+                  </CustomNavLink>
+                  <CustomNavLink
                     className="flex items-center gap-3"
                     to="/dashboard/allMeals"
                   >
                     <FaUtensils />
                     All Meals
-                  </NavLink>
-                  <NavLink
+                  </CustomNavLink>
+                  <CustomNavLink
                     className="flex items-center gap-3"
                     to="/dashboard/allReviews"
                   >
                     All Reviews
-                  </NavLink>
-                  <NavLink
+                  </CustomNavLink>
+                  <CustomNavLink
                     className="flex items-center gap-3"
                     to="/dashboard/allReqMeals"
                   >
                     Serve Meal
-                  </NavLink>
+                  </CustomNavLink>
                 </>
               ) : (
                 <>
-                  <NavLink className="flex items-center gap-3" to="/dashboard">User Profile</NavLink>
+                  <CustomNavLink className="flex items-center gap-3" to="/dashboard">User Profile</CustomNavLink>
 
                   <div className="divider"></div>
-                  <NavLink className="flex items-center gap-3" to="/dashboard/requestedMeals">
+                  <CustomNavLink className="flex items-center gap-3" to="/dashboard/requestedMeals">
                     Requested Meals
-                  </NavLink>
-                  <NavLink className="flex items-center gap-3" to="/dashboard/reviews">My Reviews</NavLink>
+                  </CustomNavLink>
+                  <CustomNavLink className="flex items-center gap-3" to="/dashboard/reviews">My Reviews</CustomNavLink>
                 </>
               )}
             </div>
