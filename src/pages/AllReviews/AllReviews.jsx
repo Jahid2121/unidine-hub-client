@@ -1,10 +1,41 @@
 import { FaTrashAlt } from "react-icons/fa";
 import useAllReviews from "../../hooks/useAllReviews";
 import { Link } from "react-router-dom";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
 const AllReviews = () => {
-    const [allReviews] = useAllReviews()
-    console.log(allReviews);
+    const [allReviews, refetch] = useAllReviews()
+    const axiosSecure = useAxiosSecure()
+    const handleDelete = id => {
+      Swal.fire({
+        title: "Are You Sure? You  want to delete!",
+        text: "",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, Delete!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          axiosSecure.delete(`/reviews/${id}`)
+      .then(res => {
+        console.log(res.data);
+        if(res.data.deletedCount){
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: `Deleted  Successfully`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          refetch()
+          
+        }
+      })
+        }
+      });
+    }
   return (
     <div>
      <div className="overflow-x-auto">
@@ -47,7 +78,7 @@ const AllReviews = () => {
               <td className="hover:text-customGreen hover:link-hover">View Details</td>
               {/* </Link> */}
                 </td>
-                <td> <button className="btn btn-ghost  text-2xl"><FaTrashAlt /></button></td>
+                <td> <button onClick={()=> handleDelete(meal._id)} className="btn btn-ghost  text-2xl"><FaTrashAlt /></button></td>
                 <th>
                  
                 </th>
