@@ -11,7 +11,7 @@ const Pages = () => {
       .catch((error) => console.error(error));
   };
   return (
-    <div className="flex z-10 items-center gap-6">
+    <div className="flex  items-center gap-6">
       <NavLink to="/">Home</NavLink>
       <NavLink to="/meals">Meals</NavLink>
       <NavLink to="/upcomingMeals">UpComing</NavLink>
@@ -40,11 +40,11 @@ const Navbar = ({ children }) => {
       {/* Drawer */}
 
       <>
-        <div className="drawer min-h-screen font-poppins">
+        <div className="drawer  min-h-screen font-poppins">
           <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
           <div className="drawer-content flex flex-col">
             {/* Navbar */}
-            <div className="w-full max-w-5xl mx-auto fixed navbar text-white bg-opacity-40 bg-[#5EAE53]">
+            <div className="w-full max-w-5xl mx-auto fixed z-10 navbar text-white bg-opacity-95 bg-customGreen">
               <div className="flex-none justify-end lg:hidden">
                 <label
                   htmlFor="my-drawer-3"

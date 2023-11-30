@@ -143,7 +143,7 @@ const MealDetails = () => {
     })
     .catch(error => {
       console.error(error);
-    });
+  });
 
   }
 
