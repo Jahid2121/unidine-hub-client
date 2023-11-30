@@ -24,13 +24,18 @@ const MealDetails = () => {
   const [showLove, setShowLove] = useState(false)
   const {id} = useParams()
 
-  const { data: meal = [] } = useQuery({
+  const { isPending,  data: meal = [] } = useQuery({
     queryKey: ["meal", id],
     queryFn: async () => {
       const res = await axiosSecure.get(`/meal/${id}`);
+      console.log(res.data);
       return res.data;
     },
   });
+
+  if(isPending){
+    return <span className="loading text-customGreen loading-spinner loading-lg"></span>
+  }
 
 
   const {

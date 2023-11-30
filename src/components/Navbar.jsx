@@ -24,7 +24,7 @@ const Pages = () => {
         <CiBellOn />
       </CustomNavLink>
       {user ? (
-        <CustomNavLink onClick={handleLogOut}>LogOut</CustomNavLink>
+        <NavLink onClick={handleLogOut}>LogOut</NavLink>
       ) : (
         <CustomNavLink to="login">Join Us</CustomNavLink>
       )}

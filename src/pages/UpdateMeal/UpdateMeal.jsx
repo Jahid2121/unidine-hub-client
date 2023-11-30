@@ -15,13 +15,17 @@ const UpdateMeal = () => {
   const [, refetch] = useMeal();
   const { id } = useParams();
 
-  const { data: meal = [] } = useQuery({
+  const { isPending, data: meal = [] } = useQuery({
     queryKey: ["meal", id],
     queryFn: async () => {
       const res = await axiosSecure.get(`/meal/${id}`);
       return res.data;
     },
   });
+
+  if(isPending){
+    return <span className="loading text-customSalmon loading-spinner loading-lg"></span>
+  }
 
 
   const { _id, title, category, image, ingredients, description, price } = meal;
