@@ -73,7 +73,9 @@ const AllMeals = () => {
                     Likes: {meal.likes}
                   </span>
                 </td>
+              <Link to={`/meal/${meal._id}`}>
               <td className="hover:text-customGreen hover:link-hover">View Details</td>
+              </Link>
               <td  className="text-xl  text-gray-700">
                  <Link to={`/updateMeal/${meal._id}`}>
                  <button className="mb-3"><FaPen /></button></Link>

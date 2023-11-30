@@ -5,10 +5,12 @@ import Swal from "sweetalert2";
 import { FaUtensilSpoon } from "react-icons/fa";
 import SectionTitle from "../../components/SectionTitle/SectionTitle";
 import Btn from "../../components/Btn";
+import useMeal from "../../hooks/useMeal";
 
 const UpdateMeal = () => {
     const { register, handleSubmit, reset } = useForm()
     const axiosSecure = useAxiosSecure()
+    const [, refetch] = useMeal()
     const meal = useLoaderData()
     const {
         _id,
@@ -38,11 +40,13 @@ const UpdateMeal = () => {
             Swal.fire({
               position: "center",
               icon: "success",
-              title: `${data.title} is Updated Successfully.`,
+              title: `Meal is Updated Successfully.`,
               showConfirmButton: false,
               timer: 1500,
             });
+            refetch()
           }
+          
       };
   return (
     <div>
