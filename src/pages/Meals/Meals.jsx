@@ -24,7 +24,7 @@ const Meals = () => {
        <div className="z-20 w-full ">
        <Select onChange={handleCategoryChange} placeholder="select a category"  options={options} />
        </div>
-       <div className=" absolute  grid grid-cols-3 w-full">
+       <div className=" absolute  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full">
        {selectedCategory ? <FlitererMeal items={meals.filter(meal => meal.category === selectedCategory.value)} /> : meals.map((meal, idx) => <MealCard key={meal._id} item={meal} />)}
        </div>
     </div>

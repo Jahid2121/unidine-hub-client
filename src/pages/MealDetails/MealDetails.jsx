@@ -64,6 +64,13 @@ const MealDetails = () => {
           refetch();
         }
       });
+
+      axiosSecure.patch(`/meal/${_id}`, { action: 'review' })
+    .then(res => {
+      console.log(res.data);
+    })
+
+
       
     }
     else {
@@ -128,11 +135,15 @@ const MealDetails = () => {
 
 
   const handleIncrement = () => {
-    setShowLove(!showLove)
-    axiosSecure.patch(`/meal/${_id}`)
+    
+    axiosSecure.patch(`/meal/${_id}`, { action: 'like' })
     .then(res => {
       console.log(res.data);
+      setShowLove(!showLove)
     })
+    .catch(error => {
+      console.error(error);
+    });
 
   }
 
