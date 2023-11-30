@@ -1,13 +1,45 @@
-import { FaTrash, FaUpload } from "react-icons/fa";
+import { FaPen, FaTrash } from "react-icons/fa";
 import useMeal from "../../hooks/useMeal";
+import { Link } from "react-router-dom";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
 const AllMeals = () => {
-  const [meals] = useMeal();
+  const [meals, refetch] = useMeal();
+  const axiosSecure = useAxiosSecure()
   // console.log(meals);
-
-  const handleUpdate = (meal) => {
-    console.log('Update');
+  const handleDelete = id => {
+    Swal.fire({
+      title: "Are You Sure? You  want to delete!",
+      text: "",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, Delete!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axiosSecure.delete(`/meal/${id}`)
+    .then(res => {
+      console.log(res.data);
+      if(res.data.deletedCount){
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: `Deleted  Successfully`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        refetch()
+        
+      }
+    })
+      }
+    });
+    
   }
+
+  
   return (
     <div>
       <table className="table">
@@ -42,11 +74,12 @@ const AllMeals = () => {
                   </span>
                 </td>
               <td className="hover:text-customGreen hover:link-hover">View Details</td>
-              <td onClick={() => handleUpdate(meal)} className="text-xl  text-customGreen">
-                 <button className="mb-3"><FaUpload /></button>
+              <td  className="text-xl  text-gray-700">
+                 <Link to={`/updateMeal/${meal._id}`}>
+                 <button className="mb-3"><FaPen /></button></Link>
                   <br />
                   <span className="text-xl text-red-700">
-                    <FaTrash />
+                    <button onClick={() => handleDelete(meal._id)}><FaTrash /></button>
                   </span>
                 </td>
             </tr>

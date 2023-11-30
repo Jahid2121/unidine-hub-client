@@ -17,6 +17,8 @@ import AddMeals from "../pages/AddMeals/AddMeals";
 import AllMeals from "../pages/AllMeals/AllMeals";
 import AllReqMeals from "../pages/AllReqMeals/AllReqMeals";
 import CheckOut from "../pages/CheckOut/CheckOut";
+import UpdateMeal from "../pages/UpdateMeal/UpdateMeal";
+
 
 export const router = createBrowserRouter([
   {
@@ -50,6 +52,11 @@ export const router = createBrowserRouter([
         loader: ({ params }) =>
           fetch(`https://uni-dine-hub-server.vercel.app/meal/${params.id}`),
       },
+      {
+        path: "/updateMeal/:id",
+        element: <UpdateMeal />,
+        loader: ({ params }) => fetch(`http://localhost:5000/meal/${params.id}`),
+      },
     ],
   },
   {
@@ -72,6 +79,7 @@ export const router = createBrowserRouter([
         path: "reviews",
         element: <MyReviews />,
       },
+      
       {
         path: "users",
         element: <Users />,

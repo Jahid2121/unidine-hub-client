@@ -2,7 +2,7 @@ import { Rating } from "@smastrom/react-rating";
 import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
 import SectionTitle from "../../components/SectionTitle/SectionTitle";
 import Btn from "../../components/Btn";
-import { AiFillTaobaoCircle, AiOutlineLike } from "react-icons/ai";
+import { AiOutlineLike } from "react-icons/ai";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../hooks/useAxiosSecure";

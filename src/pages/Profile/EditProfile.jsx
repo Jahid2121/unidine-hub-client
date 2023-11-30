@@ -113,7 +113,7 @@ const EditProfile = () => {
 
 <div className="form-control mt-6">
   <input
-    value="Register"
+    value="Update User"
     className="btn btn-primary"
     type="submit"
     name=""
