@@ -53,7 +53,7 @@ const EditProfile = () => {
 <form onSubmit={handleSubmit(onSubmit)} className="card-body">
 
 {/* name */}
-<div className="form-control">
+<div className="form-control z-40">
   <label className="label">
     <span className="label-text">Name</span>
   </label>
@@ -113,7 +113,7 @@ const EditProfile = () => {
 
 <div className="form-control mt-6">
   <input
-    value="Update User"
+    value="Save Changes"
     className="btn btn-primary"
     type="submit"
     name=""

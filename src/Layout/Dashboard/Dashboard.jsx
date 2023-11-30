@@ -7,7 +7,10 @@ import CustomNavLink from "../../components/CustomNavLink";
 
 
 const Dashboard = () => {
-  const [isAdmin] = useAdmin();
+  const [isAdmin, isAdminLoading] = useAdmin();
+  if(isAdminLoading){
+    return <span className="loading flex mx-auto mt-40 loading-spinner loading-lg"></span>
+  }
   return (
     <div>
       <Navbar>
