@@ -30,7 +30,7 @@ const Pages = () => {
         <div className="dropdown text-black dropdown-end">
       <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
         <div className="w-10 rounded-full">
-          <img alt={user?.displayName} src={user?.image} />
+          <img alt={user?.displayName} src={user?.photoURL} />
         </div>
       </div>
       <ul className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">

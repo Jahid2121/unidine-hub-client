@@ -24,7 +24,7 @@ const UpdateMeal = () => {
   });
 
   if(isPending){
-    return <span className="loading text-customSalmon loading-spinner loading-lg"></span>
+    return <span className="loading text-customSalmon flex mx-auto mt-48 loading-spinner loading-lg"></span>
   }
 
 

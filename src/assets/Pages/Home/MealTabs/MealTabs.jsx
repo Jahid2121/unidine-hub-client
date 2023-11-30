@@ -27,9 +27,9 @@ const MealTabs = () => {
     </TabList>
 
     </div>
-    {/* <TabPanel>
+    <TabPanel>
     <MealTab items={meals} />
-    </TabPanel> */}
+    </TabPanel>
     <TabPanel>
       <MealTab items={breakfast} />
     </TabPanel>
