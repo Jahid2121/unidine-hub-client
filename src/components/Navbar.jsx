@@ -11,7 +11,7 @@ const Pages = () => {
       .catch((error) => console.error(error));
   };
   return (
-    <div className="flex items-center gap-6">
+    <div className="flex z-10 items-center gap-6">
       <NavLink to="/">Home</NavLink>
       <NavLink to="/meals">Meals</NavLink>
       <NavLink to="/upcomingMeals">UpComing</NavLink>
