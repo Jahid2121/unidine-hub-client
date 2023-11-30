@@ -2,13 +2,14 @@ import { Rating } from "@smastrom/react-rating";
 import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
 import SectionTitle from "../../components/SectionTitle/SectionTitle";
 import Btn from "../../components/Btn";
-import { AiOutlineLike } from "react-icons/ai";
+import { AiFillTaobaoCircle, AiOutlineLike } from "react-icons/ai";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useReqMeal from "../../hooks/useReqMeal";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import useMemberShip from "../../hooks/useMemberShip";
+import { MdFavorite } from "react-icons/md";
 
 const MealDetails = () => {
   const reviewRef = useRef()
@@ -19,6 +20,7 @@ const MealDetails = () => {
   const { user } = useAuth();
   const [, refetch] = useReqMeal();
   const [[member]] = useMemberShip()
+  const [showLove, setShowLove] = useState(false)
   const {
     _id,
     title,
@@ -126,6 +128,7 @@ const MealDetails = () => {
 
 
   const handleIncrement = () => {
+    setShowLove(!showLove)
     axiosSecure.patch(`/meal/${_id}`)
     .then(res => {
       console.log(res.data);
@@ -164,9 +167,11 @@ const MealDetails = () => {
             </button> :  <button  onClick={handleShowWarning}>
               <Btn title="Request Meal" />
             </button>}
-            <span onClick={handleIncrement} className="text-2xl border  border-black p-2  rounded-full">
-              <AiOutlineLike color="salmon" />
-            </span>
+
+            {/* give like  */}
+            { showLove ? <span className="text-2xl text-red-700 border  border-black p-2  rounded-full"><MdFavorite /> </span> :  <span onClick={handleIncrement} className="text-2xl border  border-black p-2  rounded-full">
+                <AiOutlineLike color="salmon" />
+              </span>}
           </div>
 
           <h3>Ingredients</h3>

@@ -1,10 +1,12 @@
 import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
 const EditProfile = () => {
   const { updateUserProfile } = useAuth();
   const axiosSecure = useAxiosSecure()
+  const {user} = useAuth()
   const {
     register,
     handleSubmit,
@@ -15,26 +17,28 @@ const EditProfile = () => {
     updateUserProfile(data.name, data.photoURL)
     .then(() => {
         console.log('user updated');
-    //   const userData = {
-    //     name: data.name,
-    //     email: data.email
-    //   }
+      const userData = {
+        name: data.name,
+        email: data.email
+      }
 
-    //   axiosSecure.post('/users', userData)
-    //   .then(res => {
-    //     if(res.data.insertedId){
-    //       reset()
-    //       Swal.fire({
-    //         position: "center",
-    //         icon: "success",
-    //         title: "User created successfully",
-    //         showConfirmButton: false,
-    //         timer: 1500
-    //       });
-    //       navigate('/')
+      axiosSecure.put(`/users?email=${user?.email}`, userData)
+      .then(res => {
+        console.log(res.data);
+        if(res.data.modifiedCount){
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "User updated successfully",
+            showConfirmButton: false,
+            timer: 1500
+          });
           
-    //     }
-    //   })
+        }
+      })
+      .catch(error => {
+        console.log(error);
+      })
       
       
     })
@@ -42,6 +46,8 @@ const EditProfile = () => {
       console.error(error);
     })
   };
+
+
   return <div>
 
 <form onSubmit={handleSubmit(onSubmit)} className="card-body">
@@ -53,7 +59,7 @@ const EditProfile = () => {
   </label>
   <input
     type="text"
-    placeholder="name"
+    defaultValue={user?.displayName}
     name="name"
     {...register("name", { required: true })}
     className="input input-bordered"
@@ -71,6 +77,7 @@ const EditProfile = () => {
   <input
     type="text"
     placeholder="photo url"
+    defaultValue={user?.photoURL}
     name="photoURL"
     {...register("photoURL", { required: true })}
     className="input input-bordered"
@@ -90,6 +97,7 @@ const EditProfile = () => {
   <input
     type="email"
     placeholder="email"
+    defaultValue={user.email}
     name="email"
     {...register("email", { required: true })}
     className="input input-bordered"
@@ -99,42 +107,8 @@ const EditProfile = () => {
   )}
 </div>
 
-{/* password */}
-{/* <div className="form-control">
-  <label className="label">
-    <span className="label-text">Password</span>
-  </label>
 
-  <input
-    type="password"
-    name="password"
-    {...register("password", {
-      required: true,
-      minLength: 6,
-      maxLength: 20,
-      pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/,
-    })}
-    placeholder="password"
-    className="input input-bordered"
-  />
-  {errors.password?.type === "required" && (
-    <p className="text-red-800">Password is required</p>
-  )}
-  {errors.password?.type === "minLength" && (
-    <p className="text-red-800">
-      Password must be 6 or more characters
-    </p>
-  )}
-  {errors.password?.type === "maxLength" && (
-    <p className="text-red-800">Maximum password length exceeded</p>
-  )}
-  {errors.password?.type === "pattern" && (
-    <p className="text-red-800">
-      Password must be include at least one uppercase letter, one
-      lowercase letter, one special character, and one number.
-    </p>
-  )}
-</div> */}
+
 
 
 <div className="form-control mt-6">

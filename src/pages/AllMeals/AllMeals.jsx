@@ -3,7 +3,11 @@ import useMeal from "../../hooks/useMeal";
 
 const AllMeals = () => {
   const [meals] = useMeal();
-  console.log(meals);
+  // console.log(meals);
+
+  const handleUpdate = (meal) => {
+    console.log('Update');
+  }
   return (
     <div>
       <table className="table">
@@ -37,9 +41,9 @@ const AllMeals = () => {
                     Likes: {meal.likes}
                   </span>
                 </td>
-              <td className="hover:text-green-500">View Details</td>
-              <td className="text-xl text-green-600">
-                 <FaUpload />
+              <td className="hover:text-customGreen hover:link-hover">View Details</td>
+              <td onClick={() => handleUpdate(meal)} className="text-xl  text-customGreen">
+                 <button className="mb-3"><FaUpload /></button>
                   <br />
                   <span className="text-xl text-red-700">
                     <FaTrash />

@@ -20,7 +20,7 @@ const CustomModal = ({ isOpen, onClose, content }) => {
       contentLabel="Example Modal"
       style={customStyles}
     >
-      <button className='flex justify-end ml-48 text-xl' onClick={onClose}><IoIosCloseCircle /></button>
+      <button className='flex justify-end ml-56 text-4xl' onClick={onClose}><IoIosCloseCircle /></button>
       {content}
     </Modal>
       );
