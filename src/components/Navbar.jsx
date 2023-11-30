@@ -20,15 +20,32 @@ const Pages = () => {
       >Home</CustomNavLink>
       <CustomNavLink to="/meals">Meals</CustomNavLink>
       <CustomNavLink to="/upcomingMeals">UpComing</CustomNavLink>
-      <CustomNavLink>
+      <div className="text-2xl">
+      <NavLink>
         <CiBellOn />
-      </CustomNavLink>
+      </NavLink>
+      </div>
       {user ? (
-        <NavLink onClick={handleLogOut}>LogOut</NavLink>
+        // <NavLink onClick={handleLogOut}>LogOut</NavLink>
+        <div className="dropdown text-black dropdown-end">
+      <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+        <div className="w-10 rounded-full">
+          <img alt={user?.displayName} src={user?.image} />
+        </div>
+      </div>
+      <ul className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
+        <li>
+          <a className="justify-between mb-1">
+            {user?.displayName}
+          </a>
+        </li>
+        <li className="mt-1 mb-1"><CustomNavLink to="/dashboard">DashBoard</CustomNavLink></li>
+        <li><NavLink onClick={handleLogOut}>LogOut</NavLink></li>
+      </ul>
+    </div>
       ) : (
         <CustomNavLink to="login">Join Us</CustomNavLink>
       )}
-      <CustomNavLink to="/dashboard">DashBoard</CustomNavLink>
     </div>
   );
 };
@@ -79,7 +96,7 @@ const Navbar = ({ children }) => {
                     <div className="flex items-center">
                     <img
                       className="w-12"
-                      src={"https://i.ibb.co/0Ktf9xC/chef.png"}
+                      src={"https://i.ibb.co/T0VTkGN/bibimbap.png"}
                       alt=""
                     />
                     <p className="text-2xl font-bold">UniDine Hub</p>

@@ -4,7 +4,7 @@ const CustomNavLink = ({ to, children}) => {
   return (
     <NavLink to={to}
     style={({ isActive }) => ({
-      color: isActive ? 'blue' : '',
+      color: isActive ? 'salmon' : '',
     })}>
         {children}
     </NavLink>
