@@ -7,6 +7,7 @@ const SocialLogin = () => {
     const {googleLogin} = useAuth();
     const axiosPublic = useAxiosPublic()
     const navigate = useNavigate()
+    const from = location.state?.from?.pathname || '/'
 
     const handleGoogleLogin = () => {
         googleLogin()
@@ -28,7 +29,7 @@ const SocialLogin = () => {
                     showConfirmButton: false,
                     timer: 1500
                   });
-                // navigate(from, {replace: true})
+                navigate(from, {replace: true})
                 
               }
               

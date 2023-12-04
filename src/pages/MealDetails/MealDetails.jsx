@@ -1,23 +1,25 @@
 import { Rating } from "@smastrom/react-rating";
-import { useLoaderData, useLocation, useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import SectionTitle from "../../components/SectionTitle/SectionTitle";
 import Btn from "../../components/Btn";
 import { AiOutlineLike } from "react-icons/ai";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
-import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useReqMeal from "../../hooks/useReqMeal";
 import { useRef, useState } from "react";
 import useMemberShip from "../../hooks/useMemberShip";
 import { MdFavorite } from "react-icons/md";
 import { useQuery } from "@tanstack/react-query";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
+import React from 'react';
+import { render } from 'react-dom';
+import { Link, DirectLink, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
 
 const MealDetails = () => {
   const reviewRef = useRef()
-  // const meal = useLoaderData();
   const navigate = useNavigate();
   const location = useLocation();
-  const axiosSecure = useAxiosSecure();
+  const axiosPublic = useAxiosPublic();
   const { user } = useAuth();
   const [, refetch] = useReqMeal();
   const [[member]] = useMemberShip()
@@ -27,7 +29,7 @@ const MealDetails = () => {
   const { isPending,  data: meal = [] } = useQuery({
     queryKey: ["meal", id],
     queryFn: async () => {
-      const res = await axiosSecure.get(`/meal/${id}`);
+      const res = await axiosPublic.get(`/meal/${id}`);
       console.log(res.data);
       return res.data;
     },
@@ -51,13 +53,9 @@ const MealDetails = () => {
     likes,
     reviews,
     adminName,
-    adminEmail,
   } = meal;
 
-  const handleShowWarning =() => {
-    console.log('no access');
-  }
-  
+
   const handleReview = (meal) => {
     if (user && user.email) {
       const review = {
@@ -68,7 +66,7 @@ const MealDetails = () => {
         email: user.email,
         review: reviewRef.current.value
       };
-      axiosSecure.post("/reviews", review).then((res) => {
+      axiosPublic.post("/reviews", review).then((res) => {
         console.log(res.data);
         if (res.data.insertedId) {
           Swal.fire({
@@ -82,7 +80,7 @@ const MealDetails = () => {
         }
       });
 
-      axiosSecure.patch(`/meal/${_id}`, { action: 'review' })
+      axiosPublic.patch(`/meal/${_id}`, { action: 'review' })
     .then(res => {
       console.log(res.data);
     })
@@ -108,7 +106,38 @@ const MealDetails = () => {
 }
 
   const handleReqMeal = (meal) => {
-    if (user && user.email) {
+    if(!member){
+      Swal.fire({
+        title: "Please Purchase a package for making meal request",
+        text: "",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Go to Package section!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          navigate("/", { state: { from: location } });
+
+          // setTimeout(() => {
+          //   window.scrollTo({
+          //     top: window.screenY + 3500,
+          //     behavior: 'smooth'
+          //   })
+          // }, 1000);
+
+          setTimeout(() => {
+            scroller.scrollTo("membership", {
+              duration: 800,
+              delay: 0,
+              smooth: 'easeInOutQuart',
+              offset: -50,
+            })
+          }, 0)
+        }
+      });
+    }
+    else if (user && user.email) {
       const reqMeal = {
         title,
         image,
@@ -120,11 +149,11 @@ const MealDetails = () => {
         email: user.email,
         
       };
-      axiosSecure.post("/requestedMeals", reqMeal).then((res) => {
+      axiosPublic.post("/requestedMeals", reqMeal).then((res) => {
         console.log(res.data);
         if (res.data.insertedId) {
           Swal.fire({
-            position: "top-center",
+            position: "center",
             icon: "success",
             title: `Request sent for ${title}`,
             showConfirmButton: false,
@@ -133,7 +162,8 @@ const MealDetails = () => {
           refetch();
         }
       });
-    } else {
+    } 
+    else {
       Swal.fire({
         title: "Please login for making meal request",
         text: "",
@@ -153,7 +183,7 @@ const MealDetails = () => {
 
   const handleIncrement = () => {
     
-    axiosSecure.patch(`/meal/${_id}`, { action: 'like' })
+    axiosPublic.patch(`/meal/${_id}`, { action: 'like' })
     .then(res => {
       console.log(res.data);
       setShowLove(!showLove)
@@ -190,11 +220,9 @@ const MealDetails = () => {
           <div className="flex items-center gap-10 ">
 
             {/* handling button request meal */}
-            {member ?  <button onClick={() => handleReqMeal(meal)}>
+            <button onClick={() => handleReqMeal(meal)}>
               <Btn title="Request Meal" /> 
-            </button> :  <button  onClick={handleShowWarning}>
-              <Btn title="Request Meal" />
-            </button>}
+            </button>
 
             {/* give like  */}
             { showLove ? <span className="text-2xl text-red-700 border  border-black p-2  rounded-full"><MdFavorite /> </span> :  <span onClick={handleIncrement} className="text-2xl border  border-black p-2  rounded-full">

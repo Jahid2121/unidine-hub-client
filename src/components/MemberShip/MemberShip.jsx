@@ -15,7 +15,7 @@ const MemberShip = () => {
     return <span>Error: {error.message}</span>;
   }
   return (
-    <section className="py-16 bg-gray-200">
+    <section id="membership" className="py-16 bg-gray-200">
       <div className="text-center">
         <SectionTitle heading="package" subHeading="Membership Packages" />
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
