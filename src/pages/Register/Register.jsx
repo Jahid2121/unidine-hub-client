@@ -4,6 +4,7 @@ import { AuthContext } from "../../components/providers/AuthProvider";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
+import SocialLogin from "../../components/SocialLogin";
 
 const Register = () => {
   const { createUser, updateUserProfile } = useContext(AuthContext);
@@ -26,7 +27,6 @@ const Register = () => {
             name: data.name,
             email: data.email
           }
-
           axiosPublic.post('/users', userData)
           .then(res => {
             if(res.data.insertedId){
@@ -157,10 +157,11 @@ const Register = () => {
           />
         </div>
         <p className="font-medium text-center">
-          New User? Join us Now{" "}
+          Already have an account{" "}
           <Link className="text-customSalmon font-medium" to="/login">
             Login
           </Link>
+          <SocialLogin />
         </p>
       </form>
     </div>

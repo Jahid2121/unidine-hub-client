@@ -16,7 +16,8 @@ const Users = () => {
       confirmButtonText: "Yes, make Admin!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axiosSecure.patch(`/users/admin/${user._id}`).then((res) => {
+        axiosSecure.patch(`/users/admin/${user._id}`)
+        .then((res) => {
           if (res.data.modifiedCount) {
             refetch()
             Swal.fire({
