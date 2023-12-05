@@ -1,53 +1,21 @@
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { FaGoogle } from "react-icons/fa";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import SocialLogin from "../../components/SocialLogin";
 
 
-
 const Login = () => {
-    const {logIn, googleLogin} = useAuth()
+    const {logIn} = useAuth()
     const navigate = useNavigate();
     const location = useLocation()
-    const axiosPublic = useAxiosPublic()
 
 
     const from = location.state?.from?.pathname || '/'
 
 
-    // const handleGoogleLogin = () => {
-    //     googleLogin()
-    //     .then(result => {
-    //         console.log(result.user);
-    //         const userData = {
-    //           name: result.user?.displayName,
-    //           email: result.user?.email,
 
-    //         }
-    //         axiosPublic.post('/users', userData)
-    //         .then(res => {
-    //           if(res.data){
-  
-    //             Swal.fire({
-    //                 position: "center",
-    //                 icon: "success",
-    //                 title: "User logged in successfully",
-    //                 showConfirmButton: false,
-    //                 timer: 1500
-    //               });
-    //               // navigate(from, {replace: true})
-                
-    //           }
-              
-    //         })
-    //     })
-    //     .catch(error => {
-    //         console.log(error);
-    //     })
-    // }
 
     const {
         register,
@@ -127,6 +95,7 @@ const Login = () => {
             name=""
             id=""
           />
+          
     <div className="flex justify-center">
     <SocialLogin />
     </div>

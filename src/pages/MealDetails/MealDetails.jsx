@@ -14,6 +14,7 @@ import useAxiosPublic from "../../hooks/useAxiosPublic";
 import React from 'react';
 import { render } from 'react-dom';
 import { Link, DirectLink, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
+import { Tooltip } from "react-tooltip";
 
 const MealDetails = () => {
   const reviewRef = useRef()
@@ -221,7 +222,8 @@ const MealDetails = () => {
 
             {/* handling button request meal */}
             <button onClick={() => handleReqMeal(meal)}>
-              <Btn title="Request Meal" /> 
+              <Tooltip id="requestMeal" />
+              <a data-tooltip-id="requestMeal" data-tooltip-content="Request for this meal!"><Btn title="Request Meal" /> </a>
             </button>
 
             {/* give like  */}
@@ -232,6 +234,7 @@ const MealDetails = () => {
 
           <h3>Ingredients</h3>
           <p>{ingredients}</p>
+          
         </div>
       </div>
       {/* reviews */}

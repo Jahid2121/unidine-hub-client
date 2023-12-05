@@ -2,6 +2,7 @@ import { Link, NavLink } from "react-router-dom";
 import { CiBellOn } from "react-icons/ci";
 import useAuth from "../hooks/useAuth";
 import CustomNavLink from "./CustomNavLink";
+import { Tooltip } from "react-tooltip";
 
 const Pages = () => {
   const { logOut, user } = useAuth();
@@ -30,7 +31,10 @@ const Pages = () => {
         <div className="dropdown text-black dropdown-end">
       <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
         <div className="w-10 rounded-full">
+        <Tooltip id="User" />
+          <a data-tooltip-id="User" data-tooltip-content="User Profile!">
           <img alt={user?.displayName} src={user?.photoURL} />
+</a>
         </div>
       </div>
       <ul className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
