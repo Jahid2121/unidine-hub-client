@@ -80,7 +80,8 @@ const Login = () => {
 
   return (
     <div className="mt-16">
-      <form onSubmit={handleSubmit(onSubmit)} className="card-body">
+      <form onSubmit={handleSubmit(onSubmit)} className="card-body w-1/2 mx-auto">
+        <h2 className="flex justify-center text-3xl font-semibold mb-4">Login </h2>
         <div className="form-control">
           <label className="label">
             <span className="label-text">Email</span>
