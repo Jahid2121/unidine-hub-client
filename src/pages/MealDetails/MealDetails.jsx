@@ -22,8 +22,8 @@ const MealDetails = () => {
   const location = useLocation();
   const axiosPublic = useAxiosPublic();
   const { user } = useAuth();
-  const [, refetch] = useReqMeal();
-  const [[member]] = useMemberShip()
+const [, refetch] = user ? useReqMeal() : [null, null];
+  const [member] =  user ? useMemberShip() : [null];
   const [showLove, setShowLove] = useState(false)
   const {id} = useParams()
 
@@ -31,7 +31,7 @@ const MealDetails = () => {
     queryKey: ["meal", id],
     queryFn: async () => {
       const res = await axiosPublic.get(`/meal/${id}`);
-      console.log(res.data);
+      // console.log(res.data);
       return res.data;
     },
   });
@@ -55,6 +55,7 @@ const MealDetails = () => {
     reviews,
     adminName,
   } = meal;
+
 
 
   const handleReview = (meal) => {
@@ -107,7 +108,22 @@ const MealDetails = () => {
 }
 
   const handleReqMeal = (meal) => {
-    if(!member){
+   if(!user) {
+      Swal.fire({
+        title: "Please login for Requesting meal",
+        text: "",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Login!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          navigate("/login", { state: { from: location } });
+        }
+      });
+    }
+    else if(!member){
       Swal.fire({
         title: "Please Purchase a package for making meal request",
         text: "",
@@ -120,12 +136,6 @@ const MealDetails = () => {
         if (result.isConfirmed) {
           navigate("/", { state: { from: location } });
 
-          // setTimeout(() => {
-          //   window.scrollTo({
-          //     top: window.screenY + 3500,
-          //     behavior: 'smooth'
-          //   })
-          // }, 1000);
 
           setTimeout(() => {
             scroller.scrollTo("membership", {
@@ -134,7 +144,7 @@ const MealDetails = () => {
               smooth: 'easeInOutQuart',
               offset: -50,
             })
-          }, 0)
+          }, 5000)
         }
       });
     }
@@ -198,9 +208,9 @@ const MealDetails = () => {
 
   return (
     <>
-      <div className="flex gap-4">
+      <div className="flex gap-14">
         <div className="w-1/2">
-          <img className="h-[500px] ml-11 mt-6" src={image} alt="" />
+          <img className="h-[500px] w-[600px] ml-11 mt-6" src={image} alt="" />
           <div className="ml-8 mt-4">
             <hr />
             <h3 className="text-2xl font-medium">Meal Description:</h3>
@@ -223,7 +233,7 @@ const MealDetails = () => {
             {/* handling button request meal */}
             <button onClick={() => handleReqMeal(meal)}>
               <Tooltip id="requestMeal" />
-              <a data-tooltip-id="requestMeal" data-tooltip-content="Request for this meal!"><Btn title="Request Meal" /> </a>
+              <span data-tooltip-id="requestMeal" data-tooltip-content="Request for this meal!"><Btn title="Request Meal" /> </span>
             </button>
 
             {/* give like  */}

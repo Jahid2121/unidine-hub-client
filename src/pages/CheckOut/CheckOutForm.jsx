@@ -113,7 +113,7 @@ const CheckOutForm = ({price,image, name}) => {
           },
         }}
       />
-      <button  className="bg-customSalmon p-1 rounded-md text-white my-3" type="submit" disabled={!stripe || !clientSecret}>
+      <button  className="bg-customSalmon p-2 mt-3 rounded-md text-white my-3" type="submit" disabled={!stripe || !clientSecret}>
         Pay
       </button>
       <p className="text-xl text-red-700">{error}</p>

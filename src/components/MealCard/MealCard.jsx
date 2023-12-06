@@ -28,7 +28,7 @@ const MealCard = ({item}) => {
         <h2 className="card-title font-bold text-3xl">{title}</h2>
         <div className="flex gap-14 mt-3">
           <Tooltip className="example" id="details" />
-          <a className="" data-tooltip-id="details" data-tooltip-content="View Details to Request Meal"> <Link to={`/meal/${_id}`}><Btn title="View Details"></Btn></Link></a>
+          <span className="" data-tooltip-id="details" data-tooltip-content="Click to view Meal details"> <Link to={`/meal/${_id}`}><Btn title="View Details"></Btn></Link></span>
         <p className="text-2xl  font-bold text-customSalmon">${price}</p>
         </div>
       </div>

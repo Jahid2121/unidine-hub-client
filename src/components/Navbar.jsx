@@ -32,16 +32,16 @@ const Pages = () => {
       <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
         <div className="w-10 rounded-full">
         <Tooltip id="User" />
-          <a data-tooltip-id="User" data-tooltip-content="User Profile!">
+          <span data-tooltip-id="User" data-tooltip-content="User Profile!">
           <img alt={user?.displayName} src={user?.photoURL} />
-</a>
+</span>
         </div>
       </div>
       <ul className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
         <li>
-          <a className="justify-between mb-1">
+          <span className="justify-between mb-1">
             {user?.displayName}
-          </a>
+          </span>
         </li>
         <li className="mt-1 mb-1"><CustomNavLink to="/dashboard">DashBoard</CustomNavLink></li>
         <li><NavLink onClick={handleLogOut}>LogOut</NavLink></li>
