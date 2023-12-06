@@ -200,7 +200,7 @@ const MealDetails = () => {
     <>
       <div className="flex gap-4">
         <div className="w-1/2">
-          <img src={image} alt="" />
+          <img className="h-[500px] ml-11 mt-6" src={image} alt="" />
           <div className="ml-8 mt-4">
             <hr />
             <h3 className="text-2xl font-medium">Meal Description:</h3>

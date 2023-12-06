@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 
 const CustomNavLink = ({ to, children}) => {
   return (
-    <NavLink to={to}
+    <NavLink className="hover:text-customSalmon" to={to}
     style={({ isActive }) => ({
       color: isActive ? 'salmon' : '',
     })}>

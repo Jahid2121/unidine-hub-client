@@ -1,5 +1,5 @@
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
-
+import "../FaqSection/Faq.css"
 const FaqSection = () => {
   return (
     <div>

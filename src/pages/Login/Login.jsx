@@ -2,7 +2,6 @@ import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
-import useAxiosPublic from "../../hooks/useAxiosPublic";
 import SocialLogin from "../../components/SocialLogin";
 
 
@@ -29,7 +28,7 @@ const Login = () => {
         .then(data => {
             console.log(data.user);
             Swal.fire({
-                position: "top-center",
+                position: "center",
                 icon: "success",
                 title: "User logged in successfully",
                 showConfirmButton: false,
