@@ -47,12 +47,5 @@ Admins can promote users to admin status with a simple button click in /dashboar
 
 Thank you for taking the time to explore our project. Your interest means a lot to us. Feel free to check out the live demo to experience Uni Dine Hub in action.
 
-If you have any questions, suggestions, or feedback, we'd love to hear from you. Please don't hesitate to open an issue or reach out to us via [email](#contact-us)
-.
-
-&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#121;&#111;&#117;&#114;&#45;&#101;&#109;&#97;&#105;&#108;&#64;&#101;&#120;&#97;&#109;&#112;&#108;&#101;&#46;&#99;&#111;&#109;
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-let contactLink = document.getElementById('contact-us');
-    contactLink.innerHTML = <a href="mailto:jahidsarkar2121@gmail.com">Contact me</a>
-</script>
+If you have any questions, suggestions, or feedback, we'd love to hear from you. Please don't hesitate to open an issue or reach out to us via email.
+email - jahidsarkar2121@gmail.com
