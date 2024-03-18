@@ -8,7 +8,7 @@ const CustomNavLink = ({ to, children}) => {
     })}>
         {children}
     </NavLink>
-  );
+  ); 
 };
 
 export default CustomNavLink;

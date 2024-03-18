@@ -11,21 +11,25 @@ import useMemberShip from "../../hooks/useMemberShip";
 import { MdFavorite } from "react-icons/md";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
-import React from 'react';
-import { render } from 'react-dom';
-import { Link, DirectLink, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
+import {  animateScroll as  scroller } from 'react-scroll'
 import { Tooltip } from "react-tooltip";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const MealDetails = () => {
   const reviewRef = useRef()
   const navigate = useNavigate();
   const location = useLocation();
-  const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
+  const axiosPublic = useAxiosPublic()
   const { user } = useAuth();
-const [, refetch] = user ? useReqMeal() : [null, null];
-  const [member] =  user ? useMemberShip() : [null];
+const [, refetch] =  useReqMeal() 
+  const [[member]] =   useMemberShip() 
+  // console.log(member);
   const [showLove, setShowLove] = useState(false)
   const {id} = useParams()
+  
+
+
 
   const { isPending,  data: meal = [] } = useQuery({
     queryKey: ["meal", id],
@@ -137,15 +141,16 @@ const [, refetch] = user ? useReqMeal() : [null, null];
           navigate("/", { state: { from: location } });
 
 
-          setTimeout(() => {
-            scroller.scrollTo("membership", {
-              duration: 800,
-              delay: 0,
-              smooth: 'easeInOutQuart',
-              offset: -50,
-            })
-          }, 5000)
-        }
+        setTimeout(() => {
+          scroller.scrollTo("membership", {
+            duration: 800,
+            delay: 0,
+            smooth: 'easeInOutQuart',
+            offset: -50,
+          })
+        }, 2000)
+      
+       }
       });
     }
     else if (user && user.email) {
@@ -160,7 +165,8 @@ const [, refetch] = user ? useReqMeal() : [null, null];
         email: user.email,
         
       };
-      axiosPublic.post("/requestedMeals", reqMeal).then((res) => {
+      console.log(reqMeal);
+      axiosSecure.post("/requestedMeals", reqMeal).then((res) => {
         console.log(res.data);
         if (res.data.insertedId) {
           Swal.fire({
@@ -209,6 +215,7 @@ const [, refetch] = user ? useReqMeal() : [null, null];
   return (
     <>
       <div className="flex gap-14">
+        
         <div className="w-1/2">
           <img className="h-[500px] w-[600px] ml-11 mt-6" src={image} alt="" />
           <div className="ml-8 mt-4">
@@ -237,7 +244,7 @@ const [, refetch] = user ? useReqMeal() : [null, null];
             </button>
 
             {/* give like  */}
-            { showLove ? <span className="text-2xl text-red-700 border  border-black p-2  rounded-full"><MdFavorite /> </span> :  <span onClick={handleIncrement} className="text-2xl border  border-black p-2  rounded-full">
+            { showLove ? <span className="text-2xl text-red-700 border  border-black p-2  rounded-full"><MdFavorite /> </span> :  <span onClick={handleIncrement} className={`text-2xl border  border-black p-2 ${showLove && 'disabled'} rounded-full`}>
                 <AiOutlineLike color="salmon" />
               </span>}
           </div>

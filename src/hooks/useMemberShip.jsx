@@ -1,9 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "./useAuth";
-import useAxiosSecure from "./useAxiosSecure";
+import useAxiosPublic from "./useAxiosPublic";
 
 const useMemberShip = () => {
-    const axiosSecure = useAxiosSecure();
+    const axiosSecure = useAxiosPublic();
   const { user } = useAuth();
   const { refetch, data: member = [] } = useQuery({
     queryKey: ["member", user?.email],
