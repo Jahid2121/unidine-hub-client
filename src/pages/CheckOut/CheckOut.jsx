@@ -14,24 +14,7 @@ const CheckOut = () => {
 
   return (
     <div className="flex justify-center items-center mt-8">
-      <div className="max-w-xl bg-white p-8 rounded-md shadow-md">
-        <SectionTitle  subHeading="checkout" />
-          <div className="mb-6">
-            <div className="flex items-center mb-4">
-              <img src={image} alt={name} className="w-16 h-16 mr-4" />
-              <h2 className="text-xl font-semibold">{name}</h2>
-            </div>
-            <p className="text-gray-600 text-2xl mb-4">$<span className=" text-customSalmon">{price}</span></p>
-            <p className="text-sm text-gray-700 mb-4">{description}</p>
-            <div className="border-t border-gray-300 pt-4">
-              <p>Benifits:</p>
-              <p className="text-sm text-gray-700">{benefits}</p>
-            </div>
-          </div>
-        <Elements stripe={stripePromise}>
-          <CheckOutForm price={price} image={image} name={name} />
-        </Elements>
-      </div>
+      
     </div>
   );
 };

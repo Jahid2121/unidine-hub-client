@@ -4,6 +4,7 @@ import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 import { useLocation, useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const CheckOutForm = ({price,image, name}) => {
     const stripe = useStripe()
@@ -113,9 +114,9 @@ const CheckOutForm = ({price,image, name}) => {
           },
         }}
       />
-      <button  className="bg-customSalmon p-2 mt-3 rounded-md text-white my-3" type="submit" disabled={!stripe || !clientSecret}>
+      <motion.button whileHover={{ scale: 1.1}} whileTap={{ scale: 0.8}}  className="bg-customSalmon p-2 mt-3 rounded-md text-white my-3" type="submit" disabled={!stripe || !clientSecret}>
         Pay
-      </button>
+      </motion.button>
       <p className="text-xl text-red-700">{error}</p>
       { transactionId && <p className="text-xl text-green-700">Your Transaction Id: {transactionId}</p>}
     </form>
