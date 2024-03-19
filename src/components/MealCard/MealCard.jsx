@@ -11,7 +11,7 @@ const MealCard = ({item}) => {
   
 
   return (
-    <div style={{borderRadius: '100px 0 100px 0'}} className="card  z-0  bg-base-100 shadow-xl">
+    <div style={{borderRadius: '100px 0 100px 0'}} className="card dark:bg-black dark:text-white dark:border-white dark:border dark:shadow-xl z-0  bg-base-100 shadow-xl">
       <figure>
         <img 
         style={{borderRadius: '100px 0 100px 0'}}

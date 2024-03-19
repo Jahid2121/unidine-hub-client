@@ -137,6 +137,7 @@ const Navbar = ({ children }) => {
         <Link onClick={handleLogOut}>LogOut</Link>
       ) : (
         <NavLink to="login">Join Us</NavLink>
+        
       )}
             </ul>
           </div>
