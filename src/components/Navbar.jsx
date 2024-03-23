@@ -3,7 +3,7 @@ import { CiBellOn } from "react-icons/ci";
 import useAuth from "../hooks/useAuth";
 import CustomNavLink from "./CustomNavLink";
 import { Tooltip } from "react-tooltip";
-
+import { motion } from "framer-motion";
 const Pages = () => {
   const { logOut, user } = useAuth();
   
@@ -98,11 +98,15 @@ const Navbar = ({ children }) => {
                   {/* Navbar menu content here */}
                   <div className="flex gap-48 mr-3 items-center">
                     <div className="flex items-center">
-                    <img
+                    <motion.img
+                    whileHover={{rotate: 0.5}}
                       className="w-12"
                       src={"https://i.ibb.co/T0VTkGN/bibimbap.png"}
+                      animate={{ rotate: 360}}
+                      transition={{duration: 3, loop: Infinity, ease: "linear"}}
                       alt=""
                     />
+                    
                     <p className="text-2xl font-bold">UniDine Hub</p>
                     </div>
                     <div>

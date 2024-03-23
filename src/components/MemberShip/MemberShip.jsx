@@ -65,7 +65,7 @@ const MemberShip = () => {
               animate={{opacity: 1}}
               exit={{opacity: 0}}
               transition={{ duration: 0.5}}
-              className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center"
+              className="fixed z-40 top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center"
               >
                 <div className="max-w-xl bg-white p-8 rounded-md shadow-md">
         <SectionTitle  subHeading="checkout" />

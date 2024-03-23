@@ -5,7 +5,8 @@ import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import SocialLogin from "../../components/SocialLogin";
-
+import loginSVg from "../../../public/login-bg.svg"
+import { motion } from "framer-motion";
 const Register = () => {
   const { createUser, updateUserProfile } = useContext(AuthContext);
   const navigate = useNavigate()
@@ -55,9 +56,10 @@ const Register = () => {
   };
 
   return (
-    <div className="mt-16">
-      <form onSubmit={handleSubmit(onSubmit)} className="card-body w-1/2 mx-auto">
-      <h2 className="flex justify-center text-3xl font-semibold mb-4">Join Us </h2>
+    <div className="mt-16 flex">
+      <img className="flex-grow" src={loginSVg} alt="" />
+      <form onSubmit={handleSubmit(onSubmit)} className="card-body">
+      <h2 className="  text-3xl font-semibold mb-4">Join Us </h2>
         {/* name */}
         <div className="form-control">
           <label className="label">
@@ -147,20 +149,22 @@ const Register = () => {
             </p>
           )}
         </div>
-        <div className="form-control mt-6">
+        <motion.div whileHover={{scale: 1.1}} whileTap={{scale: 0.9}} className="form-control mt-6">
           <input
             value="Register"
-            className="btn btn-primary"
+            className="btn bg-customSalmon text-white font-bold text-2xl"
             type="submit"
             name=""
             id=""
           />
-        </div>
+        </motion.div>
         <p className="font-medium text-center">
           Already have an account{" "}
-          <Link className="text-customSalmon font-medium" to="/login">
-            Login
-          </Link>
+          <motion.button whileHover={{ scale: 1.1 }}>
+  <Link className="text-customSalmon font-medium" to="/login">
+    Login
+  </Link>
+</motion.button>
           <SocialLogin />
         </p>
       </form>

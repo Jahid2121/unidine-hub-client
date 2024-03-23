@@ -1,4 +1,3 @@
-import Lottie from "lottie-react";
 import Banner from "../../../components/Banner/Banner";
   import MemberShip from "../../../components/MemberShip/MemberShip";
 import FaqSection from "../FaqSection/FaqSection";
@@ -11,7 +10,7 @@ const Home = () => {
       <MealTabs />
       <Testimonials />
       <MemberShip />
-    
+
       <FaqSection />
     </div>
   );

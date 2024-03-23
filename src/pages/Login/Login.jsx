@@ -3,7 +3,8 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 import SocialLogin from "../../components/SocialLogin";
-
+import loginSvg from "../../../public/login-bg.svg"
+import { motion } from "framer-motion";
 
 const Login = () => {
     const {logIn} = useAuth()
@@ -42,12 +43,12 @@ const Login = () => {
        
     
       };
-    
+
 
 
   return (
-    <div className="mt-16">
-      <form onSubmit={handleSubmit(onSubmit)} className="card-body w-1/2 mx-auto">
+    <div className="mt-16 flex">
+      <form onSubmit={handleSubmit(onSubmit)} className="card-body ">
         <h2 className="flex justify-center text-3xl font-semibold mb-4">Login </h2>
         <div className="form-control">
           <label className="label">
@@ -86,7 +87,8 @@ const Login = () => {
         </div>
         <div className="" >
         </div>
-        <div className="form-control mt-6">
+        <motion.div   whileHover={{ scale: 1.05 }}
+  whileTap={{ scale: 0.95 }}  className="form-control mt-6">
           <input
             value="Login"
             className="bg-customSalmon p-1 rounded-xl text-2xl font-semibold text-white"
@@ -94,13 +96,17 @@ const Login = () => {
             name=""
             id=""
           />
+
+
           
+        </motion.div>
+
     <div className="flex justify-center">
     <SocialLogin />
     </div>
-        </div>
-        <p className="font-medium text-center">New User? Join us Now <Link className="text-customSalmon font-medium" to="/register">Register</Link></p>
+        <p className="font-medium text-center">New User? Join us Now <motion.div  whileHover={{scale: 1.1}} whileTap={{scale: 0.9}} ><Link className="text-customSalmon font-medium" to="/register">Register</Link></motion.div></p>
       </form>
+      <img src={loginSvg} alt="" className="flex-grow" />
     </div>
   );
 };

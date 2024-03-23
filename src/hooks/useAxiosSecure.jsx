@@ -1,11 +1,13 @@
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import useAuth from "./useAuth";
-import React from "react";
-// https://uni-dine-hub-server.vercel.app
+
 const axiosSecure = axios.create({
   baseURL: "http://localhost:5000",
 });
+
+// https://uni-dine-hub-server.vercel.app
+// http://localhost:5000
 const useAxiosSecure = () => {
   const navigate = useNavigate()
   const {logOut} = useAuth()

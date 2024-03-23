@@ -3,7 +3,7 @@ import "../FaqSection/Faq.css"
 const FaqSection = () => {
   return (
     <div>
-      <section className="py-10 bg-gray-200">
+      <section className="py-10 bg-gray-200 z-10">
         <div className="container mx-auto">
           <SectionTitle heading="FAQ" subHeading="Frequently Asked Questions" />
 
