@@ -44,7 +44,7 @@ const SocialLogin = () => {
     <div>
       <button
         onClick={handleGoogleLogin}
-        className="hover:bg-custom-yellow p-3 mt-8 mr-5 border text-2xl rounded-full"
+        className="hover:bg-[#d6533a] text-white bg-[#d6533a]  p-3 mt-8 mr-5 border text-2xl rounded-full"
       >
         <svg
           stroke="currentColor"

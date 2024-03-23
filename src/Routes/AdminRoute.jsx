@@ -7,7 +7,7 @@ const AdminRoute = ({children}) => {
   const location = useLocation()
 
   if (loading || isAdminLoading) {
-    return <span className="loading loading-spinner loading-lg text-customSalmon"></span>
+    // return <span className="loading loading-spinner loading-lg text-customSalmon"></span>
     ;
   } else if (!user && !isAdmin) {
     return  <Navigate to="/login" state={{ from: location }} replace />

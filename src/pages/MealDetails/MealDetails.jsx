@@ -14,7 +14,7 @@ import useAxiosPublic from "../../hooks/useAxiosPublic";
 import {  animateScroll as  scroller } from 'react-scroll'
 import { Tooltip } from "react-tooltip";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
-
+import "../../Routes/PrivateLoading.scss"
 const MealDetails = () => {
   const reviewRef = useRef()
   const navigate = useNavigate();
@@ -31,7 +31,7 @@ const [, refetch] =  useReqMeal()
 
 
 
-  const { isPending,  data: meal = [] } = useQuery({
+  const { isPending, isLoading,  data: meal = [] } = useQuery({
     queryKey: ["meal", id],
     queryFn: async () => {
       const res = await axiosPublic.get(`/meal/${id}`);
@@ -40,8 +40,15 @@ const [, refetch] =  useReqMeal()
     },
   });
 
-  if(isPending){
-    return <span className="loading text-customGreen loading-spinner loading-lg"></span>
+  if (isLoading) {
+    return <div className="pan-loader">
+    <div className="loader"></div>
+    <div className="pan-container">
+      <div className="pan"></div>
+      <div className="handle"></div>
+    </div>
+    <div className="shadow"></div>
+  </div>
   }
 
 
