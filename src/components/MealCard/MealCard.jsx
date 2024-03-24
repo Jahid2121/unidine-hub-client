@@ -4,6 +4,7 @@ import Btn from "../Btn";
 import { Link } from "react-router-dom";
 import { Tooltip } from "react-tooltip";
 import '../MealCard/MealCard.css'
+import { motion } from "framer-motion";
 
 
 const MealCard = ({item}) => {
@@ -28,7 +29,7 @@ const MealCard = ({item}) => {
         <h2 className="card-title font-bold text-3xl">{title}</h2>
         <div className="flex gap-14 mt-3">
           <Tooltip className="example" id="details" />
-          <span className="" data-tooltip-id="details" data-tooltip-content="Click to view Meal details"> <Link to={`/meal/${_id}`}><Btn title="View Details"></Btn></Link></span>
+          <motion.span whileHover={{scale: 1.1}} className="" data-tooltip-id="details" data-tooltip-content="Click to view Meal details"> <Link to={`/meal/${_id}`}><Btn title="View Details"></Btn></Link></motion.span>
         <p className="text-2xl  font-bold text-customSalmon">${price}</p>
         </div>
       </div>

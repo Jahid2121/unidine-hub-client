@@ -6,7 +6,7 @@ import { AiOutlineLike } from "react-icons/ai";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 import useReqMeal from "../../hooks/useReqMeal";
-import { useRef, useState } from "react";
+import {  useState } from "react";
 import useMemberShip from "../../hooks/useMemberShip";
 import { MdFavorite } from "react-icons/md";
 import { useQuery } from "@tanstack/react-query";
@@ -15,8 +15,10 @@ import {  animateScroll as  scroller } from 'react-scroll'
 import { Tooltip } from "react-tooltip";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import "../../Routes/PrivateLoading.scss"
+import { motion } from "framer-motion";
+import Review from "../../components/Review/Review";
 const MealDetails = () => {
-  const reviewRef = useRef()
+  
   const navigate = useNavigate();
   const location = useLocation();
   const axiosSecure = useAxiosSecure();
@@ -69,54 +71,6 @@ const [, refetch] =  useReqMeal()
 
 
 
-  const handleReview = (meal) => {
-    if (user && user.email) {
-      const review = {
-        title,
-        likes,
-        reviews,
-        name: user.displayName,
-        email: user.email,
-        review: reviewRef.current.value
-      };
-      axiosPublic.post("/reviews", review).then((res) => {
-        console.log(res.data);
-        if (res.data.insertedId) {
-          Swal.fire({
-            position: "center",
-            icon: "success",
-            title: `Review success`,
-            showConfirmButton: false,
-            timer: 1500,
-          });
-          refetch();
-        }
-      });
-
-      axiosPublic.patch(`/meal/${_id}`, { action: 'review' })
-    .then(res => {
-      console.log(res.data);
-    })
-
-
-      
-    }
-    else {
-      Swal.fire({
-        title: "Please login for review",
-        text: "",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Login!",
-      }).then((result) => {
-        if (result.isConfirmed) {
-          navigate("/login", { state: { from: location } });
-        }
-      });
-    }
-}
 
   const handleReqMeal = (meal) => {
    if(!user) {
@@ -245,10 +199,10 @@ const [, refetch] =  useReqMeal()
           <div className="flex items-center gap-10 ">
 
             {/* handling button request meal */}
-            <button onClick={() => handleReqMeal(meal)}>
+            <motion.button whileHover={{scaleY: 1.1}} onClick={() => handleReqMeal(meal)}>
               <Tooltip id="requestMeal" />
               <span data-tooltip-id="requestMeal" data-tooltip-content="Request for this meal!"><Btn title="Request Meal" /> </span>
-            </button>
+            </motion.button>
 
             {/* give like  */}
             { showLove ? <span className="text-2xl text-red-700 border  border-black p-2  rounded-full"><MdFavorite /> </span> :  <span onClick={handleIncrement} className={`text-2xl border  border-black p-2 ${showLove && 'disabled'} rounded-full`}>
@@ -261,23 +215,7 @@ const [, refetch] =  useReqMeal()
           
         </div>
       </div>
-      {/* reviews */}
-      <div>
-        <SectionTitle heading="review" subHeading="write your review" />
-        <div className="flex flex-col w-11/12  mx-auto">
-          <textarea
-            ref={reviewRef}
-            placeholder="Review here....."
-            name="review"
-            id=""
-            cols="90"
-            rows="7"
-          ></textarea>
-          <button  onClick={() => handleReview(meal)} className="absolute bottom-0 right-0">
-          <Btn title="Post Review" />
-          </button>
-        </div>
-      </div>
+      <Review refetch={refetch} title={title} _id={_id} />
     </>
   );
 };
