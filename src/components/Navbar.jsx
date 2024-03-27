@@ -6,7 +6,7 @@ import { Tooltip } from "react-tooltip";
 import { motion } from "framer-motion";
 const Pages = () => {
   const { logOut, user } = useAuth();
-  
+  // <CustomNavLink to="/upcomingMeals">UpComing</CustomNavLink>
   const handleLogOut = () => {
     logOut()
       .then(() => {})
@@ -20,7 +20,7 @@ const Pages = () => {
       })}
       >Home</CustomNavLink>
       <CustomNavLink to="/meals">Meals</CustomNavLink>
-      <CustomNavLink to="/upcomingMeals">UpComing</CustomNavLink>
+      
       <div className="text-2xl">
       <NavLink>
         <CiBellOn />
@@ -28,7 +28,7 @@ const Pages = () => {
       </div>
       {user ? (
         // <NavLink onClick={handleLogOut}>LogOut</NavLink>
-        <div className="dropdown text-black dropdown-end">
+        <div className="dropdown  text-black dropdown-end">
       <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
         <div className="w-10 rounded-full">
         <Tooltip id="User" />
@@ -37,8 +37,8 @@ const Pages = () => {
 </span>
         </div>
       </div>
-      <ul className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
-        <li>
+      <ul className=" z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
+        <li className="">
           <span className="justify-between mb-1">
             {user?.displayName}
           </span>
@@ -66,7 +66,7 @@ const Navbar = ({ children }) => {
       {/* Drawer */}
 
       <>
-        <div className="drawer  min-h-screen font-poppins">
+        <div className="drawer   min-h-screen font-poppins">
           <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
           <div className="drawer-content flex flex-col">
             {/* Navbar */}
@@ -93,7 +93,7 @@ const Navbar = ({ children }) => {
                 </label>
               </div>
 
-              <div className="flex-none gap-9 hidden lg:block">
+              <div className="flex-none gap-9  lg:block">
                 <ul className="menu   menu-horizontal">
                   {/* Navbar menu content here */}
                   <div className="flex gap-48 mr-3 items-center">
@@ -109,7 +109,7 @@ const Navbar = ({ children }) => {
                     
                     <p className="text-2xl font-bold">UniDine Hub</p>
                     </div>
-                    <div>
+                    <div className="hidden lg:block">
                     <Pages />
                     </div>
                   </div>
@@ -122,17 +122,20 @@ const Navbar = ({ children }) => {
             {children}
           </div>
 
-          <div className="drawer-side">
+          <div className="drawer-side z-30">
             <label
               htmlFor="my-drawer-3"
               aria-label="close sidebar"
               className="drawer-overlay"
             ></label>
-            <ul className="menu gap-5 font-medium p-4 w-80 min-h-full bg-base-200 text-base-content">
+            <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
+            
+            <ul className="menu mt-20 gap-5 font-medium p-4 w-80 min-h-full bg-base-200 text-base-content">
               {/* Sidebar content here */}
+              
               <NavLink to="/">Home</NavLink>
               <NavLink to="/meals">Meals</NavLink>
-              <NavLink to="/upcomingMeals">UpComing</NavLink>
+              {/* <NavLink to="/upcomingMeals">UpComing</NavLink> */}
               <NavLink to="/dashboard">DashBoard</NavLink>
               <NavLink>
                 <CiBellOn />

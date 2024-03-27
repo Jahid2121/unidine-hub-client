@@ -1,19 +1,19 @@
 import { motion } from "framer-motion";
-
+import "./LoadingAnime.css"
 const LoadingAnime = () => {
     return (
-        <div>
-              <motion.img
-        src={"https://i.ibb.co/T0VTkGN/bibimbap.png"}
-        alt="Logo"
-        initial={{ scale: 0.5 }}
-        animate={{ scale: 1, rotate: 360 }}
-        transition={{ duration: 1, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
-        className="w-36 h-36"
-      />
-
-        </div>
-    );
+      <div className="mt-20">
+        <div className="pan-loader">
+      <div className="loader"></div>
+      <div className="pan-container">
+        <div className="pan"></div>
+        <div className="handle"></div>
+      </div>
+      <div className="shadow"></div>
+    </div>
+      </div>
+  );
+            
 };
 
 export default LoadingAnime;

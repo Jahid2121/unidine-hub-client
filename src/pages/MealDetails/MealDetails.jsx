@@ -14,9 +14,9 @@ import useAxiosPublic from "../../hooks/useAxiosPublic";
 import {  animateScroll as  scroller } from 'react-scroll'
 import { Tooltip } from "react-tooltip";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
-import "../../Routes/PrivateLoading.scss"
 import { motion } from "framer-motion";
 import Review from "../../components/Review/Review";
+import LoadingAnime from "../../components/LoadingAnime/LoadingAnime";
 const MealDetails = () => {
   
   const navigate = useNavigate();
@@ -43,14 +43,7 @@ const [, refetch] =  useReqMeal()
   });
 
   if (isLoading) {
-    return <div className="pan-loader">
-    <div className="loader"></div>
-    <div className="pan-container">
-      <div className="pan"></div>
-      <div className="handle"></div>
-    </div>
-    <div className="shadow"></div>
-  </div>
+    return <LoadingAnime />
   }
 
 

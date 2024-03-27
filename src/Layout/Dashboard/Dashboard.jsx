@@ -1,62 +1,65 @@
 import {  Outlet } from "react-router-dom";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer/Footer";
-import { FaHome, FaUsers, FaUtensilSpoon, FaUtensils } from "react-icons/fa";
+import { FaHome, FaReadme, FaServer, FaUsers, FaUtensilSpoon, FaUtensils } from "react-icons/fa";
 import useAdmin from "../../hooks/useAdmin";
 import CustomNavLink from "../../components/CustomNavLink";
+import LoadingAnime from "../../components/LoadingAnime/LoadingAnime";
 
 
 const Dashboard = () => {
   const [isAdmin, isAdminLoading] = useAdmin();
   console.log(isAdmin);
   if(isAdminLoading){
-    return <span className="loading flex mx-auto mt-40 loading-spinner loading-lg"></span>
+    return <LoadingAnime />
   }
   return (
     <div>
       <Navbar>
-        <div className="mt-20 w-11/12 mx-auto text-white">
+        <div className="mt-20 w-full mx-auto text-white">
           <div className="grid grid-cols-12 min-h-screen">
-            <div className="col-span-3 flex flex-col gap-5 items-center pt-12 bg-customGreen">
+            <div className="md:col-span-3 col-span-12 flex md:flex-col flex-row w-full absolute md:static z-20 bottom-0 gap-10 md:gap-5 items-center p-4 md:pt-12 bg-customGreen">
               {isAdmin ? 
                 <>
                   {/* admin */}
-                  <CustomNavLink className="flex items-center gap-3" to="/dashboard">
+                  <CustomNavLink className="flex items-center  gap-3" to="/dashboard">
                       <FaHome />
-                    Admin Profile
+                      <span className="hidden md:inline-block">Admin Profile</span>
                   </CustomNavLink>
                   <CustomNavLink
                     className="flex items-center gap-3"
                     to="/dashboard/users"
                   > 
                   <FaUsers />
-                    Manage User
+                  <span className="hidden md:inline-block"> Manage User</span>
                   </CustomNavLink>
                   <CustomNavLink
                     className="flex items-center gap-3"
                     to="/dashboard/addMeal"
                   >
                     <FaUtensilSpoon />
-                    Add Meal
+                    <span className="hidden md:inline-block">Add Meal</span>
                   </CustomNavLink>
                   <CustomNavLink
                     className="flex items-center gap-3"
                     to="/dashboard/allMeals"
                   >
                     <FaUtensils />
-                    All Meals
+                    <span className="hidden md:inline-block">All Meals</span>
                   </CustomNavLink>
                   <CustomNavLink
                     className="flex items-center gap-3"
                     to="/dashboard/allReviews"
                   >
-                    All Reviews
+                    <FaReadme />
+                    <span className="hidden md:inline-block"> All Reviews</span>
                   </CustomNavLink>
                   <CustomNavLink
                     className="flex items-center gap-3"
                     to="/dashboard/allReqMeals"
                   >
-                    Serve Meal
+                    <FaServer />
+                    <span className="hidden md:inline-block"> Serve Meal</span>
                   </CustomNavLink>
                 </>
                : 
@@ -71,7 +74,7 @@ const Dashboard = () => {
                 </>
               }
             </div>
-            <div className="col-span-9 text-center pt-20 bg-customSalmon">
+            <div className="md:col-span-9 col-span-12 text-center pt-20 bg-customSalmon">
               <Outlet />
             </div>
           </div>

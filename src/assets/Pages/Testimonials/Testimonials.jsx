@@ -24,8 +24,8 @@ const Testimonials = () => {
         <SectionTitle heading="reviews" subHeading="What Our Members Say" />
     <section className="py-16 dark:bg-black dark:text-white  md:flex  items-center gap-16 bg-gray-100">
       <img className="w-96" src={testimonialImg} alt="" />
-      <div className=" mx-auto  text-center">
       
+      <div className=" mx-auto  text-center">
         
       
           <div className="bg-white dark:bg-black dark:text-white  w-[500px] h-[400px]   p-6 rounded-lg shadow">

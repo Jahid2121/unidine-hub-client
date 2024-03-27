@@ -67,6 +67,7 @@ const Review = ({_id, refetch, title}) => {
         <div className="flex flex-col w-11/12  mx-auto">
           <textarea
             ref={reviewRef}
+            className='p-4 border'
             placeholder="Review here....."
             name="review"
             id=""
