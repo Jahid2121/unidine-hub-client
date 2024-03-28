@@ -12,11 +12,11 @@ const MealCard = ({item}) => {
   
 
   return (
-    <div style={{borderRadius: '100px 0 100px 0'}} className="card dark:bg-black dark:text-white dark:border-white dark:border dark:shadow-xl z-0  bg-base-100 shadow-xl">
+      <div style={{borderRadius: '100px 0 100px 0'}} className="card w-80 md:w-96 dark:bg-black dark:text-white dark:border-white dark:border dark:shadow-xl z-0  bg-base-100 shadow-xl">
       <figure>
         <img 
         style={{borderRadius: '100px 0 100px 0'}}
-        className="h-64 w-96"
+        className="md:h-64 h-48 w-80 md:w-96"
           src={image}
           alt="Shoes"
         />

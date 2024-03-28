@@ -41,7 +41,7 @@ const AllMeals = () => {
 
   
   return (
-    <div>
+    <div className="">
       <table className="table">
         {/* head */}
         <thead>

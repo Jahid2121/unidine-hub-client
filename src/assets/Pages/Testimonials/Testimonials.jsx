@@ -20,7 +20,7 @@ import { Rating } from "@smastrom/react-rating";
 const Testimonials = () => {
     const [reviews] = useReviews()
   return (
-    <div className="">
+    <div className="bg-custom-background-image bg-fixed">
         <SectionTitle heading="reviews" subHeading="What Our Members Say" />
     <section className="py-16 dark:bg-black dark:text-white  md:flex  items-center gap-16 bg-gray-100">
       <img className="w-96" src={testimonialImg} alt="" />

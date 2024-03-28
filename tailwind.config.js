@@ -7,6 +7,9 @@ export default {
   darkMode: 'class',
   theme: {
     extend: {
+      backgroundImage: theme => ({
+        'custom-background-image': "url('/src/assets/featured.jpg')"
+      }),
       colors: {
         customSalmon: '#EB8E78',
         'customGreen': '#5EAE53'

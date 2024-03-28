@@ -1,14 +1,15 @@
-import SectionTitle from "../../../components/SectionTitle/SectionTitle";
-import "../FaqSection/Faq.css"
+import SectionTitle from "../SectionTitle/SectionTitle";
+import "./Faq.css"
 const FaqSection = () => {
   return (
     <div>
       <section className="py-10 bg-gray-200 z-10">
-        <div className="container mx-auto">
+        <div  className="container bg-custom-background-image bg-fixed mx-auto">
           <SectionTitle heading="FAQ" subHeading="Frequently Asked Questions" />
 
           {/* First FAQ */}
           <div className="collapse collapse-arrow bg-base-200 mb-4">
+      
             <input
               type="radio"
               name="my-accordion-2"

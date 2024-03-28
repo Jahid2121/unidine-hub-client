@@ -1,5 +1,5 @@
 .collapse-arrow {
-    @apply bg-customGreen;
+    @apply bg-gray-400;
     color: white;
 
 }

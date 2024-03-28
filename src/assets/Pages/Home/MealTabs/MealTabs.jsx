@@ -15,7 +15,7 @@ const MealTabs = () => {
     const dinner = meals.filter(item => item.category === 'dinner')
     
   return (
-        <>
+        <div className='bg-custom-background-image bg-fixed'>
         <SectionTitle heading="Meals" subHeading="Meals category" />
        <Tabs defaultIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
     <div className='flex justify-center'>
@@ -41,7 +41,7 @@ const MealTabs = () => {
     </TabPanel>
   </Tabs>
   <Link to="/meals" className='btn bg-customSalmon text-white flex mx-auto my-8'>See All</Link>
-    </>
+    </div>
   );
 };
 
