@@ -1,10 +1,13 @@
 import {  Outlet } from "react-router-dom";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer/Footer";
-import { FaHome, FaReadme, FaServer, FaUsers, FaUtensilSpoon, FaUtensils } from "react-icons/fa";
+import { FaReadme, FaUsers, FaUtensilSpoon, FaUtensils } from "react-icons/fa";
 import useAdmin from "../../hooks/useAdmin";
 import CustomNavLink from "../../components/CustomNavLink";
 import LoadingAnime from "../../components/LoadingAnime/LoadingAnime";
+import { IoMdRestaurant } from "react-icons/io";
+import { IoIosNutrition } from "react-icons/io";
+import { BsPersonCircle } from "react-icons/bs";
 
 
 const Dashboard = () => {
@@ -18,12 +21,12 @@ const Dashboard = () => {
       <Navbar>
         <div className="mt-20 w-full mx-auto text-white">
           <div className="grid grid-cols-12 min-h-screen">
-            <div className="md:col-span-3 col-span-12 flex md:flex-col flex-row w-full absolute md:static z-20 bottom-0 gap-10 md:gap-5 items-center p-4 md:pt-12 bg-customGreen">
+            <div className="md:col-span-3 col-span-12 flex md:flex-col flex-row w-full sticky md:static z-20 top-20 gap-10 md:gap-5 items-center p-4 md:pt-12 bg-customGreen">
               {isAdmin ? 
                 <>
                   {/* admin */}
                   <CustomNavLink className="flex items-center  gap-3" to="/dashboard">
-                      <FaHome />
+                      <BsPersonCircle />
                       <span className="hidden md:inline-block">Admin Profile</span>
                   </CustomNavLink>
                   <CustomNavLink
@@ -58,20 +61,31 @@ const Dashboard = () => {
                     className="flex items-center gap-3"
                     to="/dashboard/allReqMeals"
                   >
-                    <FaServer />
+                    <IoIosNutrition />
                     <span className="hidden md:inline-block"> Serve Meal</span>
                   </CustomNavLink>
                 </>
                : 
-                <>
-                  <CustomNavLink className="flex items-center gap-3" to="/dashboard">User Profile</CustomNavLink>
+                <div className="flex flex-row md:flex-col  gap-14 md:gap-2  mx-auto md:mx-2">
+                  <CustomNavLink className="flex flex-col items-center gap-3" to="/dashboard">
+                    <BsPersonCircle />
+                    <span className="hidden md:inline-block">User Profile</span>
+                    
+                    
+                    
+                    </CustomNavLink>
 
-                  <div className="divider"></div>
+                  <div className="divider hidden md:inline-block"></div>
                   <CustomNavLink className="flex items-center gap-3" to="/dashboard/requestedMeals">
-                    Requested Meals
+                    <IoMdRestaurant />
+                    <span className="hidden md:inline-block">Requested Meals</span>
+                    
                   </CustomNavLink>
-                  <CustomNavLink className="flex items-center gap-3" to="/dashboard/reviews">My Reviews</CustomNavLink>
-                </>
+                  <CustomNavLink className="flex items-center gap-3" to="/dashboard/reviews">
+                    <FaReadme />
+                    <span className="hidden md:inline-block">My Reviews</span>
+                    </CustomNavLink>
+                </div>
               }
             </div>
             <div className="md:col-span-9 col-span-12 text-center pt-20 bg-customSalmon">
