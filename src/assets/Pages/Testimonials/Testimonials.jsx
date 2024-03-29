@@ -12,7 +12,7 @@ import 'swiper/css/navigation';
 // import './styles.css';
 
 // import required modules
-import { Pagination } from 'swiper/modules';
+import { Pagination, Autoplay, Navigation, A11y } from 'swiper/modules';
 import useReviews from "../../../hooks/useReviews";
 import { Rating } from "@smastrom/react-rating";
 
@@ -29,7 +29,11 @@ const Testimonials = () => {
         
       
           <div className="bg-white dark:bg-black dark:text-white  w-[500px] h-[400px]   p-6 rounded-lg shadow">
-          <Swiper pagination={true} modules={[Pagination]} className="mySwiper">
+          <Swiper
+          
+          pagination={true} modules={[Navigation, A11y, Autoplay]}
+          spaceBetween={40}
+          autoplay={{delay: 1000}} Autoplay={{delay: 3000}} className="mySwiper">
         {
 
         }

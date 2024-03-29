@@ -40,7 +40,7 @@ const MealTabs = () => {
       <MealTab items={dinner} />
     </TabPanel>
   </Tabs>
-  <Link to="/meals" className='btn bg-customSalmon text-white flex mx-auto my-8'>See All</Link>
+  <Link to="/meals" className='btn bg-customSalmon hover:bg-customSalmon hover:font-bold text-white flex mx-auto my-8'>See All</Link>
     </div>
   );
 };
