@@ -17,6 +17,8 @@ import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { motion } from "framer-motion";
 import Review from "../../components/Review/Review";
 import LoadingAnime from "../../components/LoadingAnime/LoadingAnime";
+import useAllReviews from "../../hooks/useAllReviews";
+import ShowReviews from "../../components/ShowReviews/ShowReviews";
 const MealDetails = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -25,6 +27,9 @@ const MealDetails = () => {
   const { user } = useAuth();
   const [, refetch] = useReqMeal();
   const [[member]] = useMemberShip();
+  const [allReviews]  = useAllReviews()
+  console.log(allReviews);
+  
   // console.log(member);
   const [showLove, setShowLove] = useState(false);
   const { id } = useParams();
@@ -45,6 +50,10 @@ const MealDetails = () => {
   if (isLoading) {
     return <LoadingAnime />;
   }
+  const mealTitle = meal.title  
+  // console.log(mealTitle);
+  const FliteredReviews = allReviews.filter(review => review.title === mealTitle)
+  // console.log(reviewFilter);
 
   const {
     _id,
@@ -153,12 +162,13 @@ const MealDetails = () => {
       });
   };
 
+
   return (
     <>
-      <div className="flex flex-col md:flex-row gap-14 bg-slate-200 m-20 rounded-md">
+      <div className="flex flex-col md:flex-row gap-14 bg-slate-200 mx-40 mt-20 rounded-md">
         <div className="w-1/2">
           <img
-            className="md:h-[500px] md:w-[600px] h-80 w-96 rounded-xl ml-11 mt-6"
+            className="md:h-[450px] md:w-[600px] h-80 w-96 rounded-xl ml-11 mt-6"
             src={image}
             alt=""
           />
@@ -178,7 +188,7 @@ const MealDetails = () => {
           ></Rating>
           <p className="mt-5">Post Time: {postTime}</p>
           <p className="mt-3 font-medium">Posted by: {adminName}</p>
-          <p className="mt-5 font-bold text-2xl">${price}</p>
+          <p className="mt-5 font-bold text-customSalmon text-2xl">${price}</p>
           <div className="flex items-center gap-10 ">
             {/* handling button request meal */}
             <motion.button
@@ -210,11 +220,14 @@ const MealDetails = () => {
             )}
           </div>
 
-          <h3>Ingredients</h3>
-          <p>{ingredients}</p>
+          <h3 className="text-2xl">Ingredients</h3>
+          <p>{ingredients.map((ingredient, idx) => idx !== ingredients.length - 1 ? `${ingredient} + ` : ingredient)}</p>
         </div>
       </div>
       <Review refetch={refetch} title={title} _id={_id} />
+      {
+        FliteredReviews.map(filterReview => <ShowReviews key={filterReview._id} filterReview={filterReview} />)
+      }
     </>
   );
 };
