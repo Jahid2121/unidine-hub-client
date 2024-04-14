@@ -1,6 +1,6 @@
 import { Navigate, useLocation } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
-import loadingAnimation from "../../public/Animation - 1701061503103.json"
+import loadingAnimation from "../assets/Animation - 1701061503103.json"
 import Lottie from "lottie-react";
 import LoadingAnime from "../components/LoadingAnime/LoadingAnime";
 const PrivateRoute = ({children}) => {

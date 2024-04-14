@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
-import SectionTitle from '../../../../components/SectionTitle/SectionTitle';
-import useMeal from '../../../../hooks/useMeal';
-import MealTab from '../../../../components/MealTab/MealTab';
+import SectionTitle from '../../../components/SectionTitle/SectionTitle';
+import useMeal from '../../../hooks/useMeal';
+import MealTab from '../../../components/MealTab/MealTab';
 import { Link } from 'react-router-dom';
 
 

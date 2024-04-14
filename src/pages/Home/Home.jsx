@@ -1,7 +1,7 @@
-  import AnimatedNavbar from "../../../components/AnimatedNavbar/AnimatedNavbar";
-  import Banner from "../../../components/Banner/Banner";
-    import MemberShip from "../../../components/MemberShip/MemberShip";
-  import FaqSection from "../../../components/FaqSection/FaqSection";
+  import AnimatedNavbar from "../../components/AnimatedNavbar/AnimatedNavbar";
+  import Banner from "../../components/Banner/Banner";
+    import MemberShip from "../../components/MemberShip/MemberShip";
+  import FaqSection from "../../components/FaqSection/FaqSection";
   import Testimonials from "../Testimonials/Testimonials";
   import MealTabs from "./MealTabs/MealTabs";
   const Home = () => {

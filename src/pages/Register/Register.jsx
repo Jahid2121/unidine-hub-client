@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import SocialLogin from "../../components/SocialLogin";
-import loginSVg from "../../../public/login-bg.svg"
+import loginSVg from "../../assets/login-bg.svg"
 import { motion } from "framer-motion";
 const Register = () => {
   const { createUser, updateUserProfile } = useContext(AuthContext);

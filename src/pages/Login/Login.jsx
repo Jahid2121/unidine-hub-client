@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 import SocialLogin from "../../components/SocialLogin";
-import loginSvg from "../../../public/login-bg.svg"
+import loginSvg from "../../assets/login-bg.svg"
 import { motion } from "framer-motion";
 
 const Login = () => {

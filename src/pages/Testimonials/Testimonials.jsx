@@ -1,6 +1,5 @@
-import testimonialImg from "../../../../public/black-guy-posing-with-healthy-salad-gesturing-okay-resize-1.png";
-import QuoteImg from "../../../../public/icons8-quote-96.png";
-import SectionTitle from "../../../components/SectionTitle/SectionTitle";
+import testimonialImg from "../../assets/black-guy-posing-with-healthy-salad-gesturing-okay-resize-1.png";
+import QuoteImg from "../../assets/icons8-quote-96.png";
 import React, { useRef, useState } from 'react';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -13,8 +12,9 @@ import 'swiper/css/navigation';
 
 // import required modules
 import { Pagination, Autoplay, Navigation, A11y } from 'swiper/modules';
-import useReviews from "../../../hooks/useReviews";
+import useReviews from "../../hooks/useReviews";
 import { Rating } from "@smastrom/react-rating";
+import SectionTitle from "../../components/SectionTitle/SectionTitle";
 
 
 const Testimonials = () => {
@@ -32,8 +32,11 @@ const Testimonials = () => {
           <Swiper
           
           pagination={true} modules={[Navigation, A11y, Autoplay]}
-          spaceBetween={40}
-          autoplay={{delay: 1000}} Autoplay={{delay: 3000}} className="mySwiper">
+          spaceBetween={40
+          
+          
+          }
+          Autoplay={{delay: 3000}} className="mySwiper">
         {
 
         }

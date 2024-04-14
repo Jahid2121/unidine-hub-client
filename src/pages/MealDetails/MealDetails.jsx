@@ -221,7 +221,7 @@ const MealDetails = () => {
           </div>
 
           <h3 className="text-2xl">Ingredients</h3>
-          <p>{ingredients.map((ingredient, idx) => idx !== ingredients.length - 1 ? `${ingredient} + ` : ingredient)}</p>
+          <p>{ingredients?.map((ingredient, idx) => idx !== ingredients.length - 1 ? `${ingredient} + ` : ingredient)}</p>
         </div>
       </div>
       <Review refetch={refetch} title={title} _id={_id} />
