@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import Swal from 'sweetalert2';
 import useAuth from '../../hooks/useAuth';
 import useAxiosPublic from '../../hooks/useAxiosPublic';
@@ -6,22 +6,35 @@ import SectionTitle from '../SectionTitle/SectionTitle';
 import Btn from '../Btn';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-const Review = ({_id, refetch, title}) => {
+const Review = ({_id, title, reFetchReview}) => {
     const { user } = useAuth()
     const reviewRef = useRef()
     const axiosPublic = useAxiosPublic()
     const navigate = useNavigate()
     const location = useLocation();
+    
+
+    const getCurrentDate = () => {
+      const currentDate = new Date()
+      const day = currentDate.getDate();
+      const month = currentDate.getMonth() + 1 
+      const year = currentDate.getFullYear();
+      return `${day}/${month}/${year}`
+
+    }
+
   const handleReview = () => {
     if (user && user.email) {
       const review = {
         title,
         name: user.displayName,
+        userImg: user.photoURL,
         email: user.email,
-        review: reviewRef.current.value
+        review: reviewRef.current.value,
+        date: getCurrentDate()
       };
       axiosPublic.post("/reviews", review).then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         if (res.data.insertedId) {
           Swal.fire({
             position: "center",
@@ -30,13 +43,14 @@ const Review = ({_id, refetch, title}) => {
             showConfirmButton: false,
             timer: 1500,
           });
-          refetch();
+          reviewRef.current.value = '';
         }
       });
 
       axiosPublic.patch(`/meal/${_id}`, { action: 'review' })
     .then(res => {
       console.log(res.data);
+      reFetchReview()
     })
     .catch(err => console.log(err));
 
@@ -74,7 +88,7 @@ const Review = ({_id, refetch, title}) => {
             cols="90"
             rows="7"
           ></textarea>
-          <button  onClick={() => handleReview()} className="absolute bottom-0 right-0">
+          <button  onClick={() => handleReview()} className="mt-4">
           <Btn title="Post Review" />
           </button>
         </div>

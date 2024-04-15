@@ -2,13 +2,14 @@ import { useState } from "react";
 import bannerImg from "../../assets/food1.png";
 import {motion} from "framer-motion"
 import useMeal from "../../hooks/useMeal";
-import { Link, redirect, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const Banner = () => {
   const [query, setQuery] = useState("")
   // console.log(query);
   const [suggestions, setSuggestions] = useState([])
+  // console.log(suggestions);
   const [meals] = useMeal()
   const navigate = useNavigate()
   const handleSearch = () => {
@@ -45,10 +46,8 @@ const Banner = () => {
     setSuggestions(newSuggestions);
   }
 
-  const handleSuggestionOnClick = suggestions => {
 
-  }
-  
+
 
 
   const variants = {
@@ -82,23 +81,20 @@ const Banner = () => {
             </motion.button>
           </div>
           {
-            suggestions.length > 0 && (
               <div className="absolute bg-white mt-2 w-80 border border-gray-200 rounded-md">
                   {
                     suggestions.map(suggestion => <p 
                       className="p-2 cursor-pointer hover:bg-gray-100"
                     key={suggestion._id}>
                       <Link to={`/meal/${suggestion._id}`} 
-                      onClick={() => handleSuggestionOnClick(suggestion)}
                       >{suggestion.title}</Link>
                     </p>)
                   }
               </div>
-            )
           }
         </motion.div>
       
-        <div className=" md:w-80 w-60 ml-20">
+        <div className="md:w-80 w-60 ml-20">
           <img src={bannerImg} alt="" className=" h-auto" />
         </div>
       </div>

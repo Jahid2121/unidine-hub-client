@@ -27,8 +27,8 @@ const MealDetails = () => {
   const { user } = useAuth();
   const [, refetch] = useReqMeal();
   const [[member]] = useMemberShip();
-  const [allReviews]  = useAllReviews()
-  console.log(allReviews);
+  const [allReviews, reFetchReview]  = useAllReviews()
+  // console.log(allReviews);
   
   // console.log(member);
   const [showLove, setShowLove] = useState(false);
@@ -224,9 +224,9 @@ const MealDetails = () => {
           <p>{ingredients?.map((ingredient, idx) => idx !== ingredients.length - 1 ? `${ingredient} + ` : ingredient)}</p>
         </div>
       </div>
-      <Review refetch={refetch} title={title} _id={_id} />
+      <Review reFetchReview={reFetchReview} title={title} _id={_id} />
       {
-        FliteredReviews.map(filterReview => <ShowReviews key={filterReview._id} filterReview={filterReview} />)
+        FliteredReviews.map(filterReview => <ShowReviews  key={filterReview._id} filterReview={filterReview} />)
       }
     </>
   );
