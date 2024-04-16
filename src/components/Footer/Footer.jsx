@@ -2,7 +2,7 @@ import CustomNavLink from "../CustomNavLink";
 
 const Footer = () => {
   return (
-    <footer className="footer p-10 bg-base-200 text-base-content">
+    <footer className="footer md:min-w-full p-10 bg-base-200 text-base-content">
   <aside>
     <img className="w-24" src={'https://i.ibb.co/T0VTkGN/bibimbap.png'} alt="" />
     <p><span className="text-3xl font-bold ">UniDine Hub</span><br/>Providing Healthy snacks <br /> and food till beginning</p>

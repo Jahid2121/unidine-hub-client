@@ -4,7 +4,7 @@ const ShowReviews = ({filterReview, reFetchReview}) => {
     return (
         <div>
             <div className="divider"></div>
-            <div className="flex gap-20  mt-8">
+            <div className="flex gap-10  mt-8">
             <img src={userImg} className="bg-black rounded-full w-20 h-20" alt="" />
             <div className="">
             <div className="flex gap-5">

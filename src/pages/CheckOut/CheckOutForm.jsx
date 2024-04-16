@@ -114,7 +114,7 @@ const CheckOutForm = ({price,image, name}) => {
           },
         }}
       />
-      <motion.button whileHover={{ scale: 1.1}} whileTap={{ scale: 0.8}}  className="bg-customSalmon p-2 mt-3 rounded-md text-white my-3" type="submit" disabled={!stripe || !clientSecret}>
+      <motion.button whileHover={{ scale: 1.1}} whileTap={{ scale: 0.8}}  className="bg-customSalmon p-2 mt-3 rounded-md text-white my-1 md:my-3" type="submit" disabled={!stripe || !clientSecret}>
         Pay
       </motion.button>
       <p className="text-xl text-red-700">{error}</p>

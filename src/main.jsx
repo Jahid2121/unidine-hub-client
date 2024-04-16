@@ -13,7 +13,7 @@ const queryClient = new QueryClient()
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-    <div className='max-w-7xl mx-auto'>
+    <div className=''>
     <QueryClientProvider client={queryClient}>
     <AuthProvider>
     <HelmetProvider><RouterProvider router={router} /></HelmetProvider>

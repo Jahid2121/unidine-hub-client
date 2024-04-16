@@ -12,8 +12,8 @@
       <AnimatedNavbar />
       </div>
         <MealTabs />
-        <Testimonials />
-        <MemberShip />
+          <Testimonials />
+          <MemberShip />
 
         <FaqSection />
       </div>
