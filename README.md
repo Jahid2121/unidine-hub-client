@@ -47,4 +47,4 @@ Admins can promote users to admin status with a simple button click in /dashboar
 
 Thank you for taking the time to explore our project. Your interest means a lot to us. Feel free to check out the live demo to experience Uni Dine Hub in action.
 
-If you have any questions, suggestions, or feedback, we'd love to hear from you. Please don't hesitate to open an issue or reach out to us via [email](jahidsarkar2121@gmail.com)
+If you have any questions, suggestions, or feedback, we'd love to hear from you. Please don't hesitate to open an issue or reach out to us via [email](mailto:jahidsarkar2121@gmail.com)
