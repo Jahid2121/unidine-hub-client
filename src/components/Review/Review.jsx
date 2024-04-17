@@ -78,17 +78,17 @@ const Review = ({_id, title, reFetchReview}) => {
             {/* reviews */}
       <div>
         <SectionTitle heading="review" subHeading="write your review" />
-        <div className="flex flex-col w-11/12  mx-auto">
+        <div className="flex flex-col w-52 md:w-11/12  mx-auto">
           <textarea
             ref={reviewRef}
-            className='p-4 border'
+            className='p-3 md:p-4 border'
             placeholder="Review here....."
             name="review"
             id=""
             cols="90"
             rows="7"
           ></textarea>
-          <button  onClick={() => handleReview()} className="mt-4">
+          <button  onClick={() => handleReview()} className="mt-3 md:mt-4">
           <Btn title="Post Review" />
           </button>
         </div>

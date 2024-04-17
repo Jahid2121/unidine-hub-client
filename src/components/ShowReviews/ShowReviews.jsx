@@ -4,8 +4,8 @@ const ShowReviews = ({filterReview, reFetchReview}) => {
     return (
         <div>
             <div className="divider"></div>
-            <div className="flex gap-10  mt-8">
-            <img src={userImg} className="bg-black rounded-full w-20 h-20" alt="" />
+            <div className="flex gap-3 md:gap-10 mt-5  md:mt-8">
+            <img src={userImg} className="bg-black rounded-full md:w-20 w-10 h-10 md:h-20" alt="" />
             <div className="">
             <div className="flex gap-5">
             <p className="font-bold">{name}</p>

@@ -165,10 +165,11 @@ const MealDetails = () => {
 
   return (
     <>
-      <div className="flex flex-col md:flex-row gap-14 bg-slate-200 mx-40 mt-20 rounded-md">
-        <div className="w-1/2">
+      <div className="flex flex-col-reverse md:flex-row gap-6 md:gap-14  bg-slate-200 mx-2 md:mx-40 mt-20 rounded-md">
+        {/* Left Side Image and description row */}
+        <div className="md:w-1/2 w-56">
           <img
-            className="md:h-[450px] md:w-[600px] h-80 w-96 rounded-xl ml-11 mt-6"
+            className="md:h-[450px] md:w-[600px] h-52 w-full rounded-xl ml-11 mt-6"
             src={image}
             alt=""
           />
@@ -178,8 +179,9 @@ const MealDetails = () => {
             <p className="text-[16px] mb-7">{description}</p>
           </div>
         </div>
-        <div className="w-1/2 ml-4 mt-8">
-          <h3 className=" text-3xl font-bold">{title}</h3>
+        {/* Right side row */}
+        <div className="md:w-1/2 w-56 ml-4 mt-8">
+          <h3 className=" text-2xl md:text-3xl  font-bold">{title}</h3>
           <Rating
             className="mt-5 "
             style={{ maxWidth: 100 }}
@@ -197,7 +199,7 @@ const MealDetails = () => {
             >
                 <motion.span
                   style={{ borderRadius: "0 30px 30px 30px" }}
-                  className=" mt-4 border text-customSalmon border-customSalmon hover:text-white hover:bg-customSalmon px-4 py-2 "
+                  className=" mt-4 border text-customSalmon border-customSalmon hover:text-white hover:bg-customSalmon px-3 md:px-4 py-1 md:py-2 "
                 >
                   Request Meal
                 </motion.span>
@@ -205,7 +207,7 @@ const MealDetails = () => {
 
             {/* give like  */}
             {showLove ? (
-              <span className="text-2xl text-red-700 border  border-black p-2  rounded-full">
+              <span className="text-xl md:text-2xl text-red-700 border  border-black p-2  rounded-full">
                 <MdFavorite />{" "}
               </span>
             ) : (
