@@ -32,6 +32,7 @@ const Testimonials = () => {
               modules={[Navigation, A11y, Autoplay]}
               spaceBetween={40}
               Autoplay={{ delay: 3000 }}
+              aau
               className="mySwiper"
             >
               {}

@@ -21,11 +21,11 @@ const Pages = () => {
       >Home</CustomNavLink>
       <CustomNavLink to="/meals">Meals</CustomNavLink>
       
-      <div className="text-2xl">
+      {/* <div className="text-2xl">
       <NavLink>
         <CiBellOn />
       </NavLink>
-      </div>
+      </div> */}
       {user ? (
         // <NavLink onClick={handleLogOut}>LogOut</NavLink>
         <div className="dropdown  text-black dropdown-end">

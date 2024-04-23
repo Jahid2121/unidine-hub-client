@@ -56,7 +56,7 @@ const Register = () => {
   };
 
   return (
-    <div className="mt-16 flex">
+    <div className="mt-16 flex md:flex-row flex-col-reverse">
       <img className="flex-grow" src={loginSVg} alt="" />
       <form onSubmit={handleSubmit(onSubmit)} className="card-body">
       <h2 className="  text-3xl font-semibold mb-4">Join Us </h2>

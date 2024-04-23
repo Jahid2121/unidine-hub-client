@@ -77,7 +77,7 @@ const MemberShip = () => {
             <p className="text-gray-600 text-2xl mb-4">$<span className=" text-customSalmon">{pack.price}</span></p>
             <p className="text-sm text-gray-700 mb-4">{pack.description}</p>
             <div className="border-t border-gray-300 pt-4">
-              <p>Benifits:</p>
+              <p>Benefits:</p>
               <p className="text-sm text-gray-700">{pack.benefits}</p>
             </div>
           </div>

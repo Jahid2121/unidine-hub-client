@@ -47,7 +47,8 @@ const Login = () => {
 
 
   return (
-    <div className="mt-16 flex">
+    <div className="mt-16 flex md:flex-row flex-col">
+
       <form onSubmit={handleSubmit(onSubmit)} className="card-body ">
         <h2 className="flex justify-center text-3xl font-semibold mb-4">Login </h2>
         <div className="form-control">
