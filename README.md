@@ -7,7 +7,7 @@ Uni Dine Hub is a comprehensive food browsing platform tailored for university s
 ### Live Demo
 Check out the live demo [here](https://uni-dine-hub.web.app).
 admin email - jahidhasan20u@gmail.com 
-admin password - jahidhasan20u@gmail.com
+admin password - Jahidhasan20u@gmail.com
 
 ## Features
 
