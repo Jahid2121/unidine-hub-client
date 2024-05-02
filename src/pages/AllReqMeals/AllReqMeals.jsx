@@ -1,8 +1,18 @@
 import useAllReqMeal from "../../hooks/useAllReqMeal";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const AllReqMeals = () => {
     const [allReqMeals] = useAllReqMeal()
-    console.log(allReqMeals);
+    // console.log(allReqMeals);
+    const axiosPublic = useAxiosPublic()
+    
+    const handleServe = id => {      
+      axiosPublic.patch(`/requestedMeals/${id}`)
+      .then(res => {
+        console.log(res.data);
+      })
+      .catch(err => console.log(err))
+    }
   return (
     <div>
       <div className="overflow-x-auto">
@@ -38,10 +48,12 @@ const AllReqMeals = () => {
                 <td>
                   {meal.name}
                 </td>
-                <td>pending</td>
-                <th>
-                  <button className="btn btn-ghost btn-xs">serve</button>
+                <td>{meal.status}</td>
+                {
+                  meal.status == "pending" && <th>
+                  <button onClick={() => handleServe(meal._id)} className="btn btn-ghost btn-xs bg-customGreen hover:bg-green-900 text-white">serve</button>
                 </th>
+                }
               </tr>
             ))}
           </tbody>

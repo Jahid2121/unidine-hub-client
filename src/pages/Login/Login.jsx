@@ -10,6 +10,7 @@ const Login = () => {
     const {logIn} = useAuth()
     const navigate = useNavigate();
     const location = useLocation()
+    
 
 
     const from = location.state?.from?.pathname || '/'
@@ -102,11 +103,12 @@ const Login = () => {
           
         </motion.div>
 
-    <div className="flex justify-center">
-    <SocialLogin />
-    </div>
+    
         <p className="font-medium text-center">New User? Join us Now <motion.div  whileHover={{scale: 1.1}} whileTap={{scale: 0.9}} ><Link className="text-customSalmon font-medium" to="/register">Register</Link></motion.div></p>
       </form>
+      <div className="absolute bottom-80 left-8 md:bottom-80 md:left-32 ">
+    <SocialLogin />
+    </div>
       <img src={loginSvg} alt="" className="flex-grow" />
     </div>
   );

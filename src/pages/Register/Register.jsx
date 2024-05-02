@@ -165,9 +165,11 @@ const Register = () => {
     Login
   </Link>
 </motion.button>
-          <SocialLogin />
         </p>
       </form>
+          <div className="absolute bottom-72 right-1 md:bottom-28 md:right-20">
+          <SocialLogin />
+          </div>
     </div>
   );
 };

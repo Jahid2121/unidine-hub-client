@@ -1,6 +1,7 @@
 import Swal from "sweetalert2";
-import useReview from "../../hooks/useReview";
+import useReview from "../../hooks/useReview";    
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import { Link } from "react-router-dom";
 
 const MyReviews = () => {
   const [reviews, refetch] = useReview();
@@ -55,7 +56,7 @@ const MyReviews = () => {
               <tr key={item._id}>
                 <th>{idx + 1}</th>
                 <td>
-                  <div className="flex items-center gap-3">
+                  <div className="flex flex-col md:flex-row items-start md:items-center gap-3">
 
                     <div>
                       <div className="font-bold">{item.title}</div>
@@ -70,11 +71,11 @@ const MyReviews = () => {
                     Likes: {item.likes}
                   </span>
                 </td>
-                <td className="">view Meal</td>
-                <th className="flex flex-col">
+                <Link to={`http://localhost:5173/meal/${item._id}`}><td className="text-center md:text-left">view Meal</td></Link>
+                <td className="flex flex-col md:flex-row md:items-center">
                   <button className="btn btn-ghost btn-xs">edit</button>
                   <button onClick={() =>handleDelete(item._id)} className="btn btn-ghost btn-xs">delete</button>
-                </th>
+                </td>
               </tr>
             ))}
           </tbody>

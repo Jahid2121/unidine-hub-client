@@ -7,7 +7,7 @@ import Swal from "sweetalert2";
 const AllMeals = () => {
   const [meals, refetch] = useMeal();
   const axiosSecure = useAxiosSecure()
-  // console.log(meals);
+  console.log(meals);
   const handleDelete = id => {
     Swal.fire({
       title: "Are You Sure? You  want to delete!",

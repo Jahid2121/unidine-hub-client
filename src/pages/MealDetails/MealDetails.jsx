@@ -97,7 +97,7 @@ const MealDetails = () => {
       }).then((result) => {
         if (result.isConfirmed) {
           navigate("/", { state: { from: location } });
-
+    
           setTimeout(() => {
             scroller.scrollTo("membership", {
               duration: 800,
