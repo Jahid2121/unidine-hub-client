@@ -16,26 +16,26 @@ const AllReqMeals = () => {
   return (
     <div>
       <div className="overflow-x-auto">
-        <table className="table">
+        <table className="md:table-lg table-xs ">
           {/* head */}
           <thead>
             <tr>
               <th></th>
               <th>Name</th>
-              <th>Job</th>
+              <th className="md:inline-block hidden">Chef</th>
               <th>status</th>
               <th></th>
             </tr>
           </thead>
-          <tbody>
+          <tbody  >
             {/* row 1 */}
             {allReqMeals.map((meal, idx) => (
               <tr key={meal._id}>
                 <th>{idx + 1}</th>
-                <td>
+                <td >
                   <div className="flex items-center gap-3">
-                    <div className="avatar">
-                      <div className="mask mask-squircle w-12 h-12">
+                    <div className="avatar md:inline-block hidden">
+                      <div className="mask mask-squircle  w-12 h-12">
                         <img src={meal.image} alt={meal.title} />
                       </div>
                     </div>
@@ -45,7 +45,7 @@ const AllReqMeals = () => {
                     </div>
                   </div>
                 </td>
-                <td>
+                <td className="md:inline-block hidden">
                   {meal.name}
                 </td>
                 <td>{meal.status}</td>
