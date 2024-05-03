@@ -16,7 +16,7 @@ const MemberShip = () => {
   const { isPending, isError, error, memberShipData } = useMembership();
 
   if (isPending) {
-    return <span>Loading...</span>;
+    return <span className="loading-spinner"></span>;
   }
 
   if (isError) {

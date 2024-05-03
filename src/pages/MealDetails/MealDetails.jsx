@@ -118,6 +118,7 @@ const MealDetails = () => {
         reviews,
         name: user.displayName,
         email: user.email,
+        status: "pending"
       };
       console.log(reqMeal);
       axiosSecure.post("/requestedMeals", reqMeal).then((res) => {

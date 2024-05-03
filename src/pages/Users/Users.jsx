@@ -63,7 +63,7 @@ const Users = () => {
                     Make Admin
                     </button>}
                 </td>
-                <td>Subscribed</td>
+                <td>{user.status}</td>
               </tr>
             ))}
           </tbody>

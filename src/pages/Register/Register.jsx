@@ -26,7 +26,8 @@ const Register = () => {
         .then(() => {
           const userData = {
             name: data.name,
-            email: data.email
+            email: data.email,
+            status: "Not Subscribed",
           }
           axiosPublic.post('/users', userData)
           .then(res => {

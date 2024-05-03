@@ -5,6 +5,7 @@ import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 import { useLocation, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const CheckOutForm = ({price,image, name}) => {
     const stripe = useStripe()
@@ -13,7 +14,9 @@ const CheckOutForm = ({price,image, name}) => {
     const [transactionId, setTransactionId] = useState('')
     const [clientSecret, setClientSecret] = useState('')
     const axiosSecure = useAxiosSecure()
+    const axiosPublic = useAxiosPublic()
     const {user} = useAuth()
+    // console.log(user);
     const location = useLocation();
     const navigate = useNavigate()
     useEffect( () => {
@@ -92,6 +95,12 @@ const CheckOutForm = ({price,image, name}) => {
                   });
                   navigate("/", { state: { from: location } });
               }
+                axiosPublic.patch(`/users/${user?.email}`)
+                .then(res => {
+                  console.log(res.data);
+                })
+                .catch(err => console.log(err))
+              
             }
           }
     }
