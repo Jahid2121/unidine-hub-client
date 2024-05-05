@@ -25,7 +25,6 @@ const Dashboard = () => {
             <div className="md:col-span-1 overflow-x-auto md:overflow-visible  col-span-12 flex md:flex-col flex-row  dashNav  md:static z-20 top-20 gap-10 md:gap-5 items-center p-4 md:pt-12 bg-customGreen">
               {isAdmin ? 
                 <>
-                  {/* admin */}
                   <div className="flex logo items-center">
                     <img
                       className="w-12 "
@@ -35,6 +34,7 @@ const Dashboard = () => {
                     
                     <p className="text-2xl link-text  font-bold">UniDine Hub</p>
                     </div>
+                  {/* admin */}
                   <DashboardLink className="flex items-center text-white" to="/dashboard/profile">
                      <span className="dash-icon ">
                       <svg className="md:hover:animate-spin" xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 448 512">
@@ -98,24 +98,40 @@ const Dashboard = () => {
                   </DashboardLink>
                 </>
                : 
+              //   User Routes
                 <div className="flex flex-row md:flex-col  gap-14 md:gap-2  mx-auto md:mx-2">
-                  <DashboardLink className="flex flex-col items-center " to="/dashboard">
-                  <span className="dash-icon">
+                  <div className="flex logo ml-5 items-center">
+                    <img
+                      className="w-12 "
+                      src={"https://i.ibb.co/T0VTkGN/bibimbap.png"}
+                      alt="Logo"
+                    />
                     
+                    <p className="text-2xl link-text  font-bold">UniDine Hub</p>
+                    </div>
+                  <DashboardLink className="flex flex-col items-center " to="/dashboard/profile">
+                  <span className="dash-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                    <path d="M96 128a128 128 0 1 0 256 0A128 128 0 1 0 96 128zm94.5 200.2l18.6 31L175.8 483.1l-36-146.9c-2-8.1-9.8-13.4-17.9-11.3C51.9 342.4 0 405.8 0 481.3c0 17 13.8 30.7 30.7 30.7H162.5c0 0 0 0 .1 0H168 280h5.5c0 0 0 0 .1 0H417.3c17 0 30.7-13.8 30.7-30.7c0-75.5-51.9-138.9-121.9-156.4c-8.1-2-15.9 3.3-17.9 11.3l-36 146.9L238.9 359.2l18.6-31c6.4-10.7-1.3-24.2-13.7-24.2H224 204.3c-12.4 0-20.1 13.6-13.7 24.2z"/></svg>
                     </span>
-                    <span className="hidden link-text">User Profile</span>
+                    <span className=" link-text">User Profile</span>
                     
                     </DashboardLink>
 
-                  <div className="divider hidden link-text"></div>
                   <DashboardLink className="flex items-center " to="/dashboard/requestedMeals">
-                  <span className="dash-icon"><IoMdRestaurant /></span>
-                    <span className="hidden link-text">Requested Meals</span>
+                  <span className="dash-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                    <path d="M0 64C0 28.7 28.7 0 64 0h64 32H470.1c21.1 0 36.4 20.1 30.9 40.4L494.5 64H336c-8.8 0-16 7.2-16 16s7.2 16 16 16H485.8l-17.5 64H336c-8.8 0-16 7.2-16 16s7.2 16 16 16H459.6l-17.5 64H336c-8.8 0-16 7.2-16 16s7.2 16 16 16h97.5L416 352H160l-8.7-96H64c-35.3 0-64-28.7-64-64V64zM145.5 192L133.8 64H64V192h81.5zM144 384H432c26.5 0 48 21.5 48 48v32c0 26.5-21.5 48-48 48H144c-26.5 0-48-21.5-48-48V432c0-26.5 21.5-48 48-48zm144 96a32 32 0 1 0 0-64 32 32 0 1 0 0 64z"/></svg>
+                    </span>
+                    <span className=" link-text">Requested Meals</span>
                     
                   </DashboardLink>
                   <DashboardLink className="flex items-center " to="/dashboard/reviews">
-                  <span className="dash-icon"><FaReadme /></span>
-                    <span className="hidden link-text">My Reviews</span>
+                  <span className="dash-icon">
+                  <svg className="md:hover:animate-spin" fill="white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                      <path  d="M441 58.9L453.1 71c9.4 9.4 9.4 24.6 0 33.9L424 134.1 377.9 88 407 58.9c9.4-9.4 24.6-9.4 33.9 0zM209.8 256.2L344 121.9 390.1 168 255.8 302.2c-2.9 2.9-6.5 5-10.4 6.1l-58.5 16.7 16.7-58.5c1.1-3.9 3.2-7.5 6.1-10.4zM373.1 25L175.8 222.2c-8.7 8.7-15 19.4-18.3 31.1l-28.6 100c-2.4 8.4-.1 17.4 6.1 23.6s15.2 8.5 23.6 6.1l100-28.6c11.8-3.4 22.5-9.7 31.1-18.3L487 138.9c28.1-28.1 28.1-73.7 0-101.8L474.9 25C446.8-3.1 401.2-3.1 373.1 25zM88 64C39.4 64 0 103.4 0 152V424c0 48.6 39.4 88 88 88H360c48.6 0 88-39.4 88-88V312c0-13.3-10.7-24-24-24s-24 10.7-24 24V424c0 22.1-17.9 40-40 40H88c-22.1 0-40-17.9-40-40V152c0-22.1 17.9-40 40-40H200c13.3 0 24-10.7 24-24s-10.7-24-24-24H88z"/></svg>
+                    </span>
+                    <span className=" link-text">My Reviews</span>
                     </DashboardLink>
                 </div>
               }
