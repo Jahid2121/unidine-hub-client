@@ -17,7 +17,7 @@ const AnimatedNavbar = () => {
         <li className="mb-4 border rounded-full pl-2 nav-Item "><NavLink to="/meals" className="flex text-customSalmon"><span><FaBreadSlice /></span> <span className="link-text font-bold ">Meals </span></NavLink> </li>
         {/*  */}
         {
-          user && <li className="mb-4 border rounded-full pl-2 nav-Item "><NavLink to="/dashboard" className="flex text-customSalmon"><span><MdDashboard /></span> <span className="link-text font-bold ">Dash </span></NavLink> </li>
+          user && <li className="mb-4 border rounded-full pl-2 nav-Item "><NavLink to="/dashboard/profile" className="flex text-customSalmon"><span><MdDashboard /></span> <span className="link-text font-bold ">Dash </span></NavLink> </li>
         }
         
       </ul>

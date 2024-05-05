@@ -4,8 +4,15 @@ import useAuth from "../hooks/useAuth";
 import CustomNavLink from "./CustomNavLink";
 import { Tooltip } from "react-tooltip";
 import { motion } from "framer-motion";
+import NavbarLinks from "./NavbarLinks/NavbarLinks";
+import { useState } from "react";
 const Pages = () => {
   const { logOut, user } = useAuth();
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleToggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
   // <CustomNavLink to="/upcomingMeals">UpComing</CustomNavLink>
   const handleLogOut = () => {
     logOut()
@@ -13,13 +20,15 @@ const Pages = () => {
       .catch((error) => console.error(error));
   };
   return (
-    <div className="flex  items-center gap-6">
+    <div className="flex  items-center flex-grow  gap-6">
+      <div className="flex mr-28 items-center ml-10">
       <CustomNavLink  to="/"
       style={isActive => ({
         color: isActive ? "blue" : "green"
       })}
       >Home</CustomNavLink>
-      <CustomNavLink to="/meals">Meals</CustomNavLink>
+      <span className="ml-10"><CustomNavLink  to="/meals">Meals</CustomNavLink></span>
+      </div>
       
       {/* <div className="text-2xl">
       <NavLink>
@@ -28,7 +37,7 @@ const Pages = () => {
       </div> */}
       {user ? (
         // <NavLink onClick={handleLogOut}>LogOut</NavLink>
-        <div className="dropdown  text-black dropdown-end">
+        <div className="dropdown text-black dropdown-end" onMouseEnter={handleToggleMenu} onMouseLeave={handleToggleMenu}>
       <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
         <div className="w-10 rounded-full">
         <Tooltip id="User" />
@@ -43,8 +52,8 @@ const Pages = () => {
             {user?.displayName}
           </span>
         </li>
-        <li className="mt-1 mb-1"><CustomNavLink to="/dashboard">DashBoard</CustomNavLink></li>
-        <li><NavLink onClick={handleLogOut}>LogOut</NavLink></li>
+        <li className="mt-1 mb-1"><NavbarLinks to="/dashboard/profile">DashBoard</NavbarLinks></li>
+        <li><button className="p-2 hover:bg-customGreen" onClick={handleLogOut}>LogOut</button></li>
       </ul>
     </div>
       ) : (
@@ -133,17 +142,17 @@ const Navbar = ({ children }) => {
             <ul className="menu mt-20 gap-5 font-medium p-4 w-80 min-h-full bg-base-200 text-base-content">
               {/* Sidebar content here */}
               
-              <NavLink to="/">Home</NavLink>
-              <NavLink to="/meals">Meals</NavLink>
-              {/* <NavLink to="/upcomingMeals">UpComing</NavLink> */}
-              <NavLink to="/dashboard">DashBoard</NavLink>
-              <NavLink>
+              <CustomNavLink to="/">Home</CustomNavLink>
+              <CustomNavLink to="/meals">Meals</CustomNavLink>
+              {/* <CustomNavLink to="/upcomingMeals">UpComing</CustomNavLink> */}
+              <CustomNavLink to="/dashboard/profile">DashBoard</CustomNavLink>
+              <CustomNavLink>
                 <CiBellOn />
-              </NavLink>
+              </CustomNavLink>
               {user ? (
         <Link onClick={handleLogOut}>LogOut</Link>
       ) : (
-        <NavLink to="login">Join Us</NavLink>
+        <CustomNavLink to="login">Join Us</CustomNavLink>
         
       )}
             </ul>

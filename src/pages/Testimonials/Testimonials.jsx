@@ -7,11 +7,12 @@ import "@smastrom/react-rating/style.css";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
+import 'swiper/css/autoplay'
 
 // import './styles.css';
 
 // import required modules
-import { Pagination, Autoplay, Navigation, A11y } from "swiper/modules";
+import { Pagination, Navigation, A11y, Autoplay } from "swiper/modules";
 import useReviews from "../../hooks/useReviews";
 import { Rating } from "@smastrom/react-rating";
 import SectionTitle from "../../components/SectionTitle/SectionTitle";
@@ -31,8 +32,8 @@ const Testimonials = () => {
               pagination={true}
               modules={[Navigation, A11y, Autoplay]}
               spaceBetween={40}
-              Autoplay={{ delay: 3000 }}
-              aau
+              autoplay={{delay: 1000}}
+              
               className="mySwiper"
             >
               {}

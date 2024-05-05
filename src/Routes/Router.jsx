@@ -98,7 +98,7 @@ export const router = createBrowserRouter([
       {
         path:'allReqMeals',
         element: <AdminRoute><AllReqMeals /></AdminRoute>
-      },
+      }
     ],
   },
 ]);
