@@ -6,7 +6,7 @@ const axiosSecure = axios.create({
   baseURL: "http://localhost:5000",
 });
 
-// https://uni-dine-hub-server.vercel.app
+// https://uni-dine-hub-server.vercel.app/
 // http://localhost:5000
 const useAxiosSecure = () => {
   const navigate = useNavigate()

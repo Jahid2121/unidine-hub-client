@@ -265,8 +265,8 @@ const onSubmit = async (data) => {
 
 
 
-      <button type="submit" className="btn mr-16 mb-10">
-        Add Item <FaUtensilSpoon className="ml-4 "></FaUtensilSpoon>
+      <button type="submit" className="btn bg-customSalmon hover:bg-customSalmon text-white mr-16 mb-10">
+        Add Meal <FaUtensilSpoon className="ml-4 "></FaUtensilSpoon>
       </button>
       {/* <button type="submit" className="btn mb-10">
         Add to Upcoming <FaUtensilSpoon className="ml-4"></FaUtensilSpoon>
