@@ -6,9 +6,11 @@ import { Tooltip } from "react-tooltip";
 import { motion } from "framer-motion";
 import NavbarLinks from "./NavbarLinks/NavbarLinks";
 import { useState } from "react";
+import useAdmin from "../hooks/useAdmin";
 const Pages = () => {
   const { logOut, user } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
+  const [isAdmin, isAdminLoading] = useAdmin();
 
   const handleToggleMenu = () => {
     setIsOpen(!isOpen);
@@ -52,7 +54,9 @@ const Pages = () => {
             {user?.displayName}
           </span>
         </li>
-        <li className="mt-1 mb-1"><NavbarLinks to="/dashboard/profile">DashBoard</NavbarLinks></li>
+        <li className="mt-1 mb-1">
+          {isAdmin ? <NavbarLinks to="/dashboard/profile/admin">DashBoard</NavbarLinks> : <NavbarLinks to="/dashboard/profile">DashBoard</NavbarLinks>}
+        </li>
         <li><button className="p-2 hover:bg-customGreen" onClick={handleLogOut}>LogOut</button></li>
       </ul>
     </div>

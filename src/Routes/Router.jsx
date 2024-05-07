@@ -18,6 +18,7 @@ import AllMeals from "../pages/AllMeals/AllMeals";
 import AllReqMeals from "../pages/AllReqMeals/AllReqMeals";
 import CheckOut from "../pages/CheckOut/CheckOut";
 import UpdateMeal from "../pages/UpdateMeal/UpdateMeal";
+import AdminHome from "../Layout/Dashboard/Admin/AdminHome";
 
 
 export const router = createBrowserRouter([
@@ -71,6 +72,10 @@ export const router = createBrowserRouter([
         element: <Profile />,
       },
       {
+        path: "/dashboard/profile/admin",
+        element: <AdminRoute><AdminHome /></AdminRoute>,
+      },
+      {
         path: "requestedMeals",
         element: <ReqMeals />,
       },
@@ -81,7 +86,7 @@ export const router = createBrowserRouter([
       
       {
         path: "users",
-        element: <Users />,
+        element: <AdminRoute><Users /></AdminRoute>,
       },
       {
         path: 'allReviews',

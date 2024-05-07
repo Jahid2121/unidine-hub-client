@@ -18,7 +18,7 @@ const MealTabs = () => {
         <div className='bg-custom-background-image bg-fixed'>
         <SectionTitle heading="Meals" subHeading="Meals category" />
        <Tabs defaultIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
-    <div className='flex justify-center'>
+    <div className='flex justify-center md:font-medium md:text-2xl'>
     <TabList>
       <Tab>All</Tab>
       <Tab>Breakfast</Tab>

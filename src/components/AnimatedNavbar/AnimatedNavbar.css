@@ -2,6 +2,11 @@
     width: 50px;
     transition: width 1600ms ease;
   }
+
+.nav-Item svg {
+  min-width: 2rem;
+  fill: salmon;
+}
   
   .nav-Item:hover {
     border-radius: 20px;

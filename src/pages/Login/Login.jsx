@@ -5,11 +5,14 @@ import Swal from "sweetalert2";
 import SocialLogin from "../../components/SocialLogin";
 import loginSvg from "../../assets/login-bg.svg"
 import { motion } from "framer-motion";
+import { useState } from "react";
 
 const Login = () => {
     const {logIn} = useAuth()
     const navigate = useNavigate();
     const location = useLocation()
+    const [error, setError] = useState()
+    console.log(error);
     
 
 
@@ -40,6 +43,7 @@ const Login = () => {
         })
         .catch(err => {
             console.error(err);
+            setError(err.message)
         })
        
     
@@ -85,6 +89,7 @@ const Login = () => {
           {errors.password?.type === "required" && (
             <p className="text-red-800">Password is required</p>
           )}
+          <p className="text-red-700">{error}</p>
          
         </div>
         <div className="" >

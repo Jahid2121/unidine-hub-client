@@ -1,13 +1,12 @@
 import { useForm } from "react-hook-form";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
-import { useLoaderData, useParams } from "react-router-dom";
-import Swal from "sweetalert2";
+import {  useParams } from "react-router-dom";
 import { FaUtensilSpoon } from "react-icons/fa";
 import SectionTitle from "../../components/SectionTitle/SectionTitle";
 import Btn from "../../components/Btn";
 import useMeal from "../../hooks/useMeal";
-import { useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
+import { motion } from "framer-motion";
 
 const UpdateMeal = () => {
   const { register, handleSubmit, reset } = useForm();
@@ -153,10 +152,12 @@ const UpdateMeal = () => {
           </div>
         </div>
 
-        <button type="submit" className="btn flex mx-auto mb-16">
-          <Btn title="Update Item" />{" "}
-          <FaUtensilSpoon className="ml-4"></FaUtensilSpoon>
-        </button>
+        <motion.button type="submit"   style={{borderRadius: '0 30px 30px 30px'}} className=" mt-4 flex mx-auto mb-16 bg-customSalmon text-white px-4 py-2 ">
+        <svg className="w-6 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+          <path d="M64 80c-8.8 0-16 7.2-16 16l0 320c0 8.8 7.2 16 16 16l320 0c8.8 0 16-7.2 16-16l0-320c0-8.8-7.2-16-16-16L64 80zM0 96C0 60.7 28.7 32 64 32l320 0c35.3 0 64 28.7 64 64l0 320c0 35.3-28.7 64-64 64L64 480c-35.3 0-64-28.7-64-64L0 96zm224 64c6.7 0 13 2.8 17.6 7.7l104 112c6.5 7 8.2 17.2 4.4 25.9s-12.5 14.4-22 14.4l-208 0c-9.5 0-18.2-5.7-22-14.4s-2.1-18.9 4.4-25.9l104-112c4.5-4.9 10.9-7.7 17.6-7.7z"/></svg>
+        
+         Update Meal
+    </motion.button>
       </form>
     </div>
   );

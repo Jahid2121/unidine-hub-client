@@ -82,6 +82,8 @@ const CheckOutForm = ({price,image, name}) => {
                     name: name,
                     transactionId: paymentIntent.id,
                     image: image,
+                    price: price
+
 
                 }
               const res = await axiosSecure.post('/payments', payment)

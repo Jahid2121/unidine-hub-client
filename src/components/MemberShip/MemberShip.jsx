@@ -52,11 +52,8 @@ const MemberShip = () => {
                     Price: $
                     <span className="text-customSalmon">{pack.price}</span>
                   </p>
-                  {/* <p className="text-gray-700 mb-12">Benefits: {pack.benefits}</p> */}
                 </div>
-                {/* <Link to={`/checkout/${pack.name}`}>
-                  <Btn title="Upgrade Now"></Btn>
-                </Link> */}
+
               </motion.div>
           <AnimatePresence>
             {overlayVisible && selectedId === pack._id && (
@@ -82,7 +79,7 @@ const MemberShip = () => {
             </div>
           </div>
         <Elements stripe={stripePromise}>
-          <CheckOutForm price={pack.price} image={pack.image} name={name} />
+          <CheckOutForm price={pack.price} image={pack.image} name={pack.name} />
         </Elements>
       </div>
                 <motion.button whileHover={{scale: 1.9}} className="relative -top-64 right-14 text-2xl" onClick={() => setSelectedId(null)} ><FaBackward /></motion.button>
