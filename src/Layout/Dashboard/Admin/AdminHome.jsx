@@ -4,17 +4,32 @@ import CustomModal from '../../../components/CostomModal';
 import { CiEdit } from 'react-icons/ci';
 import useMemberShip from '../../../hooks/useMemberShip';
 import useAuth from '../../../hooks/useAuth';
+import AdminDashboard from '../../../components/AdminDashboard/AdminDashboard';
+import { useQuery } from '@tanstack/react-query';
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
 
 const AdminHome = () => {
     const { user } = useAuth();
     const [[member]] = useMemberShip()
     const [isModalOpen, setModalOpen] = useState(false);
+    
+    const axiosSecure = useAxiosSecure()
+
+    const {data: analytics} = useQuery({
+      queryKey: ['admin-analytics'],
+      queryFn: async() => {
+        const response = await axiosSecure.get("/admin-analytics")
+        return response.data;
+      }
+    })
   
     const openModal = () => setModalOpen(true);
     const closeModal = () => setModalOpen(false);
   
     return (
-     <div className="text-center">
+     <div>
+      {/* Profile section  */}
+      <div className="text-center">
   
   <CustomModal
     isOpen={isModalOpen}
@@ -29,7 +44,7 @@ const AdminHome = () => {
       <button className="p-1 bg-white text-black rounded-md" onClick={openModal}><CiEdit /></button>
         <p className="text-gray-600">{user?.email}</p>
         <h2 className="text-lg font-semibold">
-          Welcome <span>{user?.displayName}</span>
+           Admin <br /> <span>{user?.displayName}</span>
         </h2>
         <p className="mt-2">Your Badges </p>
         <div className="flex justify-center items-center mt-2">
@@ -54,6 +69,11 @@ const AdminHome = () => {
         </div>}
           </div>
       </div>
+
+
+      {/* Dashboard section */}
+      <AdminDashboard analytics={analytics} />
+     </div>
     );
   };
 
